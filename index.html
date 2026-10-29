@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#123b63">
+<title>আলামিন কম্পিউটার এন্ড সার্ভিসিং সেন্টার | Memo Creator</title>
+<style>
+:root{--navy:#123b63;--blue:#1769aa;--bg:#f3f6fa;--ink:#172536;--muted:#64748b;--line:#dce4ed;--white:#fff;--green:#16845b;--red:#b42318;--amber:#fff4d6}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans Bengali","Noto Sans",Arial,sans-serif;font-size:15px}
+header{background:linear-gradient(120deg,#123b63,#1769aa);color:#fff;padding:18px 16px}
+.head{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+h1{font-size:clamp(20px,3vw,29px);margin:0 0 4px}header p{margin:0;color:#e1efff}
+.wrap{max-width:1180px;margin:18px auto;padding:0 12px 36px}
+.tabs{display:flex;gap:8px;overflow:auto;margin-bottom:14px}
+.tab{border:1px solid var(--line);background:#fff;color:var(--navy);padding:10px 14px;border-radius:10px;white-space:nowrap;font-weight:700;cursor:pointer}
+.tab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.panel{display:none}.panel.active{display:block}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px;box-shadow:0 2px 8px #123b6308}
+h2{font-size:19px;margin:0 0 14px}h3{font-size:16px;margin:0 0 10px}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:12px}
+.field{grid-column:span 3;min-width:0}.field.w6{grid-column:span 6}.field.w12{grid-column:span 12}.field.w4{grid-column:span 4}.field.w8{grid-column:span 8}
+label{display:block;font-size:13px;color:#41536a;margin:0 0 5px;font-weight:700}
+input,select,textarea{width:100%;padding:10px 11px;border:1px solid #cbd6e2;border-radius:9px;background:#fff;color:var(--ink);font:inherit;min-width:0}
+input:focus,select:focus,textarea:focus{outline:2px solid #8ec8f4;border-color:var(--blue)}
+button{border:0;border-radius:9px;padding:10px 13px;font:inherit;font-weight:700;cursor:pointer;background:var(--blue);color:white}
+button.secondary{background:#eaf1f8;color:var(--navy);border:1px solid #d2deeb}
+button.success{background:var(--green)}button.danger{background:#fff0ef;color:var(--red);border:1px solid #f2c8c5}
+button.small{padding:7px 9px;font-size:13px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:650px;background:#fff}
+th,td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+th{background:#f1f5f9;color:#34465a;font-size:13px}
+td input{min-width:65px;padding:8px}
+td.num,th.num{text-align:right}
+tfoot td{font-weight:800}
+.summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.stat{border:1px solid var(--line);border-radius:12px;padding:13px;background:#fff}
+.stat span{display:block;color:var(--muted);font-size:12px}.stat strong{display:block;font-size:21px;margin-top:5px;overflow-wrap:anywhere}
+.note{font-size:13px;color:var(--muted);line-height:1.5}.pill{display:inline-block;background:#e7f7ef;color:#116749;border-radius:99px;padding:3px 8px;font-size:12px;font-weight:700}
+.empty{text-align:center;color:var(--muted);padding:22px}
+.receipt-preview{background:#fff;border:1px dashed #9aaabd;padding:15px;max-width:760px;margin:auto}
+.receipt-preview h2{text-align:center;margin-bottom:4px}.receipt-preview .center{text-align:center}
+.mini{font-size:12px;color:#42536a}
+.hidden{display:none!important}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:10px}
+@media(max-width:760px){.field,.field.w4{grid-column:span 6}.field.w6,.field.w8{grid-column:span 12}.summary{grid-template-columns:repeat(2,minmax(0,1fr))}.wrap{padding-left:9px;padding-right:9px}.card{padding:12px}.head{align-items:flex-start}}
+@media(max-width:430px){.field,.field.w4{grid-column:span 12}.summary{grid-template-columns:repeat(2,minmax(0,1fr))}.stat strong{font-size:18px}}
+@media print{
+ body{background:#fff;color:#000;font-size:11px}header,.tabs,.no-print,footer{display:none!important}.wrap{max-width:none;margin:0;padding:0}.panel{display:none!important}#printArea{display:block!important}.receipt-preview{border:0;padding:0;max-width:none}.card{box-shadow:none;border:0;padding:0}.print-a4{width:100%}.print-small{width:72mm;margin:0 auto;font-size:10px}.print-small table{min-width:0;font-size:9px}.print-small th,.print-small td{padding:4px 3px}.print-small .hide-small{display:none}.print-small h2{font-size:15px}.print-small .receipt-preview{padding:0}
+ @page{margin:12mm}
+}
+</style>
+</head>
+<body>
+<header>
+ <div class="head">
+  <div><h1 id="brandTitle">আলামিন কম্পিউটার এন্ড সার্ভিসিং সেন্টার</h1><p>Memo Creator · Sales · Due Ledger</p></div>
+  <div class="actions no-print"><button class="secondary" id="exportBtn">ডেটা ব্যাকআপ ডাউনলোড</button><button class="secondary" id="importBtn">ব্যাকআপ ফিরিয়ে আনুন</button><input id="importFile" type="file" accept=".json,application/json" class="hidden"></div>
+ </div>
+</header>
+<div class="wrap">
+ <nav class="tabs no-print" aria-label="প্রধান মেনু">
+  <button class="tab active" data-tab="memo">নতুন মেমো</button>
+  <button class="tab" data-tab="history">মেমো তালিকা</button>
+  <button class="tab" data-tab="products">পণ্য ও দাম</button>
+  <button class="tab" data-tab="reports">বিক্রির হিসাব</button>
+  <button class="tab" data-tab="settings">দোকানের সেটিংস</button>
+ </nav>
+
+ <section class="panel active" id="panel-memo">
+  <div class="card">
+   <h2>নতুন মেমো / New Memo</h2>
+   <div class="grid">
+    <div class="field w4"><label for="memoNo">মেমো নম্বর</label><input id="memoNo" readonly></div>
+    <div class="field w4"><label for="memoDate">তারিখ ও সময়</label><input id="memoDate" type="datetime-local"></div>
+    <div class="field w4"><label for="language">মেমোর ভাষা</label><select id="language"><option value="both">বাংলা + English</option><option value="bn">শুধু বাংলা</option><option value="en">English only</option></select></div>
+    <div class="field w6"><label for="customerName">কাস্টমারের নাম / Customer</label><input id="customerName" placeholder="নাম (ঐচ্ছিক)"></div>
+    <div class="field w6"><label for="customerPhone">ফোন নম্বর / Phone</label><input id="customerPhone" inputmode="tel" placeholder="01XXXXXXXXX"></div>
+    <div class="field w12"><label for="memoNote">নোট / Note</label><input id="memoNote" placeholder="যেমন: সার্ভিস ওয়ারেন্টি / অতিরিক্ত তথ্য"></div>
+   </div>
+  </div>
+  <div class="card">
+   <div class="actions" style="justify-content:space-between;margin-bottom:12px"><h2 style="margin:0">পণ্য / Services & Items</h2><button id="addRowBtn" type="button">+ পণ্য যোগ করুন</button></div>
+   <div class="table-wrap"><table id="itemsTable"><thead><tr><th style="min-width:190px">পণ্যের নাম / Item</th><th>পরিমাণ</th><th>একক দাম (৳)</th><th class="num">মোট (৳)</th><th class="no-print"> </th></tr></thead><tbody id="itemsBody"></tbody></table></div>
+   <div class="grid" style="margin-top:14px">
+    <div class="field w4"><label for="discount">ছাড় / Discount (৳)</label><input id="discount" type="number" min="0" step="0.01" value="0"></div>
+    <div class="field w4"><label for="paid">পরিশোধ / Paid (৳)</label><input id="paid" type="number" min="0" step="0.01" value="0"></div>
+    <div class="field w4"><label for="paymentMethod">পেমেন্ট মাধ্যম</label><select id="paymentMethod"><option>Cash / নগদ</option><option>bKash</option><option>Nagad</option><option>Bank</option><option>Due / বাকি</option><option>Other</option></select></div>
+   </div>
+   <div class="summary" style="margin-top:14px">
+    <div class="stat"><span>পণ্যের মোট / Subtotal</span><strong id="subtotal">৳0.00</strong></div>
+    <div class="stat"><span>ছাড় / Discount</span><strong id="discountView">৳0.00</strong></div>
+    <div class="stat"><span>সর্বমোট / Grand Total</span><strong id="grandTotal">৳0.00</strong></div>
+    <div class="stat"><span>বাকি / Due</span><strong id="dueTotal">৳0.00</strong></div>
+   </div>
+   <p class="note">নোট: পরিশোধের পরিমাণ মোট বিলের বেশি হলে বাকি শূন্য দেখাবে। বাকি আদায় করতে মেমো তালিকা থেকে “বাকি আদায়” ব্যবহার করুন।</p>
+   <div class="actions no-print">
+    <button id="saveMemoBtn" class="success">মেমো সংরক্ষণ</button>
+    <button id="printA4Btn">A4 প্রিন্ট / PDF</button>
+    <button id="printSmallBtn" class="secondary">ছোট রসিদ প্রিন্ট</button>
+    <button id="resetBtn" class="secondary">নতুন করে শুরু</button>
+   </div>
+  </div>
+ </section>
+
+ <section class="panel" id="panel-history">
+  <div class="card">
+   <h2>মেমো তালিকা / Memo History</h2>
+   <div class="grid">
+    <div class="field w8"><label for="historySearch">মেমো নম্বর, কাস্টমার বা ফোন দিয়ে খুঁজুন</label><input id="historySearch" placeholder="Search..."></div>
+    <div class="field w4"><label for="historyDate">তারিখ অনুযায়ী</label><input id="historyDate" type="date"></div>
+   </div>
+   <div id="historyList" style="margin-top:12px"></div>
+  </div>
+ </section>
+
+ <section class="panel" id="panel-products">
+  <div class="card">
+   <h2>পণ্যের তালিকা / Product Catalog</h2>
+   <div class="grid">
+    <div class="field w4"><label for="productName">পণ্যের নাম</label><input id="productName" placeholder="যেমন: Keyboard / কিবোর্ড"></div>
+    <div class="field w4"><label for="productCode">পণ্য কোড (ঐচ্ছিক)</label><input id="productCode" placeholder="KB-001"></div>
+    <div class="field w4"><label for="productPrice">দাম (৳)</label><input id="productPrice" type="number" min="0" step="0.01" placeholder="500"></div>
+    <div class="field w12"><button id="saveProductBtn">পণ্য সংরক্ষণ</button></div>
+   </div>
+   <p class="note">মেমোতে পণ্যের নাম টাইপ করলে সংরক্ষিত পণ্য সাজেশন আসবে এবং দাম স্বয়ংক্রিয়ভাবে বসবে।</p>
+   <div id="productList"></div>
+  </div>
+ </section>
+
+ <section class="panel" id="panel-reports">
+  <div class="card">
+   <h2>দৈনিক বিক্রির হিসাব / Sales Report</h2>
+   <div class="grid">
+    <div class="field w4"><label for="reportDate">যে দিনের হিসাব</label><input id="reportDate" type="date"></div>
+    <div class="field w4" style="align-self:end"><button id="todayReportBtn">আজকের হিসাব</button></div>
+    <div class="field w4" style="align-self:end"><button id="exportCsvBtn" class="secondary">CSV ডাউনলোড</button></div>
+   </div>
+   <div class="summary" style="margin:12px 0">
+    <div class="stat"><span>মেমো সংখ্যা</span><strong id="reportCount">0</strong></div>
+    <div class="stat"><span>মোট বিক্রি</span><strong id="reportSales">৳0.00</strong></div>
+    <div class="stat"><span>আদায় (এই দিনে তৈরি মেমো)</span><strong id="reportPaid">৳0.00</strong></div>
+    <div class="stat"><span>বাকি (এই দিনের মেমো)</span><strong id="reportDue">৳0.00</strong></div>
+   </div>
+   <div id="reportRows"></div>
+   <p class="note">আদায় কলামটি নির্বাচিত দিনে তৈরি হওয়া মেমোগুলোর প্রাথমিক/মোট রেকর্ডকৃত পরিশোধ দেখায়। পরে বাকি আদায় করলে বর্তমান বাকি মেমোর তালিকায় আপডেট হবে।</p>
+  </div>
+ </section>
+
+ <section class="panel" id="panel-settings">
+  <div class="card">
+   <h2>দোকানের তথ্য / Shop Settings</h2>
+   <div class="grid">
+    <div class="field w6"><label for="settingName">দোকানের নাম</label><input id="settingName"></div>
+    <div class="field w6"><label for="settingPhone">ফোন নম্বর</label><input id="settingPhone" placeholder="01XXXXXXXXX"></div>
+    <div class="field w6"><label for="settingAddress">ঠিকানা</label><input id="settingAddress" placeholder="দোকানের ঠিকানা"></div>
+    <div class="field w6"><label for="settingFooter">মেমোর নিচের বার্তা</label><input id="settingFooter" placeholder="ধন্যবাদ, আবার আসবেন"></div>
+    <div class="field w12"><button id="saveSettingsBtn">সেটিংস সংরক্ষণ</button></div>
+   </div>
+  </div>
+  <div class="card">
+   <h2>ডেটা নিরাপত্তা</h2>
+   <p class="note">এই ওয়েবসাইট আপনার ব্রাউজারের Local Storage-এ তথ্য রাখে। ব্রাউজার ডেটা/সাইট ডেটা মুছে ফেললে মেমো ও পণ্যের তথ্য হারাতে পারে। নিয়মিত JSON ব্যাকআপ ডাউনলোড করে নিরাপদ স্থানে রাখুন। অন্য ডিভাইসে তথ্য স্বয়ংক্রিয়ভাবে যাবে না।</p>
+   <div class="actions"><button id="exportBtn2" class="secondary">ব্যাকআপ ডাউনলোড</button><button id="clearAllBtn" class="danger">সব লোকাল ডেটা মুছুন</button></div>
+  </div>
+ </section>
+
+ <section id="printArea" class="hidden"></section>
+ <footer>আলামিন কম্পিউটার এন্ড সার্ভিসিং সেন্টার · Memo Creator · Data stays in this browser</footer>
+</div>
+<script>
+(() => {
+const KEY='alamain_memo_creator_v1';
+const defaultData={settings:{name:'আলামিন কম্পিউটার এন্ড সার্ভিসিং সেন্টার',phone:'',address:'',footer:'ধন্যবাদ, আবার আসবেন।'},products:[],memos:[],nextNo:1};
+let data=loadData(), editingMemoId=null;
+const $=id=>document.getElementById(id);
+const money=n=>'৳'+(Number(n)||0).toLocaleString('en-BD',{minimumFractionDigits:2,maximumFractionDigits:2});
+const today=()=>new Date().toISOString().slice(0,10);
+const localDateTime=()=>{const d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,16)};
+function loadData(){try{return {...structuredClone(defaultData),...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch(e){return structuredClone(defaultData)}}
+function saveData(){localStorage.setItem(KEY,JSON.stringify(data));renderAll()}
+function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function dateKey(v){return String(v||'').slice(0,10)}
+function fmtDate(v){if(!v)return '';try{return new Date(v).toLocaleString('bn-BD')}catch(e){return v}}
+function newMemoNo(){return 'ACSC-'+String(data.nextNo).padStart(5,'0')}
+function switchTab(name){document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===name));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id==='panel-'+name));if(name==='history')renderHistory();if(name==='products')renderProducts();if(name==='reports')renderReport()}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
+function addItemRow(item={name:'',qty:1,price:0}){const tr=document.createElement('tr');tr.innerHTML=`<td><input class="item-name" list="productOptions" placeholder="পণ্যের নাম" value="${escapeHtml(item.name)}"><datalist id="productOptions">${data.products.map(p=>`<option value="${escapeHtml(p.name)}"></option>`).join('')}</datalist></td><td><input class="item-qty" type="number" min="0.01" step="0.01" value="${Number(item.qty)||1}"></td><td><input class="item-price" type="number" min="0" step="0.01" value="${Number(item.price)||0}"></td><td class="num item-total">${money((Number(item.qty)||0)*(Number(item.price)||0))}</td><td class="no-print"><button class="small danger remove-row" type="button">×</button></td>`;
+$('itemsBody').appendChild(tr);
+tr.querySelector('.item-name').addEventListener('change',()=>{const p=data.products.find(x=>x.name.toLowerCase()===tr.querySelector('.item-name').value.trim().toLowerCase()|| (x.code&&x.code.toLowerCase()===tr.querySelector('.item-name').value.trim().toLowerCase()));if(p)tr.querySelector('.item-price').value=p.price;calcTotals()});
+tr.querySelectorAll('.item-qty,.item-price').forEach(i=>i.addEventListener('input',calcTotals));
+tr.querySelector('.remove-row').addEventListener('click',()=>{tr.remove();if(!$('itemsBody').children.length)addItemRow();calcTotals()});
+calcTotals()}
+function getItems(){return [...$('itemsBody').querySelectorAll('tr')].map(tr=>({name:tr.querySelector('.item-name').value.trim(),qty:Math.max(0,Number(tr.querySelector('.item-qty').value)||0),price:Math.max(0,Number(tr.querySelector('.item-price').value)||0)})).filter(x=>x.name&&x.qty>0)}
+function calcTotals(){let sub=0;[...$('itemsBody').querySelectorAll('tr')].forEach(tr=>{const q=Math.max(0,Number(tr.querySelector('.item-qty').value)||0),p=Math.max(0,Number(tr.querySelector('.item-price').value)||0),t=q*p;sub+=t;tr.querySelector('.item-total').textContent=money(t)});const disc=Math.min(sub,Math.max(0,Number($('discount').value)||0)),grand=Math.max(0,sub-disc),paid=Math.min(grand,Math.max(0,Number($('paid').value)||0));$('subtotal').textContent=money(sub);$('discountView').textContent=money(disc);$('grandTotal').textContent=money(grand);$('dueTotal').textContent=money(Math.max(0,grand-paid));return{subtotal:sub,discount:disc,total:grand,paid,due:Math.max(0,grand-paid)}}
+function resetForm(){editingMemoId=null;$('memoNo').value=newMemoNo();$('memoDate').value=localDateTime();$('customerName').value='';$('customerPhone').value='';$('memoNote').value='';$('discount').value='0';$('paid').value='0';$('paymentMethod').value='Cash / নগদ';$('itemsBody').innerHTML='';addItemRow();$('saveMemoBtn').textContent='মেমো সংরক্ষণ';calcTotals()}
+function formMemo(){const totals=calcTotals();return{id:editingMemoId||('m'+Date.now()+Math.random().toString(16).slice(2,6)),number:$('memoNo').value,date:$('memoDate').value||localDateTime(),customer:$('customerName').value.trim(),phone:$('customerPhone').value.trim(),note:$('memoNote').value.trim(),items:getItems(),discount:totals.discount,subtotal:totals.subtotal,total:totals.total,paid:totals.paid,due:totals.due,paymentMethod:$('paymentMethod').value,createdAt:new Date().toISOString()}}
+function saveMemo(){const m=formMemo();if(!m.items.length){alert('কমপক্ষে একটি পণ্যের নাম, পরিমাণ ও দাম দিন।');return}if(m.paid>m.total){alert('পরিশোধের টাকা মোট বিলের বেশি হতে পারবে না।');return}const idx=data.memos.findIndex(x=>x.id===m.id);if(idx>=0){const old=data.memos[idx];m.payments=old.payments||[];data.memos[idx]=m}else{m.payments=[...(m.paid>0?[{date:m.date,amount:m.paid,method:m.paymentMethod}]:[])];data.memos.unshift(m);data.nextNo++}editingMemoId=null;saveData();alert('মেমো সংরক্ষণ হয়েছে।');resetForm()}
+function startEdit(m){editingMemoId=m.id;$('memoNo').value=m.number;$('memoDate').value=m.date;$('customerName').value=m.customer||'';$('customerPhone').value=m.phone||'';$('memoNote').value=m.note||'';$('discount').value=m.discount||0;$('paid').value=m.paid||0;$('paymentMethod').value=m.paymentMethod||'Cash / নগদ';$('itemsBody').innerHTML='';(m.items||[]).forEach(addItemRow);if(!m.items?.length)addItemRow();$('saveMemoBtn').textContent='পরিবর্তন সংরক্ষণ';switchTab('memo');calcTotals()}
+function renderHistory(){const q=$('historySearch').value.toLowerCase().trim(),d=$('historyDate').value;const ms=data.memos.filter(m=>(!q||[m.number,m.customer,m.phone].join(' ').toLowerCase().includes(q))&&(!d||dateKey(m.date)===d));if(!ms.length){$('historyList').innerHTML='<div class="empty">কোনো মেমো পাওয়া যায়নি।</div>';return}$('historyList').innerHTML=`<div class="table-wrap"><table><thead><tr><th>মেমো</th><th>তারিখ</th><th>কাস্টমার</th><th class="num">মোট</th><th class="num">বাকি</th><th>কাজ</th></tr></thead><tbody>${ms.map(m=>`<tr><td>${escapeHtml(m.number)}</td><td>${escapeHtml(fmtDate(m.date))}</td><td>${escapeHtml(m.customer||'Walk-in')}<br><span class="mini">${escapeHtml(m.phone||'')}</span></td><td class="num">${money(m.total)}</td><td class="num">${money(m.due)}</td><td><div class="actions"><button class="small" data-action="view" data-id="${m.id}">প্রিন্ট</button><button class="small secondary" data-action="edit" data-id="${m.id}">এডিট</button>${m.due>0?`<button class="small success" data-action="pay" data-id="${m.id}">বাকি আদায়</button>`:''}<button class="small danger" data-action="delete" data-id="${m.id}">মুছুন</button></div></td></tr>`).join('')}</tbody></table></div>`;
+$('historyList').querySelectorAll('button[data-action]').forEach(b=>b.addEventListener('click',()=>{const m=data.memos.find(x=>x.id===b.dataset.id);if(!m)return;const a=b.dataset.action;if(a==='view')printMemo(m,'a4');if(a==='edit')startEdit(m);if(a==='pay')collectDue(m);if(a==='delete'&&confirm(`${m.number} মুছে ফেলবেন?`)){data.memos=data.memos.filter(x=>x.id!==m.id);saveData();renderHistory()}}))}
+function collectDue(m){const val=prompt(`মেমো ${m.number}\nবর্তমান বাকি ${money(m.due)}\nএখন কত টাকা আদায় হয়েছে?`,'');if(val===null)return;const amount=Number(val);if(!Number.isFinite(amount)||amount<=0||amount>m.due){alert('সঠিক পরিমাণ লিখুন; এটি শূন্যের বেশি এবং বাকি টাকার সমান বা কম হতে হবে।');return}const method=prompt('পেমেন্ট মাধ্যম (Cash / bKash / Nagad / Bank)','Cash / নগদ')||'Cash / নগদ';m.paid=(Number(m.paid)||0)+amount;m.due=Math.max(0,m.total-m.paid);m.payments=m.payments||[];m.payments.push({date:localDateTime(),amount,method});m.paymentMethod=method;saveData();renderHistory();alert('বাকি আদায় সংরক্ষণ হয়েছে।')}
+function renderProducts(){if(!data.products.length){$('productList').innerHTML='<div class="empty">এখনো কোনো পণ্য যোগ করা হয়নি।</div>';return}$('productList').innerHTML=`<div class="table-wrap"><table><thead><tr><th>পণ্যের নাম</th><th>কোড</th><th class="num">দাম</th><th>কাজ</th></tr></thead><tbody>${data.products.map(p=>`<tr><td>${escapeHtml(p.name)}</td><td>${escapeHtml(p.code||'—')}</td><td class="num">${money(p.price)}</td><td><div class="actions"><button class="small secondary" data-edit="${p.id}">এডিট</button><button class="small danger" data-delete="${p.id}">মুছুন</button></div></td></tr>`).join('')}</tbody></table></div>`;
+$('productList').querySelectorAll('[data-edit]').forEach(b=>b.addEventListener('click',()=>{const p=data.products.find(x=>x.id===b.dataset.edit);$('productName').value=p.name;$('productCode').value=p.code||'';$('productPrice').value=p.price;$('saveProductBtn').dataset.edit=p.id;$('saveProductBtn').textContent='পরিবর্তন সংরক্ষণ'}));
+$('productList').querySelectorAll('[data-delete]').forEach(b=>b.addEventListener('click',()=>{if(confirm('পণ্যটি মুছবেন?')){data.products=data.products.filter(x=>x.id!==b.dataset.delete);saveData();renderProducts()}}))}
+function saveProduct(){const name=$('productName').value.trim(),code=$('productCode').value.trim(),price=Number($('productPrice').value);if(!name||!Number.isFinite(price)||price<0){alert('পণ্যের নাম ও সঠিক দাম দিন।');return}const id=$('saveProductBtn').dataset.edit;if(id){const p=data.products.find(x=>x.id===id);if(p)Object.assign(p,{name,code,price});delete $('saveProductBtn').dataset.edit}else data.products.push({id:'p'+Date.now(),name,code,price});$('productName').value='';$('productCode').value='';$('productPrice').value='';$('saveProductBtn').textContent='পণ্য সংরক্ষণ';saveData();renderProducts()}
+function renderReport(){const d=$('reportDate').value||today(),ms=data.memos.filter(m=>dateKey(m.date)===d),sales=ms.reduce((s,m)=>s+(Number(m.total)||0),0),paid=ms.reduce((s,m)=>s+(Number(m.paid)||0),0),due=ms.reduce((s,m)=>s+(Number(m.due)||0),0);$('reportCount').textContent=ms.length;$('reportSales').textContent=money(sales);$('reportPaid').textContent=money(paid);$('reportDue').textContent=money(due);$('reportRows').innerHTML=ms.length?`<div class="table-wrap"><table><thead><tr><th>মেমো</th><th>কাস্টমার</th><th class="num">বিক্রি</th><th class="num">আদায়</th><th class="num">বাকি</th></tr></thead><tbody>${ms.map(m=>`<tr><td>${escapeHtml(m.number)}</td><td>${escapeHtml(m.customer||'Walk-in')}</td><td class="num">${money(m.total)}</td><td class="num">${money(m.paid)}</td><td class="num">${money(m.due)}</td></tr>`).join('')}</tbody></table></div>`:'<div class="empty">এই তারিখে কোনো মেমো নেই।</div>'}
+function renderAll(){ $('brandTitle').textContent=data.settings.name||defaultData.settings.name;renderHistory();renderProducts();renderReport() }
+function labelFor(key,lang){const labels={memo:lang==='en'?'INVOICE':'মেমো / INVOICE',date:lang==='en'?'Date':'তারিখ / Date',customer:lang==='en'?'Customer':'কাস্টমার / Customer',phone:lang==='en'?'Phone':'ফোন / Phone',item:lang==='en'?'Item':'পণ্য / Item',qty:lang==='en'?'Qty':'পরিমাণ / Qty',price:lang==='en'?'Unit Price':'একক দাম / Unit Price',amount:lang==='en'?'Amount':'মূল্য / Amount',subtotal:lang==='en'?'Subtotal':'সাবটোটাল / Subtotal',discount:lang==='en'?'Discount':'ছাড় / Discount',total:lang==='en'?'Grand Total':'সর্বমোট / Grand Total',paid:lang==='en'?'Paid':'পরিশোধ / Paid',due:lang==='en'?'Due':'বাকি / Due',method:lang==='en'?'Payment':'পেমেন্ট / Payment',note:lang==='en'?'Note':'নোট / Note'};return labels[key]||key}
+function memoMarkup(m,mode){const s=data.settings,lang=$('language')?.value||'both',en=lang==='en';const lbl=k=>labelFor(k,en?'en':'both');return `<div class="receipt-preview ${mode==='small'?'print-small':'print-a4'}">
+<div class="center"><h2>${escapeHtml(s.name)}</h2>${s.address?`<div>${escapeHtml(s.address)}</div>`:''}${s.phone?`<div>Phone: ${escapeHtml(s.phone)}</div>`:''}<h3>${lbl('memo')}</h3></div>
+<div style="display:flex;justify-content:space-between;gap:10px;margin:12px 0"><div><b>${lbl('date')}:</b> ${escapeHtml(fmtDate(m.date))}<br><b>No:</b> ${escapeHtml(m.number)}</div><div><b>${lbl('customer')}:</b> ${escapeHtml(m.customer||'Walk-in')}<br><b>${lbl('phone')}:</b> ${escapeHtml(m.phone||'—')}</div></div>
+<table style="min-width:0;width:100%"><thead><tr><th>${lbl('item')}</th><th class="num">${lbl('qty')}</th><th class="num">${lbl('price')}</th><th class="num">${lbl('amount')}</th></tr></thead><tbody>${m.items.map(i=>`<tr><td>${escapeHtml(i.name)}</td><td class="num">${i.qty}</td><td class="num">${money(i.price)}</td><td class="num">${money(i.qty*i.price)}</td></tr>`).join('')}</tbody><tfoot><tr><td colspan="3" class="num">${lbl('subtotal')}</td><td class="num">${money(m.subtotal)}</td></tr><tr><td colspan="3" class="num">${lbl('discount')}</td><td class="num">${money(m.discount)}</td></tr><tr><td colspan="3" class="num">${lbl('total')}</td><td class="num">${money(m.total)}</td></tr><tr><td colspan="3" class="num">${lbl('paid')}</td><td class="num">${money(m.paid)}</td></tr><tr><td colspan="3" class="num">${lbl('due')}</td><td class="num">${money(m.due)}</td></tr></tfoot></table>
+<div style="margin-top:10px"><b>${lbl('method')}:</b> ${escapeHtml(m.paymentMethod||'—')}${m.note?`<br><b>${lbl('note')}:</b> ${escapeHtml(m.note)}`:''}</div>
+<div class="center" style="margin-top:22px">${escapeHtml(s.footer||'ধন্যবাদ, আবার আসবেন।')}<div style="margin-top:18px">____________________<br>Authorized Signature</div></div></div>`}
+function printMemo(m,mode){$('printArea').innerHTML=memoMarkup(m,mode);$('printArea').classList.remove('hidden');document.body.dataset.printMode=mode;window.print();setTimeout(()=>$('printArea').classList.add('hidden'),500)}
+function exportBackup(){const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='alamain-shop-backup-'+today()+'.json';a.click();URL.revokeObjectURL(url)}
+function importBackup(file){const r=new FileReader();r.onload=()=>{try{const obj=JSON.parse(r.result);if(!obj||!Array.isArray(obj.memos)||!Array.isArray(obj.products)||!obj.settings)throw Error('invalid');if(!confirm('বর্তমান ডেটা ব্যাকআপের ডেটা দিয়ে প্রতিস্থাপন করবেন?'))return;data={...structuredClone(defaultData),...obj};saveData();alert('ব্যাকআপ ফিরিয়ে আনা হয়েছে।')}catch(e){alert('ব্যাকআপ ফাইলটি সঠিক নয়।')}};r.readAsText(file)}
+function exportCsv(){const d=$('reportDate').value||today(),ms=data.memos.filter(m=>dateKey(m.date)===d);const rows=[['Memo No','Date','Customer','Phone','Subtotal','Discount','Total','Paid','Due','Payment Method'],...ms.map(m=>[m.number,m.date,m.customer,m.phone,m.subtotal,m.discount,m.total,m.paid,m.due,m.paymentMethod])];const csv='\ufeff'+rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');const a=document.createElement('a'),url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));a.href=url;a.download='sales-'+d+'.csv';a.click();URL.revokeObjectURL(url)}
+$('addRowBtn').addEventListener('click',()=>addItemRow());$('discount').addEventListener('input',calcTotals);$('paid').addEventListener('input',calcTotals);$('saveMemoBtn').addEventListener('click',saveMemo);$('resetBtn').addEventListener('click',resetForm);$('printA4Btn').addEventListener('click',()=>{const m=formMemo();if(!m.items.length){alert('প্রিন্টের আগে পণ্য যোগ করুন।');return}printMemo(m,'a4')});$('printSmallBtn').addEventListener('click',()=>{const m=formMemo();if(!m.items.length){alert('প্রিন্টের আগে পণ্য যোগ করুন।');return}printMemo(m,'small')});
+$('historySearch').addEventListener('input',renderHistory);$('historyDate').addEventListener('change',renderHistory);$('saveProductBtn').addEventListener('click',saveProduct);$('reportDate').value=today();$('reportDate').addEventListener('change',renderReport);$('todayReportBtn').addEventListener('click',()=>{$('reportDate').value=today();renderReport()});$('exportCsvBtn').addEventListener('click',exportCsv);
+$('exportBtn').addEventListener('click',exportBackup);$('exportBtn2').addEventListener('click',exportBackup);$('importBtn').addEventListener('click',()=>$('importFile').click());$('importFile').addEventListener('change',e=>{if(e.target.files[0])importBackup(e.target.files[0]);e.target.value=''});
+$('saveSettingsBtn').addEventListener('click',()=>{data.settings={name:$('settingName').value.trim()||defaultData.settings.name,phone:$('settingPhone').value.trim(),address:$('settingAddress').value.trim(),footer:$('settingFooter').value.trim()};saveData();alert('সেটিংস সংরক্ষণ হয়েছে।')});
+$('clearAllBtn').addEventListener('click',()=>{if(confirm('সতর্কতা: সব মেমো, পণ্য ও সেটিংস মুছে যাবে। আগে ব্যাকআপ নিয়েছেন?')&&confirm('শেষবার নিশ্চিত করুন—সব লোকাল ডেটা মুছবেন?')){data=structuredClone(defaultData);saveData();resetForm();fillSettings();alert('লোকাল ডেটা মুছে ফেলা হয়েছে।')}});
+function fillSettings(){$('settingName').value=data.settings.name||'';$('settingPhone').value=data.settings.phone||'';$('settingAddress').value=data.settings.address||'';$('settingFooter').value=data.settings.footer||''}
+fillSettings();$('memoNo').value=newMemoNo();$('memoDate').value=localDateTime();addItemRow();renderAll();
+})();
+</script>
+</body>
+</html>
