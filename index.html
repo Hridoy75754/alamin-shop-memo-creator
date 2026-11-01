@@ -290,6 +290,54 @@ body{background:#fff;margin:0}
   #printArea .memo-paper *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
 }
 
+
+
+/* FINAL APPROVED LAYOUT REFINEMENT: balanced full-page A4 memo + circular photo crop */
+.memo-paper{
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:space-between!important;
+  min-height:1123px!important;
+  height:1123px!important;
+  padding:15px 16px 12px!important;
+}
+.memo-paper > .memo-head,
+.memo-paper > .memo-title,
+.memo-paper > .memo-meta,
+.memo-paper > table,
+.memo-paper > .memo-signs,
+.memo-paper > .memo-footer{flex:0 0 auto!important;position:relative;z-index:1}
+.memo-paper > .memo-head{margin-bottom:2px!important;padding:7px 8px 8px!important}
+.memo-paper > .memo-title{margin:3px auto 4px!important}
+.memo-paper > .memo-meta{margin:3px 0 5px!important;gap:4px 12px!important}
+.memo-paper > table{margin:0!important}
+.memo-paper > .memo-signs{margin:9px 0 3px!important;gap:18px!important}
+.memo-paper > .memo-footer{margin:5px 0 0!important;padding:5px 0 0!important}
+.memo-paper .memo-shopline{grid-template-columns:100px minmax(0,1fr) 100px!important;gap:12px!important}
+.memo-paper .memo-side-photo{width:94px!important;height:94px!important;min-width:94px!important;min-height:94px!important;object-fit:cover!important;border-radius:50%!important;display:block!important}
+.memo-paper .memo-shopname{min-width:0!important;white-space:normal!important;overflow-wrap:anywhere!important;word-break:normal!important;text-align:center!important;line-height:1.16!important;font-size:26px!important;letter-spacing:0!important}
+.memo-body-watermark{top:190px!important;bottom:125px!important;left:18px!important;right:18px!important}
+.memo-body-watermark img{opacity:.12!important;object-fit:contain!important}
+.crop-frame,.crop-frame.logo-crop{border-radius:50%!important}
+@media(max-width:520px){
+  .memo-paper{width:794px!important;min-height:1123px!important;height:1123px!important;padding:15px 16px 12px!important}
+  .memo-paper .memo-shopline{grid-template-columns:100px minmax(0,1fr) 100px!important;gap:12px!important}
+  .memo-paper .memo-side-photo{width:94px!important;height:94px!important;min-width:94px!important;min-height:94px!important}
+  .memo-paper .memo-shopname{font-size:26px!important}
+}
+@media print{
+  #printArea .memo-paper{display:flex!important;flex-direction:column!important;justify-content:space-between!important;height:297mm!important;min-height:297mm!important;max-height:297mm!important;padding:5mm 5mm 4mm!important}
+  #printArea .memo-paper > .memo-head{margin-bottom:1mm!important;padding:2mm 2mm 2mm!important}
+  #printArea .memo-paper > .memo-title{margin:1mm auto 1.5mm!important}
+  #printArea .memo-paper > .memo-meta{margin:1mm 0 1.5mm!important}
+  #printArea .memo-paper > .memo-signs{margin:3mm 0 1mm!important}
+  #printArea .memo-paper > .memo-footer{margin:2mm 0 0!important;padding-top:2mm!important}
+  #printArea .memo-shopline{grid-template-columns:25mm minmax(0,1fr) 25mm!important;gap:2mm!important}
+  #printArea .memo-side-photo{width:24mm!important;height:24mm!important;min-width:24mm!important;min-height:24mm!important;border-radius:50%!important;object-fit:cover!important}
+  #printArea .memo-shopname{font-size:24px!important;white-space:normal!important;overflow-wrap:anywhere!important}
+  #printArea .memo-body-watermark{top:48mm!important;bottom:35mm!important;left:5mm!important;right:5mm!important}
+}
+
 </style></head><body>
 <header class="top"><div class="topin"><div class="brand"><div class="logo">🖥️</div><div><h1>আলামিন কম্পিউটার এন্ড সার্ভিসিং সেন্টার</h1><p>Premium Memo · Sales · Due Ledger</p></div></div><div id="topUser" class="actions hidden"><span id="userEmail"></span><button id="logout" class="secondary">লগআউট</button></div></div></header>
 <main class="wrap">
