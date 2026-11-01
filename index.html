@@ -635,7 +635,63 @@ function openMemoPreview(){const modal=document.createElement('div');showA4Previ
 function formMemo(){let t=calc();return{id:editing?.id||null,memo_number:editing?.memo_number||$('memoNo').value,memo_date:$('memoDate').value,customer_name:$('customer').value,customer_phone:$('phone').value,customer_address:$('customerAddress').value,items:getItems(),subtotal:t.subtotal,discount:t.discount,total:t.total,paid:t.paid,due:t.due,paymentMethod:$('method').value}}
 function csv(){let d=$('reportDate').value||today(),list=memos.filter(m=>String(m.memo_date).slice(0,10)===d),rows=[['Memo','Date','Customer','Phone','Total','Paid','Due'],...list.map(m=>[m.memo_number,m.memo_date,m.customer_name,m.customer_phone,m.total,m.paid,m.due])],text='\\ufeff'+rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\\r\\n'),a=document.createElement('a'),u=URL.createObjectURL(new Blob([text],{type:'text/csv;charset=utf-8'}));a.href=u;a.download='memo-sales-'+d+'.csv';a.click();URL.revokeObjectURL(u)}
 $('login').onclick=login;$('password').onkeydown=e=>{if(e.key==='Enter')login()};$('logout').onclick=logout;$('addItem').onclick=()=>addItem();$('discount').oninput=calc;$('paid').oninput=calc;$('saveMemo').onclick=saveMemo;$('previewMemo').onclick=openMemoPreview;$('reset').onclick=reset;$('search').oninput=renderHistory;$('histDate').onchange=renderHistory;$('saveProduct').onclick=saveProduct;$('clearProduct').onclick=clearProduct;$('reportDate').value=today();$('refreshReport').onclick=renderReport;$('csv').onclick=csv;$('printColor').onclick=()=>printMemo(formMemo(),'color');$('printBW').onclick=()=>printMemo(formMemo(),'bw');$('printSmall').onclick=()=>printMemo(formMemo(),'small');$('shopName').value=shop.name||'';$('shopOwner').value=shop.owner||'প্রোঃ মোঃ আল আমিন';$('shopMemoTitle').value=shop.memoTitle||'ক্যাশ মেমো / CASH MEMO';$('shopPhone').value=shop.phone||'';$('shopWhatsapp').value=shop.whatsapp||'';$('shopAddress').value=shop.address||'';$('shopFooter').value=shop.footer||'';$('shopTerms').value=(Array.isArray(shop.terms)?shop.terms:[]).join('\n');
-function openImageCropper(file,key,preview){const reader=new FileReader();reader.onload=()=>{const src=String(reader.result),img=new Image();img.onload=()=>{const modal=document.createElement('div');modal.className='crop-modal';modal.innerHTML=`<div class="crop-box"><h3 style="margin:0;text-align:center">ছবি Crop / Resize</h3><p class="note" style="text-align:center">ছবিটি আঙুল দিয়ে সরান এবং Zoom নিয়ন্ত্রণ করে ফ্রেমে বসান।</p><div class="crop-frame ${key==='photoRight'?'logo-crop':''}" id="cropFrame"><img id="cropImage" alt="Crop preview"></div><div class="crop-controls"><label>Zoom</label><input id="cropZoom" type="range" min="1" max="3" step="0.01" value="1"><div class="actions"><button id="cropCancel" class="secondary" type="button">বাতিল</button><button id="cropSave" class="green" type="button">Crop করে সংরক্ষণ</button></div></div></div>`;document.body.append(modal);const frame=modal.querySelector('#cropFrame'),im=modal.querySelector('#cropImage'),zr=modal.querySelector('#cropZoom');let zoom=1,ox=0,oy=0,drag=null;im.src=src;const base=Math.max(frame.clientWidth/img.width,frame.clientHeight/img.height);function draw(){let w=img.width*base*zoom,h=img.height*base*zoom;im.style.width=w+'px';im.style.height=h+'px';im.style.left=`calc(50% - ${w/2}px + ${ox}px)`;im.style.top=`calc(50% - ${h/2}px + ${oy}px)`}zr.oninput=()=>{zoom=Number(zr.value);draw()};frame.onpointerdown=e=>{drag={x:e.clientX-ox,y:e.clientY-oy};frame.setPointerCapture(e.pointerId)};frame.onpointermove=e=>{if(!drag)return;ox=e.clientX-drag.x;oy=e.clientY-drag.y;draw()};frame.onpointerup=()=>drag=null;frame.onpointercancel=()=>drag=null;modal.querySelector('#cropCancel').onclick=()=>modal.remove();modal.querySelector('#cropSave').onclick=()=>{const size=720,canvas=document.createElement('canvas');canvas.width=size;canvas.height=size;const ctx=canvas.getContext('2d');const frameSize=frame.clientWidth,scale=size/frameSize;let drawW=img.width*base*zoom,drawH=img.height*base*zoom;let left=(frameSize-drawW)/2+ox,top=(frameSize-drawH)/2+oy;ctx.drawImage(img,-left*scale,-top*scale,drawW*scale,drawH*scale);const data=canvas.toDataURL('image/jpeg',.88);shop[key]=data;preview.src=data;preview.style.display='block';if(key==='headerPhoto')applyHeaderPhoto();modal.remove()};draw()};img.src=src};reader.readAsDataURL(file)}
+function openImageCropper(file,key,preview){
+  const reader=new FileReader();
+  reader.onload=()=>{
+    const src=String(reader.result),img=new Image();
+    img.onload=()=>{
+      const modal=document.createElement('div');
+      modal.className='crop-modal';
+      modal.innerHTML=`<div class="crop-box"><h3 style="margin:0;text-align:center">ছবি Crop / Resize</h3><p class="note" style="text-align:center">ছবিটি আঙুল দিয়ে সরান এবং Zoom নিয়ন্ত্রণ করে ফ্রেমে বসান। সংরক্ষিত ছবিতে একই অংশ দেখা যাবে।</p><div class="crop-frame ${key==='photoRight'?'logo-crop':''}" id="cropFrame"><img id="cropImage" alt="Crop preview"></div><div class="crop-controls"><label>Zoom</label><input id="cropZoom" type="range" min="1" max="3" step="0.01" value="1"><div class="actions"><button id="cropCancel" class="secondary" type="button">বাতিল</button><button id="cropSave" class="green" type="button">Crop করে সংরক্ষণ</button></div></div></div>`;
+      document.body.append(modal);
+      const frame=modal.querySelector('#cropFrame'),im=modal.querySelector('#cropImage'),zr=modal.querySelector('#cropZoom');
+      let zoom=1,ox=0,oy=0,drag=null;
+      im.src=src;
+      const frameW=frame.clientWidth,frameH=frame.clientHeight;
+      const base=Math.max(frameW/img.width,frameH/img.height);
+      function dimensions(){return {w:img.width*base*zoom,h:img.height*base*zoom}}
+      function clampPosition(){
+        const {w,h}=dimensions();
+        const maxX=Math.max(0,(w-frameW)/2),maxY=Math.max(0,(h-frameH)/2);
+        ox=Math.max(-maxX,Math.min(maxX,ox));
+        oy=Math.max(-maxY,Math.min(maxY,oy));
+      }
+      function imageRect(){
+        const {w,h}=dimensions();
+        return {w,h,left:(frameW-w)/2+ox,top:(frameH-h)/2+oy};
+      }
+      function draw(){
+        clampPosition();
+        const r=imageRect();
+        im.style.width=r.w+'px';im.style.height=r.h+'px';
+        im.style.left=r.left+'px';im.style.top=r.top+'px';
+      }
+      zr.oninput=()=>{zoom=Number(zr.value);draw()};
+      frame.onpointerdown=e=>{e.preventDefault();drag={x:e.clientX-ox,y:e.clientY-oy};frame.setPointerCapture(e.pointerId)};
+      frame.onpointermove=e=>{if(!drag)return;e.preventDefault();ox=e.clientX-drag.x;oy=e.clientY-drag.y;draw()};
+      frame.onpointerup=()=>drag=null;frame.onpointercancel=()=>drag=null;
+      modal.querySelector('#cropCancel').onclick=()=>modal.remove();
+      modal.querySelector('#cropSave').onclick=()=>{
+        const outputSize=720,canvas=document.createElement('canvas');
+        canvas.width=outputSize;canvas.height=outputSize;
+        const ctx=canvas.getContext('2d');
+        const r=imageRect(),scaleX=outputSize/frameW,scaleY=outputSize/frameH;
+        /* The preview image's top-left coordinates are also its canvas destination.
+           Drawing at the negative offset mirrored the crop and caused blank/incorrect output. */
+        ctx.drawImage(img,r.left*scaleX,r.top*scaleY,r.w*scaleX,r.h*scaleY);
+        const data=canvas.toDataURL('image/jpeg',.9);
+        shop[key]=data;preview.src=data;preview.style.display='block';
+        if(key==='headerPhoto')applyHeaderPhoto();
+        modal.remove();
+      };
+      draw();
+    };
+    img.onerror=()=>alert('ছবিটি খোলা যাচ্ছে না। অন্য ছবি নির্বাচন করুন।');
+    img.src=src;
+  };
+  reader.onerror=()=>alert('ছবিটি পড়া যায়নি। আবার চেষ্টা করুন.');
+  reader.readAsDataURL(file);
+}
 function applyHeaderPhoto(){const box=$('topAvatar');if(!box)return;if(shop.headerPhoto){box.innerHTML=`<img src="${shop.headerPhoto}" alt="হেডার প্রোফাইল ছবি">`}else{box.innerHTML='<span class="top-avatar-placeholder">🖥️</span>'}}
 function setupHeaderPhoto(){const inp=$('headerPhotoInput'),prev=$('headerPhotoPreview');if(shop.headerPhoto){prev.src=shop.headerPhoto;prev.style.display='block'}applyHeaderPhoto();inp.onchange=e=>{const f=e.target.files&&e.target.files[0];if(!f)return;if(!f.type.startsWith('image/')){alert('একটি ছবি নির্বাচন করুন।');inp.value='';return}if(f.size>8000000){alert('ছবির সাইজ ৮ MB-এর মধ্যে রাখুন।');inp.value='';return}openImageCropper(f,'headerPhoto',prev)};$('removeHeaderPhoto').onclick=()=>{shop.headerPhoto='';inp.value='';prev.removeAttribute('src');prev.style.display='none';applyHeaderPhoto()}}
 function setupImageField(inputId,previewId,key,removeId){const inp=$(inputId),prev=$(previewId);if(shop[key]){prev.src=shop[key];prev.style.display='block'}inp.onchange=e=>{const f=e.target.files&&e.target.files[0];if(!f)return;if(f.size>8000000){alert('ছবির সাইজ ৮ MB-এর মধ্যে রাখুন।');inp.value='';return}openImageCropper(f,key,prev)};$(removeId).onclick=()=>{shop[key]='';inp.value='';prev.removeAttribute('src');prev.style.display='none'}}
