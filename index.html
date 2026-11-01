@@ -398,6 +398,30 @@ body{background:#fff;margin:0}
  #printArea *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
 }
 
+
+/* CUSTOMER READABILITY + THEME APPLICATION SAFETY PATCH */
+.memo-paper .memo-title{margin:8px auto 13px!important}
+.memo-paper .memo-meta{margin:8px 0 13px!important;row-gap:8px!important}
+.memo-paper .memo-meta .memo-customer-row,
+.memo-paper .memo-meta .memo-address-row{font-size:14px!important;font-weight:750!important;line-height:1.55!important}
+.memo-paper .memo-meta .memo-customer-row b,
+.memo-paper .memo-meta .memo-address-row b{font-weight:900!important}
+.memo-paper .memo-meta .memo-address-row{margin-top:2px!important}
+.memo-paper table{margin-top:7px!important}
+.memo-paper tfoot td[colspan="4"]{line-height:1.75!important;padding-top:7px!important;padding-bottom:7px!important}
+.memo-paper .memo-terms{line-height:1.75!important}
+@media(max-width:520px){
+ .memo-paper .memo-meta .memo-customer-row,.memo-paper .memo-meta .memo-address-row{font-size:14px!important;line-height:1.6!important}
+ .memo-paper .memo-title{margin:8px auto 13px!important}
+}
+@media print{
+ #printArea .memo-meta .memo-customer-row,#printArea .memo-meta .memo-address-row{font-size:14px!important;font-weight:750!important;line-height:1.55!important}
+ #printArea .memo-title{margin:2.5mm auto 3.5mm!important}
+ #printArea .memo-meta{margin:2mm 0 3mm!important}
+ #printArea .memo-paper table{margin-top:2mm!important}
+ #printArea .memo-paper tfoot td[colspan="4"]{line-height:1.65!important}
+}
+
 </style></head><body>
 <header class="top"><div class="topin"><div class="brand"><div class="logo">🖥️</div><div><h1>আলামিন কম্পিউটার এন্ড সার্ভিসিং সেন্টার</h1><p>Premium Memo · Sales · Due Ledger</p></div></div><div id="topUser" class="actions hidden"><span id="userEmail"></span><button id="logout" class="secondary">লগআউট</button></div></div></header>
 <main class="wrap">
@@ -485,9 +509,9 @@ const themeCatalog=[
 {id:'burgundy',name:'Burgundy',css:'theme-burgundy',swatch:'burgundy',desc:'Elegant maroon double-line layout'},
 {id:'royal-purple',name:'Royal Purple',css:'theme-royal-purple',swatch:'purple',desc:'Royal purple frame and shaped title'},
 {id:'teal-modern',name:'Teal Modern',css:'theme-teal-modern',swatch:'teal',desc:'Modern teal side rail and asymmetric title'}];
-let activeDesign='royal-gold',selectedTheme='royal-gold';try{activeDesign=localStorage.getItem('alaminActiveMemoDesign')||'royal-gold'}catch(e){}
+let activeDesign='royal-gold',selectedTheme='royal-gold';try{activeDesign=localStorage.getItem('alaminActiveMemoDesign')||'royal-gold';if(!themeCatalog.some(d=>d.id===activeDesign))activeDesign='royal-gold';selectedTheme=activeDesign}catch(e){activeDesign='royal-gold';selectedTheme='royal-gold'}
 function applyMemoDesign(d){activeDesign=d?.id||'royal-gold';selectedTheme=activeDesign;try{localStorage.setItem('alaminActiveMemoDesign',activeDesign)}catch(e){}renderDesigns()}
-function renderDesigns(){const host=$('designList');if(!host)return;host.innerHTML=themeCatalog.map(d=>`<div class="theme-card ${d.id===activeDesign?'active':''}"><div class="theme-swatch ${d.swatch}">CASH MEMO</div><b>${d.name}</b><p class="mini">${d.desc}</p><div class="actions"><button class="small secondary" data-theme-preview="${d.id}">Preview</button><button class="small ${d.id===activeDesign?'green':''}" data-theme-select="${d.id}">${d.id===activeDesign?'সক্রিয়':'Select'}</button></div></div>`).join('');host.querySelectorAll('[data-theme-preview]').forEach(b=>b.onclick=()=>{selectedTheme=b.dataset.themePreview;renderThemePreview()});host.querySelectorAll('[data-theme-select]').forEach(b=>b.onclick=()=>{selectedTheme=b.dataset.themeSelect;renderThemePreview();host.querySelectorAll('.theme-card').forEach(c=>c.classList.remove('active'));b.closest('.theme-card').classList.add('active')});renderThemePreview()}
+function renderDesigns(){const host=$('designList');if(!host)return;host.innerHTML=themeCatalog.map(d=>`<div class="theme-card ${d.id===activeDesign?'active':''}"><div class="theme-swatch ${d.swatch}">CASH MEMO</div><b>${d.name}</b><p class="mini">${d.desc}</p><div class="actions"><button class="small secondary" data-theme-preview="${d.id}">Preview</button><button class="small ${d.id===activeDesign?'green':''}" data-theme-select="${d.id}">${d.id===activeDesign?'সক্রিয়':'Select'}</button></div></div>`).join('');host.querySelectorAll('[data-theme-preview]').forEach(b=>b.onclick=()=>{selectedTheme=b.dataset.themePreview;renderThemePreview()});host.querySelectorAll('[data-theme-select]').forEach(b=>b.onclick=()=>{const chosen=themeCatalog.find(x=>x.id===b.dataset.themeSelect);if(chosen){applyMemoDesign(chosen);msg('memoMsg',chosen.name+' থিমটি এখন নতুন মেমো ও প্রিন্টের জন্য সক্রিয় হয়েছে।');}});renderThemePreview()}
 function renderThemePreview(){const d=themeCatalog.find(x=>x.id===selectedTheme)||themeCatalog[0];const host=$('themePreview');if(!host)return;const current=formMemo();current.memo_number=current.memo_number&&current.memo_number!=='সংরক্ষণের সময় তৈরি হবে'&&current.memo_number!=='(সংরক্ষণের সময় তৈরি হবে)'?current.memo_number:'PREVIEW-001';if(!current.items.length)current.items=[{name:'কম্পিউটার সার্ভিসিং',category:'Service',warranty:'৭ দিন',qty:1,price:500}];current.subtotal=current.items.reduce((a,x)=>a+x.qty*x.price,0);current.total=current.subtotal;current.discount=0;current.paid=0;current.due=current.total;const old=activeDesign;activeDesign=d.id;host.innerHTML=memoMarkup(current,'color');activeDesign=old;const paper=host.querySelector('.preview');if(paper){const fit=()=>{const scale=Math.min(1,(host.clientWidth-16)/794);paper.style.transform=`scale(${scale})`;paper.style.transformOrigin='top left';paper.style.marginBottom=`${Math.max(0,(scale-1)*paper.offsetHeight)}px`};fit();if(window.ResizeObserver){const ro=new ResizeObserver(fit);ro.observe(host)}}}
 $('applySelectedTheme').onclick=()=>{const d=themeCatalog.find(x=>x.id===selectedTheme);if(d){applyMemoDesign(d);alert(d.name+' থিম নতুন মেমোর জন্য সক্রিয় হয়েছে।')}};
 $('resetDesign').onclick=()=>{selectedTheme='royal-gold';applyMemoDesign(themeCatalog[0])};renderDesigns();
