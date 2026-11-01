@@ -422,6 +422,61 @@ body{background:#fff;margin:0}
  #printArea .memo-paper tfoot td[colspan="4"]{line-height:1.65!important}
 }
 
+
+/* Header spacing refinement: keep both circular images clear of the shop description */
+.memo-paper .memo-head .memo-shopline{
+  margin-bottom:12px!important;
+  row-gap:10px!important;
+}
+.memo-paper .memo-head .memo-side-photo{
+  align-self:center!important;
+  flex-shrink:0!important;
+}
+.memo-paper .memo-head .memo-tagline{
+  display:block!important;
+  clear:both!important;
+  margin:12px auto 12px!important;
+  padding:0 12px!important;
+  line-height:1.55!important;
+  text-align:center!important;
+}
+.memo-paper .memo-head .memo-contact{
+  margin:10px 0 0!important;
+  padding-top:2px!important;
+  line-height:1.45!important;
+  align-items:flex-start!important;
+}
+.memo-paper .memo-head .memo-contact-list{
+  display:flex!important;
+  flex-direction:column!important;
+  gap:4px!important;
+}
+.memo-paper .memo-head .memo-contact .contact-line{
+  line-height:1.45!important;
+  margin:0!important;
+}
+.memo-paper .memo-head .memo-owner{
+  line-height:1.45!important;
+}
+@media(max-width:520px){
+  .memo-paper .memo-head .memo-shopline{margin-bottom:9px!important}
+  .memo-paper .memo-head .memo-tagline{
+    margin:9px auto 10px!important;
+    padding:0 9px!important;
+    line-height:1.5!important;
+  }
+  .memo-paper .memo-head .memo-contact{margin-top:8px!important}
+}
+@media print{
+  .memo-paper .memo-head .memo-shopline{margin-bottom:3mm!important}
+  .memo-paper .memo-head .memo-tagline{
+    margin:3mm auto 3mm!important;
+    padding:0 3mm!important;
+    line-height:1.5!important;
+  }
+  .memo-paper .memo-head .memo-contact{margin-top:2.5mm!important}
+}
+
 </style></head><body>
 <header class="top"><div class="topin"><div class="brand"><div class="logo">🖥️</div><div><h1>আলামিন কম্পিউটার এন্ড সার্ভিসিং সেন্টার</h1><p>Premium Memo · Sales · Due Ledger</p></div></div><div id="topUser" class="actions hidden"><span id="userEmail"></span><button id="logout" class="secondary">লগআউট</button></div></div></header>
 <main class="wrap">
