@@ -250,6 +250,32 @@ body{background:#fff;margin:0}
   #printArea .memo-terms { display: block !important; }
 }
 
+/* A4 FULL-PAGE BALANCE: distribute the memo sections vertically so the page is used evenly. */
+.memo-paper{
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:space-between !important;
+  min-height:1123px !important;
+}
+.memo-paper > .memo-head,
+.memo-paper > .memo-title,
+.memo-paper > .memo-meta,
+.memo-paper > table,
+.memo-paper > .memo-signs,
+.memo-paper > .memo-footer{flex-shrink:0}
+.memo-paper > .memo-signs{margin-top:0 !important}
+.memo-paper > .memo-footer{margin-top:0 !important}
+@media print{
+  #printArea .memo-paper{
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:space-between !important;
+    min-height:309.375mm !important;
+    height:309.375mm !important;
+  }
+  #printArea .memo-paper > .memo-signs{margin-top:0 !important}
+  #printArea .memo-paper > .memo-footer{margin-top:0 !important}
+}
 </style></head><body>
 <header class="top"><div class="topin"><div class="brand"><div class="logo">🖥️</div><div><h1>আলামিন কম্পিউটার এন্ড সার্ভিসিং সেন্টার</h1><p>Premium Memo · Sales · Due Ledger</p></div></div><div id="topUser" class="actions hidden"><span id="userEmail"></span><button id="logout" class="secondary">লগআউট</button></div></div></header>
 <main class="wrap">
