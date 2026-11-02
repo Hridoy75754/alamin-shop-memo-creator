@@ -553,7 +553,22 @@ body{background:#fff;margin:0}
 .theme-royal-3d .memo-total td,.theme-emerald-glass .memo-total td,.theme-carbon-3d .memo-total td,.theme-crystal-ice .memo-total td{box-shadow:inset 0 1px #ffffffaa,0 1px 2px #0000000d}
 @media print{.memo-paper[class*="theme-"]{box-shadow:none!important}.memo-paper .memo-shopname{text-shadow:0 1px 0 #fff,0 3px 4px #26374633!important}}
 
-</style></head><body>
+</style>
+<style id="shop-title-only-refinement">
+/* Only the shop-name title is enlarged and emboldened; layout and all other elements remain unchanged. */
+.memo-paper .memo-shopname, #printArea .memo-shopname {
+  font-size: 32px !important;
+  font-weight: 900 !important;
+  text-shadow: 0 1px 0 rgba(255,255,255,.9), 0 2px 0 rgba(80,20,25,.22), 0 4px 6px rgba(20,20,20,.28) !important;
+}
+@media (max-width: 520px) {
+  .memo-paper .memo-shopname, #printArea .memo-shopname { font-size: 29px !important; }
+}
+@media print {
+  .memo-paper .memo-shopname, #printArea .memo-shopname { font-size: 29px !important; font-weight: 900 !important; }
+}
+</style>
+</head><body>
 <header class="top"><div class="topin"><div class="brand"><div class="top-avatar" id="topAvatar"><span class="top-avatar-placeholder">🖥️</span></div><div><h1>আলামিন কম্পিউটার এন্ড সার্ভিসিং সেন্টার</h1><p>Premium Memo · Sales · Due Ledger</p></div></div><div id="topUser" class="actions hidden"><span id="userEmail"></span><button id="logout" class="secondary">লগআউট</button></div></div></header>
 <main class="wrap">
 <section id="loginScreen" class="login card"><h2>🔐 অ্যাডমিন লগইন</h2><p class="note">শুধু অনুমোদিত দুই অ্যাডমিন প্রবেশ করতে পারবেন। পাবলিক রেজিস্ট্রেশন নেই।</p><div class="grid"><div class="field w12"><label>ইমেইল</label><input id="email" type="email" autocomplete="username"></div><div class="field w12"><label>পাসওয়ার্ড</label><input id="password" type="password" autocomplete="current-password"></div><div class="field w12"><button id="login" class="green" style="width:100%">লগইন করুন</button></div><div class="field w12"><div id="loginMsg" class="note"></div></div></div></section>
