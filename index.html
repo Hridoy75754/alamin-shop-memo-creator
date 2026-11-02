@@ -534,6 +534,54 @@ body{background:#fff;margin:0}
   }
 }
 
+
+/* Bengali typography fidelity for preview, print and generated PDF */
+.memo-paper .memo-title,
+.memo-paper.theme-royal-gold .memo-title,
+.memo-paper.theme-corporate-blue .memo-title,
+.memo-paper.theme-classic-brown .memo-title{
+  letter-spacing:0!important;
+  word-spacing:normal!important;
+  font-family:"Noto Sans Bengali","Hind Siliguri","Noto Serif Bengali",sans-serif!important;
+  font-kerning:normal!important;
+  font-feature-settings:"kern" 1,"liga" 1!important;
+  text-rendering:optimizeLegibility!important;
+}
+.memo-paper .memo-shopname{
+  font-size:30px!important;
+  font-weight:500!important;
+  letter-spacing:0!important;
+  line-height:1.22!important;
+  text-shadow:0 1px 0 rgba(255,255,255,.9),0 2px 1px rgba(70,20,25,.35),0 4px 3px rgba(40,20,25,.28),0 7px 7px rgba(20,20,20,.16)!important;
+  filter:drop-shadow(0 1px 1px rgba(0,0,0,.12));
+}
+.memo-paper .memo-title{font-size:20px!important;line-height:1.35!important;padding-top:7px!important;padding-bottom:7px!important}
+@media(max-width:520px){.memo-paper .memo-shopname{font-size:28px!important}.memo-paper .memo-title{font-size:19px!important}}
+@media print{.memo-paper .memo-shopname{font-size:30px!important}.memo-paper .memo-title{letter-spacing:0!important}}
+
+/* Final Bengali PDF shaping fix: never apply tracking between Bengali grapheme clusters */
+.memo-paper .memo-title,
+.memo-paper[class*="theme-"] .memo-title,
+#printArea .memo-title {
+  letter-spacing: 0 !important;
+  word-spacing: normal !important;
+  font-kerning: normal !important;
+  font-variant-ligatures: normal !important;
+  font-feature-settings: normal !important;
+  text-rendering: geometricPrecision !important;
+  white-space: normal !important;
+}
+/* Larger refined shop title with a restrained 3D shadow */
+.memo-paper .memo-shopname {
+  font-size: 33px !important;
+  font-weight: 500 !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0 !important;
+  text-shadow: 0 1px 0 rgba(255,255,255,.95), 0 2px 1px rgba(65,20,25,.42), 0 4px 3px rgba(40,15,20,.32), 0 7px 8px rgba(15,15,15,.2) !important;
+}
+@media(max-width:520px) { .memo-paper .memo-shopname { font-size: 30px !important; } }
+@media print { .memo-paper .memo-shopname { font-size: 33px !important; } }
+
 </style></head><body>
 <header class="top"><div class="topin"><div class="brand"><div class="top-avatar" id="topAvatar"><span class="top-avatar-placeholder">🖥️</span></div><div><h1>আলামিন কম্পিউটার এন্ড সার্ভিসিং সেন্টার</h1><p>Premium Memo · Sales · Due Ledger</p></div></div><div id="topUser" class="actions hidden"><span id="userEmail"></span><button id="logout" class="secondary">লগআউট</button></div></div></header>
 <main class="wrap">
@@ -640,8 +688,12 @@ async function downloadMemoPdf(m){
  const paper=host.querySelector('.preview');if(!paper){host.remove();return}
  paper.style.width='794px';paper.style.maxWidth='none';paper.style.margin='0';paper.style.transform='none';
  const safeNo=String(m.memo_number||$('memoNo').value||'memo').replace(/[^A-Za-z0-9_-]/g,'-');
- const options={margin:0,filename:`Memo-${safeNo}.pdf`,image:{type:'jpeg',quality:0.98},html2canvas:{scale:2,useCORS:true,backgroundColor:'#ffffff',scrollX:0,scrollY:0},jsPDF:{unit:'mm',format:'a4',orientation:'portrait'},pagebreak:{mode:['avoid-all','css','legacy']}};
- try{await html2pdf().set(options).from(paper).save()}catch(e){alert('PDF তৈরি করা যায়নি: '+(e.message||e))}finally{host.remove()}
+ const options={margin:0,filename:`Memo-${safeNo}.pdf`,image:{type:'jpeg',quality:0.99},html2canvas:{scale:3,useCORS:true,backgroundColor:'#ffffff',scrollX:0,scrollY:0,letterRendering:false},jsPDF:{unit:'mm',format:'a4',orientation:'portrait'},pagebreak:{mode:['avoid-all','css','legacy']}};
+ try{
+   if(document.fonts&&document.fonts.ready) await document.fonts.ready;
+   await Promise.all(Array.from(paper.querySelectorAll('img')).map(img=>{if(img.complete&&img.naturalWidth)return Promise.resolve();return new Promise(resolve=>{img.onload=resolve;img.onerror=resolve;setTimeout(resolve,2500)})}));
+   await html2pdf().set(options).from(paper).save();
+ }catch(e){alert('PDF তৈরি করা যায়নি: '+(e.message||e))}finally{host.remove()}
 }
 function showA4Preview(modal,markup,printAction){modal.classList.add('memo-preview-modal');modal.innerHTML=`<div class="preview-toolbar"><button type="button" class="secondary" id="fitView">Fit</button><button type="button" class="secondary" id="zoomOut">−</button><strong id="zoomLabel">Fit</strong><button type="button" class="secondary" id="zoomIn">+</button><button type="button" class="green" id="previewDownload">⬇️ PDF ডাউনলোড</button><button type="button" id="previewPrint">প্রিন্ট</button><button type="button" class="danger" id="closePreview">বন্ধ</button></div><div class="preview-stage" id="a4Stage">${markup}</div>`;document.body.append(modal);const stage=modal.querySelector('#a4Stage'),paper=stage.querySelector('.preview');let scale=1;const fit=()=>{scale=Math.min(1,(stage.clientWidth-16)/794);apply('Fit')};const apply=label=>{paper.style.transform=`scale(${scale})`;paper.style.transformOrigin='top left';paper.style.marginLeft='0';paper.style.marginBottom=`${Math.max(0,(scale-1)*paper.offsetHeight)}px`;stage.style.minHeight='0';modal.querySelector('#zoomLabel').textContent=label||Math.round(scale*100)+'%';stage.scrollLeft=0};modal.querySelector('#fitView').onclick=fit;modal.querySelector('#zoomIn').onclick=()=>{scale=Math.min(2.5,scale+.15);apply()};modal.querySelector('#zoomOut').onclick=()=>{scale=Math.max(.35,scale-.15);apply()};modal.querySelector('#closePreview').onclick=()=>modal.remove();modal.querySelector('#previewDownload').onclick=()=>{const m=modal.querySelector('.preview')?.dataset?.memoId;modal.remove();if(m){const found=memos.find(x=>String(x.id)===String(m));downloadMemoPdf(found)}else downloadMemoPdf(formMemo())};modal.querySelector('#previewPrint').onclick=()=>{modal.remove();printAction()};const ro=new ResizeObserver(()=>fit());ro.observe(stage);fit()}
 function openSavedMemoPreview(m){if(!m)return;const modal=document.createElement('div');showA4Preview(modal,memoMarkup(m,'color'),()=>printMemo(m,'color'))}
