@@ -555,17 +555,22 @@ body{background:#fff;margin:0}
 
 </style>
 <style id="shop-title-only-refinement">
-/* Only the shop-name title is enlarged and emboldened; layout and all other elements remain unchanged. */
+/* Only enlarge the existing shop title to use more of its current center column. Keep photos, grid, tagline and all other layout unchanged. */
 .memo-paper .memo-shopname, #printArea .memo-shopname {
-  font-size: 32px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  font-size: 35px !important;
+  line-height: 1.14 !important;
   font-weight: 900 !important;
-  text-shadow: 0 1px 0 rgba(255,255,255,.9), 0 2px 0 rgba(80,20,25,.22), 0 4px 6px rgba(20,20,20,.28) !important;
+  text-align: center !important;
+  text-shadow: 0 1px 0 rgba(255,255,255,.92), 0 2px 0 rgba(80,20,25,.24), 0 4px 6px rgba(20,20,20,.30), 0 7px 10px rgba(20,20,20,.12) !important;
 }
 @media (max-width: 520px) {
-  .memo-paper .memo-shopname, #printArea .memo-shopname { font-size: 29px !important; }
+  .memo-paper .memo-shopname, #printArea .memo-shopname { font-size: 32px !important; line-height: 1.12 !important; }
 }
 @media print {
-  .memo-paper .memo-shopname, #printArea .memo-shopname { font-size: 29px !important; font-weight: 900 !important; }
+  .memo-paper .memo-shopname, #printArea .memo-shopname { font-size: 32px !important; line-height: 1.12 !important; font-weight: 900 !important; }
 }
 </style>
 </head><body>
