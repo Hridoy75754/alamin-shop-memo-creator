@@ -575,37 +575,46 @@ body{background:#fff;margin:0}
 </style>
 
 <style id="shop-title-reference-style-only">
-/* Only the shop-name title is restyled to match the supplied reference.
-   Keep the existing grid, side photos, tagline, contacts and all other memo elements unchanged. */
+/* Final shop title: very dense Bengali lettering with visible red 3D extrusion.
+   Transparent background; side photos and the rest of the memo layout stay unchanged. */
 .memo-paper .memo-shopline .memo-shopname,
 #printArea .memo-shopline .memo-shopname {
   display:block !important;
   width:100% !important;
   max-width:100% !important;
+  min-width:0 !important;
   box-sizing:border-box !important;
   margin:0 !important;
-  padding:5px 4px 6px !important;
+  padding:2px 2px 5px !important;
   text-align:center !important;
   white-space:normal !important;
   overflow-wrap:normal !important;
   word-break:normal !important;
-  font-size:31px !important;
-  line-height:1.12 !important;
-  font-weight:900 !important;
-  letter-spacing:0 !important;
-  color:#fff !important;
-  background:linear-gradient(180deg,#d400a5 0%,#b9008d 100%) !important;
-  border-radius:2px !important;
-  text-shadow:0 1px 0 #ffe3f8, 0 2px 0 #79005e, 0 4px 2px rgba(35,0,28,.48) !important;
-  box-shadow:0 3px 0 #79005e, 0 5px 8px rgba(30,0,25,.18) !important;
+  font-family:"Noto Sans Bengali","Hind Siliguri",system-ui,sans-serif !important;
+  font-size:clamp(27px,4.2vw,35px) !important;
+  line-height:1.16 !important;
+  font-weight:1000 !important;
+  letter-spacing:-.25px !important;
+  color:#a90012 !important;
+  -webkit-text-fill-color:#a90012 !important;
+  -webkit-text-stroke:1.15px #72000a !important;
+  background:transparent !important;
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  filter:none !important;
+  text-shadow:0 1px 0 #f5c7c7, 0 2px 0 #82000a, 0 3px 0 #700008, 0 4px 0 #5b0006, 0 5px 2px rgba(25,0,0,.34) !important;
 }
+.preview.small .memo-shopline .memo-shopname {font-size:17px !important;line-height:1.12 !important;-webkit-text-stroke:.65px #72000a !important;}
 @media(max-width:520px){
-  .memo-paper .memo-shopline .memo-shopname {font-size:28px !important; line-height:1.1 !important; padding:4px 3px 5px !important;}
+  .memo-paper .memo-shopline .memo-shopname {font-size:clamp(27px,4.2vw,34px) !important;}
 }
 @media print{
   .memo-paper .memo-shopline .memo-shopname, #printArea .memo-shopline .memo-shopname {
-    font-size:29px !important; -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important;
+    font-size:27px !important; font-weight:1000 !important;
+    -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important;
   }
+  #printArea .preview.small .memo-shopline .memo-shopname {font-size:16px !important;}
 }
 </style>
 </head><body>
@@ -628,8 +637,8 @@ const SUPABASE_URL='https://pafppvkchyqufeflqsbv.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY='sb_publishable_xoyzUGAJv5TdGe_NdrVXUg_TyFzTxVv';
 const $=id=>document.getElementById(id),money=n=>'৳'+(Number(n)||0).toLocaleString('en-BD',{minimumFractionDigits:2,maximumFractionDigits:2}),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const now=()=>{let d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,16)},today=()=>now().slice(0,10);
-let sb,user,products=[],memos=[],editing=null,shop={name:'আলামিন কম্পিউটার সার্ভিসিং সেন্টার',phone:'01768421801',address:'ল্যাপটপ, কম্পিউটার সার্ভিসিং ও ইলেকট্রিক/ইলেকট্রনিক্সের কাজ যত্নসহকারে করা হয়।',footer:'একবার সেবা নিয়ে আমাদের সততা যাচাই করুন।',owner:'প্রোঃ মোঃ আল আমিন',memoTitle:'ক্যাশ মেমো / CASH MEMO',terms:['নতুন মাল কিনলে ক্যাশ মেমো সঙ্গে রাখুন।','বিক্রিত পণ্য ফেরত বা পরিবর্তন প্রযোজ্য শর্তসাপেক্ষ।','পুরাতন/ব্যবহৃত পণ্যে ওয়ারেন্টি প্রযোজ্য নয়, যদি আলাদাভাবে উল্লেখ না থাকে।','পানি/আগুন/শারীরিক ক্ষতিজনিত সমস্যা ওয়ারেন্টির আওতাভুক্ত নয়।']};
-try{const savedShop=JSON.parse(localStorage.getItem('alaminShopSettings')||'null');if(savedShop)shop={...shop,...savedShop}}catch(e){}
+let sb,user,products=[],memos=[],editing=null,shop={name:'আলামিন কম্পিউটার এন্ড সার্ভিসিং সেন্টার',phone:'01768421801',address:'ল্যাপটপ, কম্পিউটার সার্ভিসিং ও ইলেকট্রিক/ইলেকট্রনিক্সের কাজ যত্নসহকারে করা হয়।',footer:'একবার সেবা নিয়ে আমাদের সততা যাচাই করুন।',owner:'প্রোঃ মোঃ আল আমিন',memoTitle:'ক্যাশ মেমো / CASH MEMO',terms:['নতুন মাল কিনলে ক্যাশ মেমো সঙ্গে রাখুন।','বিক্রিত পণ্য ফেরত বা পরিবর্তন প্রযোজ্য শর্তসাপেক্ষ।','পুরাতন/ব্যবহৃত পণ্যে ওয়ারেন্টি প্রযোজ্য নয়, যদি আলাদাভাবে উল্লেখ না থাকে।','পানি/আগুন/শারীরিক ক্ষতিজনিত সমস্যা ওয়ারেন্টির আওতাভুক্ত নয়।']};
+try{const savedShop=JSON.parse(localStorage.getItem('alaminShopSettings')||'null');if(savedShop)shop={...shop,...savedShop};if(shop.name==='আলামিন কম্পিউটার সার্ভিসিং সেন্টার'){shop.name='আলামিন কম্পিউটার এন্ড সার্ভিসিং সেন্টার';localStorage.setItem('alaminShopSettings',JSON.stringify(shop))}}catch(e){}
 function msg(id,t,err=false){$(id).textContent=t;$(id).className=err?'error':'note'}
 function setup(){if(!window.supabase){msg('loginMsg','Supabase library load হয়নি। ইন্টারনেট পরীক্ষা করুন।',true);return false}if(SUPABASE_PUBLISHABLE_KEY.includes('PASTE_')){msg('loginMsg','index.html-এ SUPABASE_PUBLISHABLE_KEY placeholder-এর জায়গায় আপনার sb_publishable key বসান।',true);return false}sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);return true}
 async function login(){if(!sb&&!setup())return;let {data,error}=await sb.auth.signInWithPassword({email:$('email').value.trim(),password:$('password').value});if(error){msg('loginMsg','লগইন হয়নি: '+error.message,true);return}user=data.user;await enter()}
@@ -637,8 +646,9 @@ async function enter(){let {data,error}=await sb.rpc('is_memo_admin');if(error||
 async function logout(){await sb.auth.signOut();user=null;$('appShell').classList.add('hidden');$('topUser').classList.add('hidden');$('loginScreen').classList.remove('hidden');$('password').value=''}
 function tab(n){document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===n));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id==='panel-'+n));if(n==='history')renderHistory();if(n==='products')renderProducts();if(n==='reports')renderReport();if(n==='design')renderDesigns()}
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>tab(b.dataset.tab));
-function addItem(i={name:'',category:'',warranty:'',qty:1,price:0,product_id:null}){let tr=document.createElement('tr');tr.innerHTML=`<td><input class="iname" list="productNames" placeholder="পণ্যের নাম" value="${esc(i.name)}"><datalist id="productNames">${products.map(p=>`<option value="${esc(p.name)}"></option>`).join('')}</datalist><input class="itemcode" aria-label="নিজস্ব কোড" placeholder="কোড" value="${esc(i.category||'')}" style="width:62px;padding:2px 4px;margin-top:3px;font-size:9px;border:1px dashed #bbb;border-radius:3px"></td><td><input class="warranty-input warranty" placeholder="যেমন: ৭ দিন / ১ বছর" value="${esc(i.warranty||'')}"></td><td><input class="qty" type="number" min=".01" step=".01" value="${Number(i.qty)||1}"></td><td><input class="price" type="number" min="0" step=".01" value="${Number(i.price)||0}"></td><td class="num line">${money((Number(i.qty)||1)*(Number(i.price)||0))}</td><td class="no-print"><button class="small danger remove">×</button></td>`;if(i.product_id)tr.dataset.pid=i.product_id;$('items').append(tr);tr.querySelector('.iname').onchange=()=>{let p=products.find(p=>p.name.toLowerCase()===tr.querySelector('.iname').value.trim().toLowerCase());if(p){tr.querySelector('.price').value=p.sale_price;tr.dataset.pid=p.id}calc()};tr.querySelectorAll('.qty,.price').forEach(x=>x.oninput=calc);tr.querySelector('.remove').onclick=()=>{tr.remove();if(!$('items').children.length)addItem();calc()};calc()}
-function getItems(){return [...$('items').querySelectorAll('tr')].map(tr=>({name:tr.querySelector('.iname').value.trim(),category:tr.querySelector('.itemcode').value.trim(),warranty:tr.querySelector('.warranty')?.value.trim()||'',qty:Number(tr.querySelector('.qty').value)||0,price:Number(tr.querySelector('.price').value)||0,product_id:tr.dataset.pid||null})).filter(i=>i.name&&i.qty>0)}
+function formatWarranty(value){const v=String(value??'').trim();return /^[0-9০-৯]+$/.test(v)?v+' Month':v}
+function addItem(i={name:'',category:'',warranty:'',qty:1,price:0,product_id:null}){let tr=document.createElement('tr');tr.innerHTML=`<td><input class="iname" list="productNames" placeholder="পণ্যের নাম" value="${esc(i.name)}"><datalist id="productNames">${products.map(p=>`<option value="${esc(p.name)}"></option>`).join('')}</datalist><input class="itemcode" aria-label="নিজস্ব কোড" placeholder="কোড" value="${esc(i.category||'')}" style="width:62px;padding:2px 4px;margin-top:3px;font-size:9px;border:1px dashed #bbb;border-radius:3px"></td><td><input class="warranty-input warranty" placeholder="যেমন: ৭ দিন / ১ বছর" value="${esc(i.warranty||'')}"></td><td><input class="qty" type="number" min=".01" step=".01" value="${Number(i.qty)||1}"></td><td><input class="price" type="number" min="0" step=".01" value="${Number(i.price)||0}"></td><td class="num line">${money((Number(i.qty)||1)*(Number(i.price)||0))}</td><td class="no-print"><button class="small danger remove">×</button></td>`;if(i.product_id)tr.dataset.pid=i.product_id;$('items').append(tr);tr.querySelector('.warranty').addEventListener('blur',e=>{e.target.value=formatWarranty(e.target.value)});tr.querySelector('.iname').onchange=()=>{let p=products.find(p=>p.name.toLowerCase()===tr.querySelector('.iname').value.trim().toLowerCase());if(p){tr.querySelector('.price').value=p.sale_price;tr.dataset.pid=p.id}calc()};tr.querySelectorAll('.qty,.price').forEach(x=>x.oninput=calc);tr.querySelector('.remove').onclick=()=>{tr.remove();if(!$('items').children.length)addItem();calc()};calc()}
+function getItems(){return [...$('items').querySelectorAll('tr')].map(tr=>({name:tr.querySelector('.iname').value.trim(),category:tr.querySelector('.itemcode').value.trim(),warranty:formatWarranty(tr.querySelector('.warranty')?.value||''),qty:Number(tr.querySelector('.qty').value)||0,price:Number(tr.querySelector('.price').value)||0,product_id:tr.dataset.pid||null})).filter(i=>i.name&&i.qty>0)}
 function calc(){let sub=0;[...$('items').querySelectorAll('tr')].forEach(tr=>{let q=Number(tr.querySelector('.qty').value)||0,p=Number(tr.querySelector('.price').value)||0;sub+=q*p;tr.querySelector('.line').textContent=money(q*p)});let discount=Math.min(sub,Math.max(0,Number($('discount').value)||0)),total=sub-discount,paid=Math.min(total,Math.max(0,Number($('paid').value)||0));$('subtotal').textContent=money(sub);$('discountView').textContent=money(discount);$('total').textContent=money(total);$('due').textContent=money(total-paid);return{subtotal:sub,discount,total,paid,due:total-paid}}
 function nextMemoNumber(){const yy=String(new Date().getFullYear()).slice(-2);let max=0;for(const m of memos){const mt=String(m.memo_number||'').match(new RegExp('^M-'+yy+'-(\\d+)$'));if(mt)max=Math.max(max,Number(mt[1])||0)}return `M-${yy}-${String(max+1).padStart(3,'0')}`}
 function reset(){editing=null;$('memoNo').value=nextMemoNumber();$('memoDate').value=now();$('customer').value='';$('phone').value='';$('customerAddress').value='';$('discount').value=0;$('paid').value=0;$('method').value='Cash / নগদ';$('items').innerHTML='';addItem();$('saveMemo').textContent='মেমো সংরক্ষণ'}
@@ -647,6 +657,8 @@ async function saveMemo(){
  if(!items.length){msg('memoMsg','কমপক্ষে একটি পণ্য/সার্ভিস যোগ করুন।',true);return}
  if(Number($('paid').value)>t.total){msg('memoMsg','পরিশোধ মোট বিলের বেশি হতে পারবে না।',true);return}
  const wasEditing=!!editing;
+ const existingPaid=wasEditing?(editing.payments||[]).reduce((sum,p)=>sum+Number(p.amount||0),0):0;
+ if(wasEditing&&t.paid+0.005<existingPaid){msg('memoMsg','আগে আদায় করা টাকা এডিট করে কমানো যাবে না। বাকি/পেমেন্টের হিসাব ঠিক রাখতে বিদ্যমান আদায় অপরিবর্তিত রাখুন।',true);return}
  const payload={memo_date:new Date($('memoDate').value||now()).toISOString(),customer_name:$('customer').value.trim()||null,customer_phone:$('phone').value.trim()||null,customer_address:$('customerAddress').value.trim()||null,subtotal:t.subtotal,discount:t.discount,total:t.total,created_by:user.id};
  try{
   let memoId;
@@ -661,7 +673,7 @@ async function saveMemo(){
   const ir=await sb.from('memo_items').insert(items.map(i=>({memo_id:memoId,product_id:i.product_id,item_name:i.name,category:i.category,warranty:i.warranty||null,quantity:i.qty,unit_price:i.price,line_total:i.qty*i.price})));
   if(ir.error)throw ir.error;
   if(!wasEditing&&t.paid>0){const p=await sb.from('payments').insert({memo_id:memoId,amount:t.paid,payment_method:$('method').value,created_by:user.id});if(p.error)throw p.error}
-  else if(wasEditing){const existing=(editing.payments||[]).reduce((sum,p)=>sum+Number(p.amount),0);if(t.paid>existing){const p=await sb.from('payments').insert({memo_id:memoId,amount:t.paid-existing,payment_method:$('method').value,created_by:user.id});if(p.error)throw p.error}}
+  else if(wasEditing){if(t.paid>existingPaid){const p=await sb.from('payments').insert({memo_id:memoId,amount:t.paid-existingPaid,payment_method:$('method').value,created_by:user.id});if(p.error)throw p.error}}
   // Re-read after insert so AFTER INSERT database triggers have time to populate memo_number.
   const nr=await sb.from('memos').select('id,memo_number').eq('id',memoId).single();
   if(nr.error)throw nr.error;
@@ -705,7 +717,15 @@ $('resetDesign').onclick=()=>{selectedTheme='royal-gold';applyMemoDesign(themeCa
 function getTermsHtml(){const lines=Array.isArray(shop.terms)?shop.terms:(typeof shop.terms==='string'?shop.terms.split(/\r?\n/):[]);return lines.filter(Boolean).map(x=>'• '+esc(x)).join('<br>')}
 function memoMarkup(m,mode){let it=m.items||getItems(),t=m.total!==undefined?m:({...formMemo(),...m}),isSmall=mode==='small';let customer=esc(t.customer_name??$('customer').value??''),phone=esc(t.customer_phone??$('phone').value??'');let rawDate=t.memo_date||$('memoDate').value||now(),dateObj=new Date(rawDate),datePart=esc(dateObj.toLocaleDateString('bn-BD')),timePart=esc(dateObj.toLocaleTimeString('bn-BD',{hour:'2-digit',minute:'2-digit'}));let mobile=(shop.phone||'01768421801').split(/\r?\n/).map(x=>x.trim()).filter(Boolean),wa=(shop.whatsapp||'01834313778').split(/\r?\n/).map(x=>x.trim()).filter(Boolean);let contacts=[...mobile.map(x=>`<span class="contact-line">Mobile: ${esc(x)}</span>`),...wa.map(x=>`<span class="contact-line">WhatsApp: ${esc(x)}</span>`) ].join('');let theme=themeCatalog.find(d=>d.id===activeDesign)||themeCatalog[0],designClass=' '+theme.css;let memoNo=t.memo_number&&t.memo_number!=='সংরক্ষণের সময় তৈরি হবে'&&t.memo_number!=='(সংরক্ষণের সময় তৈরি হবে)'&&t.memo_number!=='সংরক্ষণের পর নম্বর দেখাবে'?t.memo_number:'খসড়া — সংরক্ষণের পর নম্বর হবে';return `<div class="preview ${isSmall?'small':''}" data-memo-id="${esc(t.id||'')}"><div class="memo-paper${it.length>6?' many-items':''}${designClass}"><div class="memo-head"><div class="memo-bismillah">বিসমিল্লাহির রাহমানির রাহিম</div><div class="memo-shopline"><img class="memo-side-photo ${shop.photoLeft?'':'empty'}" src="${shop.photoLeft||''}" alt="প্রোফাইল ছবি"><div class="memo-shopname">${esc(shop.name)}</div><img class="memo-side-photo ${shop.photoRight?'':'empty'}" src="${shop.photoRight||''}" alt="কম্পিউটার লোগো"></div><p class="memo-tagline">${esc(shop.address||'এখানে ল্যাপটপ, কম্পিউটার সার্ভিসিংসহ বিভিন্ন ইলেকট্রিক ও ইলেকট্রনিক্সের কাজ যত্নসহকারে করা হয়।')}</p><div class="memo-contact"><div class="memo-owner">${esc(shop.owner||'প্রোঃ মোঃ আল আমিন')}</div><div class="memo-contact-list">${contacts}</div></div></div><div class="memo-title">${esc(shop.memoTitle||'ক্যাশ মেমো / CASH MEMO')}</div>${shop.bodyBg?`<div class="memo-body-watermark"><img src="${esc(shop.bodyBg)}" alt=""></div>`:''}<div class="memo-meta"><div class="memo-number-cell">মেমো নং: <b>${esc(memoNo)}</b></div><div class="memo-date-cell"><span class="memo-date-label">তারিখ ও সময়</span><b class="memo-date-time">${datePart}<br>${timePart}</b></div><div class="memo-customer-row">গ্রাহকের নাম: ${customer||'........................................................'}</div><div class="memo-address-row"><span>গ্রাহকের ঠিকানা: ${esc(t.customer_address||'........................................................')}</span><span>মোবাইল: ${phone||'........................'}</span></div></div><table><thead><tr><th style="width:7%">ক্র. নং<br>Sl No</th><th>বিবরণ / Description</th><th style="width:14%">ওয়ারেন্টি</th><th style="width:12%">পরিমাণ<br>Quantity</th><th style="width:14%">দর / Rate</th><th style="width:17%">টাকা / Amount</th></tr></thead><tbody>${it.map((i,n)=>`<tr><td style="text-align:center">${n+1}.</td><td><span class="product-name">${esc(i.name)}</span>${i.category?`<small class="item-code">${esc(i.category)}</small>`:''}</td><td>${esc(i.warranty||'—')}</td><td style="text-align:center">${i.qty}</td><td>${money(i.price)}</td><td>${money(i.qty*i.price)}</td></tr>`).join('')}</tbody><tfoot><tr><td colspan="4" rowspan="5" style="vertical-align:top;text-align:left;font-size:11px;line-height:1.55"><b style="color:#1756a9">শর্তাবলী:</b><br>${getTermsHtml()}</td><td>মোট</td><td>${money(t.subtotal)}</td></tr><tr><td>ছাড়</td><td>${money(t.discount)}</td></tr><tr class="memo-total"><td>সর্বমোট</td><td>${money(t.total)}</td></tr><tr><td>নগদ / পরিশোধ</td><td>${money(t.paid)}</td></tr><tr><td>বাকি</td><td>${money(t.due)}</td></tr></tfoot></table><div class="memo-signs"><div class="customer-sign">গ্রাহকের স্বাক্ষর</div><div class="authority-sign">কর্তৃপক্ষের স্বাক্ষর</div></div><div class="memo-footer">${esc(shop.footer||'ধন্যবাদ, আবার আসবেন।')}</div></div></div>`}
 
-function printMemo(m,mode){if(!m||!m.id||!m.memo_number){msg('memoMsg','সঠিক মেমো নম্বরসহ প্রিন্ট করতে আগে মেমোটি সংরক্ষণ করুন।',true);return}$('printArea').innerHTML=memoMarkup(m,mode);$('printArea').classList.remove('hidden');window.print();setTimeout(()=>$('printArea').classList.add('hidden'),500)}
+function printMemo(m,mode){
+ if(!m||!m.id||!m.memo_number){msg('memoMsg','সঠিক মেমো নম্বরসহ প্রিন্ট করতে আগে মেমোটি সংরক্ষণ করুন।',true);return}
+ const area=$('printArea');area.innerHTML=memoMarkup(m,mode);area.classList.remove('hidden');
+ let cleaned=false;const media=window.matchMedia?window.matchMedia('print'):null;
+ const cleanup=()=>{if(cleaned)return;cleaned=true;area.classList.add('hidden');area.innerHTML='';window.removeEventListener('afterprint',cleanup);if(media?.removeEventListener)media.removeEventListener('change',onMediaChange)};
+ const onMediaChange=e=>{if(!e.matches)cleanup()};
+ window.addEventListener('afterprint',cleanup,{once:true});if(media?.addEventListener)media.addEventListener('change',onMediaChange);
+ try{window.print()}catch(e){cleanup();msg('memoMsg','প্রিন্ট চালু করা যায়নি: '+(e.message||e),true)}
+}
 async function downloadMemoPdf(m){
  if(!m){msg('memoMsg','ডাউনলোড করার আগে মেমোটি সংরক্ষণ করুন।',true);return}
  if(typeof html2pdf==='undefined'){alert('PDF ডাউনলোড লাইব্রেরি লোড হয়নি। ইন্টারনেট সংযোগ পরীক্ষা করে আবার চেষ্টা করুন।');return}
@@ -722,7 +742,7 @@ function openSavedMemoPreview(m){if(!m)return;const modal=document.createElement
 function openMemoPreview(){const modal=document.createElement('div');showA4Preview(modal,memoMarkup(formMemo(),'color'),()=>printMemo(formMemo(),'color'))}
 
 function formMemo(){let t=calc();return{id:editing?.id||null,memo_number:editing?.memo_number||$('memoNo').value,memo_date:$('memoDate').value,customer_name:$('customer').value,customer_phone:$('phone').value,customer_address:$('customerAddress').value,items:getItems(),subtotal:t.subtotal,discount:t.discount,total:t.total,paid:t.paid,due:t.due,paymentMethod:$('method').value}}
-function csv(){let d=$('reportDate').value||today(),list=memos.filter(m=>String(m.memo_date).slice(0,10)===d),rows=[['Memo','Date','Customer','Phone','Total','Paid','Due'],...list.map(m=>[m.memo_number,m.memo_date,m.customer_name,m.customer_phone,m.total,m.paid,m.due])],text='\\ufeff'+rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\\r\\n'),a=document.createElement('a'),u=URL.createObjectURL(new Blob([text],{type:'text/csv;charset=utf-8'}));a.href=u;a.download='memo-sales-'+d+'.csv';a.click();URL.revokeObjectURL(u)}
+function csv(){let d=$('reportDate').value||today(),list=memos.filter(m=>String(m.memo_date).slice(0,10)===d),rows=[['Memo','Date','Customer','Phone','Total','Paid','Due'],...list.map(m=>[m.memo_number,m.memo_date,m.customer_name,m.customer_phone,m.total,m.paid,m.due])],text='\ufeff'+rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\r\n'),a=document.createElement('a'),u=URL.createObjectURL(new Blob([text],{type:'text/csv;charset=utf-8'}));a.href=u;a.download='memo-sales-'+d+'.csv';a.click();URL.revokeObjectURL(u)}
 $('login').onclick=login;$('password').onkeydown=e=>{if(e.key==='Enter')login()};$('logout').onclick=logout;$('addItem').onclick=()=>addItem();$('discount').oninput=calc;$('paid').oninput=calc;$('saveMemo').onclick=saveMemo;$('previewMemo').onclick=openMemoPreview;$('downloadMemo').onclick=()=>downloadMemoPdf(formMemo());$('reset').onclick=reset;$('search').oninput=renderHistory;$('histDate').onchange=renderHistory;$('saveProduct').onclick=saveProduct;$('clearProduct').onclick=clearProduct;$('reportDate').value=today();$('refreshReport').onclick=renderReport;$('csv').onclick=csv;$('printColor').onclick=()=>printMemo(formMemo(),'color');$('printBW').onclick=()=>printMemo(formMemo(),'bw');$('printSmall').onclick=()=>printMemo(formMemo(),'small');$('shopName').value=shop.name||'';$('shopOwner').value=shop.owner||'প্রোঃ মোঃ আল আমিন';$('shopMemoTitle').value=shop.memoTitle||'ক্যাশ মেমো / CASH MEMO';$('shopPhone').value=shop.phone||'';$('shopWhatsapp').value=shop.whatsapp||'';$('shopAddress').value=shop.address||'';$('shopFooter').value=shop.footer||'';$('shopTerms').value=(Array.isArray(shop.terms)?shop.terms:[]).join('\n');
 function openImageCropper(file,key,preview){
   const reader=new FileReader();
