@@ -2,7 +2,7 @@
 <html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#102b46"><link id="dynamicFavicon" rel="icon" type="image/png" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23102b46'/%3E%3Ctext x='32' y='44' font-size='38' text-anchor='middle' fill='white'%3EA%3C/text%3E%3C/svg%3E"><title>আলামিন কম্পিউটার এন্ড সার্ভিসিং সেন্টার | Memo Creator</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@600;700&family=Noto+Sans+Bengali:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@700;800&family=Hind+Siliguri:wght@600;700&family=Noto+Sans+Bengali:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <style>
@@ -710,7 +710,16 @@ const themeCatalog=[
 {id:'emerald-green',name:'Emerald Green',css:'theme-emerald-green',swatch:'green',desc:'Fresh green frame and rounded title'},
 {id:'burgundy',name:'Burgundy',css:'theme-burgundy',swatch:'burgundy',desc:'Elegant maroon double-line layout'},
 {id:'royal-purple',name:'Royal Purple',css:'theme-royal-purple',swatch:'purple',desc:'Royal purple frame and shaped title'},
-{id:'teal-modern',name:'Teal Modern',css:'theme-teal-modern',swatch:'teal',desc:'Modern teal side rail and asymmetric title'},{id:'royal-3d',name:'Royal 3D Gold',css:'theme-royal-3d',swatch:'gold',desc:'Embossed gold frame with dimensional navy title'},{id:'emerald-glass',name:'Emerald Glass 3D',css:'theme-emerald-glass',swatch:'green',desc:'Elegant emerald glass layers and soft depth'},{id:'carbon-3d',name:'Carbon 3D Luxury',css:'theme-carbon-3d',swatch:'black',desc:'Charcoal metallic frame with subtle raised title'},{id:'crystal-ice',name:'Crystal Ice 3D',css:'theme-crystal-ice',swatch:'blue',desc:'Pearl white and ice-blue crystalline finish'}];
+{id:'teal-modern',name:'Teal Modern',css:'theme-teal-modern',swatch:'teal',desc:'Modern teal side rail and asymmetric title'},
+{id:'royal-3d',name:'Royal 3D Gold',css:'theme-royal-3d',swatch:'gold',desc:'Embossed gold frame with dimensional navy title'},
+{id:'emerald-glass',name:'Emerald Glass 3D',css:'theme-emerald-glass',swatch:'green',desc:'Elegant emerald glass layers and soft depth'},
+{id:'carbon-3d',name:'Carbon 3D Luxury',css:'theme-carbon-3d',swatch:'black',desc:'Charcoal metallic frame with subtle raised title'},
+{id:'crystal-ice',name:'Crystal Ice 3D',css:'theme-crystal-ice',swatch:'blue',desc:'Pearl white and ice-blue crystalline finish'},
+{id:'cyber-tech',name:'Cyber Tech Neon (নতুন)',css:'theme-cyber-tech',swatch:'cyber',desc:'Dark tech header banner, neon cyan glow logos & futuristic grid'},
+{id:'mughal-shahi',name:'Mughal Shahi Red (নতুন)',css:'theme-mughal-shahi',swatch:'shahi',desc:'Royalcrimson-gold ornate frame, golden ring logos & traditional look'},
+{id:'modern-split',name:'Modern Split Invoice (নতুন)',css:'theme-modern-split',swatch:'split',desc:'Indigo-violet corporate layout, rounded square HD logos & angled badge'},
+{id:'rose-gold',name:'Luxury Rose Gold (নতুন)',css:'theme-rose-gold',swatch:'rosegold',desc:'Soft rose-gold metallic frame, pill title & studio portrait logo ring'},
+{id:'swiss-grid',name:'Minimal Swiss Grid (নতুন)',css:'theme-swiss-grid',swatch:'swiss',desc:'Ultra-clean architectural black-yellow grid, boxed logos & sharp borders'}];
 let activeDesign='royal-gold',selectedTheme='royal-gold';try{activeDesign=localStorage.getItem('alaminActiveMemoDesign')||'royal-gold';if(!themeCatalog.some(d=>d.id===activeDesign))activeDesign='royal-gold';selectedTheme=activeDesign}catch(e){activeDesign='royal-gold';selectedTheme='royal-gold'}
 function applyMemoDesign(d){activeDesign=d?.id||'royal-gold';selectedTheme=activeDesign;try{localStorage.setItem('alaminActiveMemoDesign',activeDesign)}catch(e){}renderDesigns()}
 function renderDesigns(){const host=$('designList');if(!host)return;host.innerHTML=themeCatalog.map(d=>`<div class="theme-card ${d.id===activeDesign?'active':''}"><div class="theme-swatch ${d.swatch}">CASH MEMO</div><b>${d.name}</b><p class="mini">${d.desc}</p><div class="actions"><button class="small secondary" data-theme-preview="${d.id}">Preview</button><button class="small ${d.id===activeDesign?'green':''}" data-theme-select="${d.id}">${d.id===activeDesign?'সক্রিয়':'Select'}</button></div></div>`).join('');host.querySelectorAll('[data-theme-preview]').forEach(b=>b.onclick=()=>{selectedTheme=b.dataset.themePreview;renderThemePreview()});host.querySelectorAll('[data-theme-select]').forEach(b=>b.onclick=()=>{const chosen=themeCatalog.find(x=>x.id===b.dataset.themeSelect);if(chosen){applyMemoDesign(chosen);msg('memoMsg',chosen.name+' থিমটি এখন নতুন মেমো ও প্রিন্টের জন্য সক্রিয় হয়েছে।');}});renderThemePreview()}
@@ -821,14 +830,15 @@ $('saveShop').onclick=()=>{shop={...shop,name:$('shopName').value.trim()||shop.n
 })();
 </script></body></html>
 
-<!-- Final typography and side-photo sizing: clean Bengali rendering for PDF & Print -->
+<!-- Final Ultra-Bold Shop Title + 5 Brand New Distinct Memo Designs -->
 <style id="final-title-reference-refinement">
+/* ১. দোকানের নাম আরও বড় ও মোটা (Ultra-Bold) এবং PDF/প্রিন্টে না ভাঙার গ্যারান্টি */
 .memo-paper .memo-head .memo-shopline,
 #printArea .memo-head .memo-shopline {
   display:grid !important;
   grid-template-columns:96px minmax(0,1fr) 96px !important;
   align-items:center !important;
-  gap:10px !important;
+  gap:8px !important;
   width:100% !important;
 }
 .memo-paper .memo-head .memo-shopname,
@@ -836,38 +846,38 @@ $('saveShop').onclick=()=>{shop={...shop,name:$('shopName').value.trim()||shop.n
   min-width:0 !important;
   width:100% !important;
   margin:0 !important;
-  padding:2px 4px !important;
+  padding:2px 2px !important;
   text-align:center !important;
-  color:#8f101b !important;
-  font-family:"Hind Siliguri","Noto Sans Bengali","Nirmala UI",sans-serif !important;
-  font-size:31px !important;
-  font-weight:700 !important;
+  color:#990012 !important;
+  -webkit-text-fill-color:currentColor !important;
+  font-family:"Anek Bangla","Noto Sans Bengali","Nirmala UI",sans-serif !important;
+  font-size:38px !important;
+  font-weight:800 !important;
   -webkit-text-stroke:0px transparent !important;
   letter-spacing:0px !important;
-  word-spacing:normal !important;
-  line-height:1.25 !important;
+  word-spacing:1px !important;
+  line-height:1.18 !important;
   white-space:normal !important;
   overflow-wrap:break-word !important;
   word-break:keep-all !important;
   text-shadow:none !important;
   filter:none !important;
-  font-synthesis:none !important;
 }
 .memo-paper > .memo-title,
 #printArea .memo-paper > .memo-title {
   display:block !important;
   width:fit-content !important;
-  min-width:260px !important;
-  max-width:90% !important;
+  min-width:270px !important;
+  max-width:92% !important;
   margin:6px auto 10px !important;
-  padding:6px 24px !important;
+  padding:7px 26px !important;
   text-align:center !important;
-  font-family:"Hind Siliguri","Noto Sans Bengali","Nirmala UI",sans-serif !important;
-  font-size:19px !important;
-  font-weight:700 !important;
+  font-family:"Anek Bangla","Noto Sans Bengali","Nirmala UI",sans-serif !important;
+  font-size:21px !important;
+  font-weight:800 !important;
   letter-spacing:0px !important;
   word-spacing:normal !important;
-  line-height:1.3 !important;
+  line-height:1.25 !important;
   white-space:nowrap !important;
   -webkit-text-stroke:0px transparent !important;
   text-shadow:none !important;
@@ -877,21 +887,91 @@ $('saveShop').onclick=()=>{shop={...shop,name:$('shopName').value.trim()||shop.n
 #printArea .memo-head .memo-side-photo {
   display:block !important;
   visibility:visible !important;
-  width:90px !important;
-  height:90px !important;
-  min-width:90px !important;
-  min-height:90px !important;
+  width:92px !important;
+  height:92px !important;
+  min-width:92px !important;
+  min-height:92px !important;
   max-width:100% !important;
-  object-fit:contain !important;
+  object-fit:cover !important;
   object-position:center !important;
-  background:transparent !important;
+  background:#fff !important;
   border-radius:50% !important;
   margin:auto !important;
+  image-rendering:auto !important;
 }
 .memo-paper .memo-head .memo-side-photo.empty,
 #printArea .memo-head .memo-side-photo.empty {
   visibility:hidden !important;
 }
+
+/* ২. নতুন ৫টি সম্পূর্ণ আলাদা প্রিমিয়াম মেমো ডিজাইন (থিম গ্যালারি সোয়াচ) */
+.theme-card .theme-swatch.cyber{background:linear-gradient(135deg,#071426,#00bcd4);color:#00fff2;border:2px solid #00e5ff}
+.theme-card .theme-swatch.shahi{background:linear-gradient(135deg,#6b0918,#d4af37);color:#fff8dc;border:2px double #ffd700}
+.theme-card .theme-swatch.split{background:linear-gradient(135deg,#1e1b4b,#4f46e5);color:#e0e7ff;border-left:6px solid #38bdf8}
+.theme-card .theme-swatch.rosegold{background:linear-gradient(135deg,#881337,#f43f5e,#fda4af);color:#fff1f2}
+.theme-card .theme-swatch.swiss{background:linear-gradient(135deg,#111827,#facc15);color:#ffffff;border:2px solid #000}
+
+/* নতুন ডিজাইন ১: Cyber Tech Neon */
+.memo-paper.theme-cyber-tech{border:4px solid #0284c7!important;outline:2px solid #38bdf8!important;outline-offset:-9px!important;background:linear-gradient(180deg,#f0f9ff 0%,#ffffff 35%,#f8fafc 100%)!important;border-radius:14px!important}
+.memo-paper.theme-cyber-tech .memo-head{background:linear-gradient(135deg,#09192f,#0f3156)!important;color:#e0f2fe!important;border-radius:10px!important;padding:12px 12px 10px!important;border-bottom:4px solid #00e5ff!important}
+.memo-paper.theme-cyber-tech .memo-bismillah{color:#7dd3fc!important;font-weight:700!important}
+.memo-paper.theme-cyber-tech .memo-head .memo-shopname{color:#00e5ff!important;-webkit-text-fill-color:#00e5ff!important}
+.memo-paper.theme-cyber-tech .memo-tagline{color:#e0f2fe!important;text-shadow:none!important;background:rgba(255,255,255,.08)!important;border-radius:6px!important;padding:4px 10px!important}
+.memo-paper.theme-cyber-tech .memo-owner,.memo-paper.theme-cyber-tech .memo-contact-list,.memo-paper.theme-cyber-tech .contact-line{color:#bae6fd!important}
+.memo-paper.theme-cyber-tech .memo-side-photo{border-radius:16px!important;border:3px solid #00e5ff!important;box-shadow:0 0 12px rgba(0,229,255,.45)!important}
+.memo-paper.theme-cyber-tech > .memo-title{background:linear-gradient(90deg,#0284c7,#0369a1)!important;color:#ffffff!important;border:2px solid #38bdf8!important;border-radius:6px!important;clip-path:polygon(4% 0,96% 0,100% 50%,96% 100%,4% 100%,0 50%)}
+.memo-paper.theme-cyber-tech .memo-meta{background:#e0f2fe!important;border:1px solid #7dd3fc!important;border-radius:8px!important;padding:8px 12px!important}
+.memo-paper.theme-cyber-tech th{background:#09192f!important;color:#00e5ff!important;border-color:#0284c7!important}
+.memo-paper.theme-cyber-tech td{border-color:#93c5fd!important}
+.memo-paper.theme-cyber-tech .memo-total td{background:#bae6fd!important;color:#09192f!important;font-weight:900!important}
+.memo-paper.theme-cyber-tech .memo-footer{background:#09192f!important;color:#38bdf8!important;padding:6px!important;border-radius:6px!important}
+
+/* নতুন ডিজাইন ২: Mughal Shahi Red */
+.memo-paper.theme-mughal-shahi{border:8px double #800020!important;outline:3px solid #d4af37!important;outline-offset:-13px!important;background:linear-gradient(180deg,#fffdf6 0%,#fff9e6 100%)!important}
+.memo-paper.theme-mughal-shahi .memo-head{background:radial-gradient(circle,#fff5d6 0%,#fde8b2 100%)!important;border:2px solid #d4af37!important;border-bottom:4px double #800020!important;border-radius:8px!important;padding:10px!important}
+.memo-paper.theme-mughal-shahi .memo-head .memo-shopname{color:#7a0016!important;-webkit-text-fill-color:#7a0016!important}
+.memo-paper.theme-mughal-shahi .memo-side-photo{border-radius:50%!important;border:4px double #800020!important;outline:2px solid #d4af37!important;outline-offset:2px!important}
+.memo-paper.theme-mughal-shahi > .memo-title{background:linear-gradient(180deg,#8b001d,#590012)!important;color:#ffd700!important;border:2px solid #d4af37!important;border-radius:25px!important}
+.memo-paper.theme-mughal-shahi .memo-meta{background:#fff3cd!important;border:1px dashed #b8860b!important;border-radius:6px!important;padding:8px 10px!important}
+.memo-paper.theme-mughal-shahi th{background:linear-gradient(180deg,#800020,#5c0017)!important;color:#ffe699!important;border-color:#5c0017!important}
+.memo-paper.theme-mughal-shahi td{border-color:#c9a259!important}
+.memo-paper.theme-mughal-shahi .memo-total td{background:#fde699!important;color:#660014!important}
+.memo-paper.theme-mughal-shahi .memo-footer{color:#800020!important;border-top:2px double #d4af37!important}
+
+/* নতুন ডিজাইন ৩: Modern Split Invoice */
+.memo-paper.theme-modern-split{border:2px solid #312e81!important;border-top:14px solid #4338ca!important;border-bottom:10px solid #4338ca!important;outline:0!important;background:#ffffff!important}
+.memo-paper.theme-modern-split .memo-head{background:#eef2ff!important;border-left:6px solid #4338ca!important;border-right:6px solid #4338ca!important;border-bottom:2px solid #c7d2fe!important;border-radius:6px!important;padding:10px!important}
+.memo-paper.theme-modern-split .memo-head .memo-shopname{color:#1e1b4b!important;-webkit-text-fill-color:#1e1b4b!important}
+.memo-paper.theme-modern-split .memo-side-photo{border-radius:18px 4px 18px 4px!important;border:3px solid #4338ca!important;box-shadow:0 4px 10px rgba(67,56,202,.25)!important}
+.memo-paper.theme-modern-split > .memo-title{background:#4338ca!important;color:#ffffff!important;border:0!important;border-left:8px solid #38bdf8!important;border-right:8px solid #38bdf8!important;border-radius:4px!important}
+.memo-paper.theme-modern-split .memo-meta{background:#f8fafc!important;border-left:4px solid #4338ca!important;padding:8px 12px!important;border-radius:0 8px 8px 0!important}
+.memo-paper.theme-modern-split th{background:#312e81!important;color:#ffffff!important;border-color:#312e81!important}
+.memo-paper.theme-modern-split td{border-color:#cbd5e1!important}
+.memo-paper.theme-modern-split .memo-total td{background:#e0e7ff!important;color:#1e1b4b!important}
+
+/* নতুন ডিজাইন ৪: Luxury Rose Gold */
+.memo-paper.theme-rose-gold{border:6px double #be123c!important;outline:2px solid #fda4af!important;outline-offset:-11px!important;background:linear-gradient(155deg,#fff1f2 0%,#ffffff 50%,#ffe4e6 100%)!important;border-radius:10px!important}
+.memo-paper.theme-rose-gold .memo-head{background:rgba(255,255,255,.85)!important;border-bottom:3px solid #e11d48!important;border-radius:8px!important}
+.memo-paper.theme-rose-gold .memo-head .memo-shopname{color:#9f1239!important;-webkit-text-fill-color:#9f1239!important}
+.memo-paper.theme-rose-gold .memo-side-photo{border-radius:50%!important;border:3px solid #e11d48!important;padding:2px!important;background:#fff1f2!important;box-shadow:0 3px 8px rgba(225,29,72,.25)!important}
+.memo-paper.theme-rose-gold > .memo-title{background:linear-gradient(90deg,#9f1239,#e11d48,#9f1239)!important;color:#fff1f2!important;border:2px solid #fecdd3!important;border-radius:50px!important}
+.memo-paper.theme-rose-gold .memo-meta{background:#ffffff!important;border:1px solid #fecdd3!important;border-radius:10px!important;padding:8px 12px!important}
+.memo-paper.theme-rose-gold th{background:#9f1239!important;color:#ffffff!important;border-color:#881337!important}
+.memo-paper.theme-rose-gold td{border-color:#fda4af!important}
+.memo-paper.theme-rose-gold .memo-total td{background:#ffe4e6!important;color:#881337!important}
+
+/* নতুন ডিজাইন ৫: Minimal Swiss Grid */
+.memo-paper.theme-swiss-grid{border:4px solid #111827!important;outline:0!important;background:#ffffff!important;border-radius:0!important}
+.memo-paper.theme-swiss-grid:before{display:none!important}
+.memo-paper.theme-swiss-grid .memo-head{background:#fef08a!important;border:3px solid #111827!important;padding:10px!important}
+.memo-paper.theme-swiss-grid .memo-head .memo-shopname{color:#111827!important;-webkit-text-fill-color:#111827!important}
+.memo-paper.theme-swiss-grid .memo-side-photo{border-radius:8px!important;border:3px solid #111827!important;box-shadow:4px 4px 0 #111827!important}
+.memo-paper.theme-swiss-grid > .memo-title{background:#111827!important;color:#fef08a!important;border:2px solid #111827!important;border-radius:0!important;box-shadow:4px 4px 0 #eab308!important}
+.memo-paper.theme-swiss-grid .memo-meta{border:2px solid #111827!important;background:#f9fafb!important;padding:8px 10px!important}
+.memo-paper.theme-swiss-grid th{background:#111827!important;color:#fef08a!important;border:2px solid #111827!important}
+.memo-paper.theme-swiss-grid td{border:1.5px solid #111827!important}
+.memo-paper.theme-swiss-grid .memo-total td{background:#fef08a!important;color:#111827!important;font-weight:900!important}
+
 @media(max-width:520px){
   .memo-paper .memo-head .memo-shopline,
   #printArea .memo-head .memo-shopline {
@@ -900,34 +980,35 @@ $('saveShop').onclick=()=>{shop={...shop,name:$('shopName').value.trim()||shop.n
   }
   .memo-paper .memo-head .memo-shopname,
   #printArea .memo-head .memo-shopname {
-    font-size:29px !important;
+    font-size:35px !important;
+    font-weight:800 !important;
     -webkit-text-stroke:0px transparent !important;
     letter-spacing:0px !important;
-    line-height:1.22 !important;
+    line-height:1.18 !important;
   }
   .memo-paper .memo-head .memo-side-photo,
   #printArea .memo-head .memo-side-photo {
-    width:82px !important;
-    height:82px !important;
-    min-width:82px !important;
-    min-height:82px !important;
+    width:84px !important;
+    height:84px !important;
+    min-width:84px !important;
+    min-height:84px !important;
   }
 }
 @media print {
   #printArea .memo-head .memo-shopline {grid-template-columns:25mm minmax(0,1fr) 25mm !important;gap:2mm !important;}
   #printArea .memo-head .memo-shopname {
-    font-size:28px !important;
-    font-weight:700 !important;
+    font-size:36px !important;
+    font-weight:800 !important;
     -webkit-text-stroke:0px transparent !important;
     letter-spacing:0px !important;
-    line-height:1.25 !important;
+    line-height:1.18 !important;
     text-shadow:none !important;
   }
   #printArea .memo-paper > .memo-title {
-    font-size:18px !important;
-    font-weight:700 !important;
+    font-size:20px !important;
+    font-weight:800 !important;
     letter-spacing:0px !important;
-    line-height:1.3 !important;
+    line-height:1.25 !important;
     white-space:nowrap !important;
     text-align:center !important;
     margin:2mm auto 3mm !important;
