@@ -19,9 +19,9 @@
   width:100%!important;
   max-width:100%!important;
   font-family:"Hind Siliguri","Noto Sans Bengali",sans-serif!important;
-  font-size:26px!important;
-  font-weight:800!important;
-  line-height:1.4!important;
+  font-size:32px!important;
+  font-weight:900!important;
+  line-height:1.22!important;
   color:#a51f27!important;
   text-align:center!important;
   white-space:normal!important;
@@ -165,7 +165,7 @@
   #printArea{display:block!important}
   .preview{border:0;padding:0;margin:0 auto;max-width:none;width:100%;background:#fff}
   .memo-paper{box-sizing:border-box;max-width:none;width:100%;height:auto;max-height:none;overflow:hidden;border:5px double #e7a9c0;outline:2px solid #f4d5e0;outline-offset:-11px;padding:13px 15px 10px;break-inside:avoid;page-break-inside:avoid;font-size:12px}
-  .memo-shopname{font-size:26px!important;line-height:1.4!important}
+  .memo-shopname{font-size:32px!important;font-weight:900!important;line-height:1.22!important}
   .memo-title{font-size:18px!important;line-height:1.4!important}
 }
 
@@ -206,11 +206,51 @@
 .memo-paper.theme-swiss-grid .memo-head{background:#fef08a!important;border:3px solid #111827!important}
 .memo-paper.theme-swiss-grid .memo-shopname{color:#111827!important}
 
+/* Five genuinely distinct memo header/layouts */
+.theme-card .theme-swatch.photo-left{background:linear-gradient(90deg,#e5edf5 0 35%,#173b66 35%);color:#173b66}
+.theme-card .theme-swatch.banner{background:linear-gradient(135deg,#1d3557,#457b9d);color:#fff}
+.theme-card .theme-swatch.split-layout{background:linear-gradient(90deg,#102b46 0 38%,#f1f5f9 38%);color:#102b46}
+.theme-card .theme-swatch.minimal{background:#f7f3eb;color:#6b3d24;border-bottom:3px solid #b38a54}
+.theme-card .theme-swatch.dual-photo{background:linear-gradient(90deg,#dbeafe,#fff,#dbeafe);color:#8b1727}
+.memo-paper.theme-photo-left-corporate{border:2px solid #173b66!important;background:#fff!important;padding:16px!important}
+.memo-paper.theme-photo-left-corporate .memo-head{text-align:left!important}
+.memo-paper.theme-photo-left-corporate .memo-shopline{grid-template-columns:145px minmax(0,1fr) 62px!important;gap:12px!important}
+.memo-paper.theme-photo-left-corporate .memo-side-photo:first-child{width:140px!important;height:140px!important;border-radius:12px!important}
+.memo-paper.theme-photo-left-corporate .memo-side-photo:last-child{width:58px!important;height:58px!important;border-radius:10px!important}
+.memo-paper.theme-photo-left-corporate .memo-shopname{font-size:34px!important;color:#173b66!important;text-align:left!important}
+.memo-paper.theme-photo-left-corporate .memo-tagline{text-align:left!important;margin:8px 0!important}
+.memo-paper.theme-full-banner{border:3px solid #1d3557!important;padding:14px!important}
+.memo-paper.theme-full-banner .memo-head{border:0!important}
+.memo-paper.theme-full-banner .memo-shopline{display:flex!important;flex-direction:column!important;gap:8px!important}
+.memo-paper.theme-full-banner .memo-side-photo:first-child{width:100%!important;height:135px!important;max-width:100%!important;border-radius:5px!important}
+.memo-paper.theme-full-banner .memo-side-photo:last-child{width:58px!important;height:58px!important}
+.memo-paper.theme-full-banner .memo-shopname{font-size:35px!important;color:#1d3557!important}
+.memo-paper.theme-full-banner .memo-tagline{background:#edf4f8!important;padding:7px!important;border-left:5px solid #457b9d!important}
+.memo-paper.theme-modern-split-layout{border:0!important;border-left:12px solid #102b46!important;background:#f8fafc!important;padding:16px!important}
+.memo-paper.theme-modern-split-layout .memo-head{text-align:left!important;border:0!important}
+.memo-paper.theme-modern-split-layout .memo-shopline{grid-template-columns:132px minmax(0,1fr) 56px!important;gap:10px!important}
+.memo-paper.theme-modern-split-layout .memo-side-photo:first-child{width:128px!important;height:150px!important;border-radius:8px!important}
+.memo-paper.theme-modern-split-layout .memo-side-photo:last-child{width:52px!important;height:52px!important}
+.memo-paper.theme-modern-split-layout .memo-shopname{font-size:33px!important;color:#102b46!important;text-align:left!important}
+.memo-paper.theme-modern-split-layout .memo-tagline{text-align:left!important;margin:8px 0!important}
+.memo-paper.theme-minimal-premium{border:1px solid #b38a54!important;outline:0!important;background:#fffdf8!important;padding:20px!important}
+.memo-paper.theme-minimal-premium:before{inset:8px!important;border:1px solid #e6d7bd!important}
+.memo-paper.theme-minimal-premium .memo-head{border-bottom:1px solid #b38a54!important;padding-bottom:14px!important}
+.memo-paper.theme-minimal-premium .memo-shopline{grid-template-columns:72px minmax(0,1fr) 72px!important}
+.memo-paper.theme-minimal-premium .memo-side-photo{width:68px!important;height:68px!important;border-radius:8px!important;border:1px solid #b38a54!important}
+.memo-paper.theme-minimal-premium .memo-shopname{font-size:34px!important;color:#6b3d24!important}
+.memo-paper.theme-minimal-premium .memo-title{background:#6b3d24!important;border-radius:0!important}
+.memo-paper.theme-dual-photo-header{border:4px double #8b1727!important;padding:16px!important}
+.memo-paper.theme-dual-photo-header .memo-shopline{grid-template-columns:1fr 1fr!important;grid-template-rows:auto auto!important;gap:8px 14px!important}
+.memo-paper.theme-dual-photo-header .memo-side-photo{width:100%!important;height:110px!important;max-width:100%!important;border-radius:10px!important}
+.memo-paper.theme-dual-photo-header .memo-shopname{grid-column:1/-1!important;grid-row:2!important;font-size:36px!important;color:#8b1727!important}
+@media print{.memo-paper.theme-photo-left-corporate .memo-shopname,.memo-paper.theme-modern-split-layout .memo-shopname{font-size:30px!important}.memo-paper.theme-full-banner .memo-shopname,.memo-paper.theme-minimal-premium .memo-shopname{font-size:31px!important}.memo-paper.theme-dual-photo-header .memo-shopname{font-size:32px!important}}
+
 /* A4 preview/print correction: keep a true A4 canvas instead of content-sized receipt */
 .preview{width:794px!important;max-width:none!important;min-width:794px!important;padding:0!important;margin:0 auto!important;box-sizing:border-box!important}
 .memo-paper{width:100%!important;max-width:none!important;min-height:1123px;box-sizing:border-box!important;overflow:visible!important}
 .memo-paper .memo-shopline{grid-template-columns:92px minmax(0,1fr) 92px!important;gap:12px!important;width:100%!important}
-.memo-paper .memo-shopname{min-width:0!important;white-space:normal!important;word-break:normal!important;overflow-wrap:normal!important;line-break:strict!important;hyphens:none!important;font-size:27px!important;font-weight:900!important;line-height:1.25!important;padding:0 4px!important}
+.memo-paper .memo-shopname{min-width:0!important;white-space:normal!important;word-break:normal!important;overflow-wrap:normal!important;line-break:strict!important;hyphens:none!important;font-size:32px!important;font-weight:900!important;line-height:1.2!important;padding:0 4px!important}
 .memo-paper .memo-title{white-space:nowrap!important;word-break:keep-all!important;overflow-wrap:normal!important;min-width:260px!important;max-width:90%!important;font-size:19px!important;line-height:1.3!important;padding:7px 18px!important}
 .memo-paper .memo-side-photo{width:92px!important;height:92px!important;max-width:100%!important}
 @media print{
@@ -355,7 +395,12 @@ const themeCatalog=[
 {id:'mughal-shahi',name:'Mughal Shahi Red (নতুন)',css:'theme-mughal-shahi',swatch:'shahi',desc:'Royalcrimson-gold ornate frame, golden ring logos & traditional look'},
 {id:'modern-split',name:'Modern Split Invoice (নতুন)',css:'theme-modern-split',swatch:'split',desc:'Indigo-violet corporate layout, rounded square HD logos & angled badge'},
 {id:'rose-gold',name:'Luxury Rose Gold (নতুন)',css:'theme-rose-gold',swatch:'rosegold',desc:'Soft rose-gold metallic frame, pill title & studio portrait logo ring'},
-{id:'swiss-grid',name:'Minimal Swiss Grid (নতুন)',css:'theme-swiss-grid',swatch:'swiss',desc:'Ultra-clean architectural black-yellow grid, boxed logos & sharp borders'}];
+{id:'swiss-grid',name:'Minimal Swiss Grid (নতুন)',css:'theme-swiss-grid',swatch:'swiss',desc:'Ultra-clean architectural black-yellow grid, boxed logos & sharp borders'},
+{id:'photo-left-corporate',name:'Photo Left Corporate',css:'theme-photo-left-corporate',swatch:'photo-left',desc:'এক পাশে বড় ছবি, পাশে বড় দোকানের নাম ও নিচে বিবরণ'},
+{id:'full-banner',name:'Full Width Banner',css:'theme-full-banner',swatch:'banner',desc:'উপরে চওড়া ছবি, নিচে দোকানের নাম ও যোগাযোগ'},
+{id:'modern-split-layout',name:'Modern Split Layout',css:'theme-modern-split-layout',swatch:'split-layout',desc:'বাম পাশে ছবির প্যানেল, ডানে দোকানের নাম ও সার্ভিস বিবরণ'},
+{id:'minimal-premium',name:'Minimal Premium',css:'theme-minimal-premium',swatch:'minimal',desc:'পরিচ্ছন্ন প্রিমিয়াম টাইপোগ্রাফি ও সূক্ষ্ম লাইন'},
+{id:'dual-photo-header',name:'Dual Photo Header',css:'theme-dual-photo-header',swatch:'dual-photo',desc:'দুই পাশে বড় ছবি, মাঝখানে বড় দোকানের নাম'}];
 
 let activeDesign='royal-gold',selectedTheme='royal-gold';try{activeDesign=localStorage.getItem('alaminActiveMemoDesign')||'royal-gold';if(!themeCatalog.some(d=>d.id===activeDesign))activeDesign='royal-gold';selectedTheme=activeDesign}catch(e){activeDesign='royal-gold';selectedTheme='royal-gold'}
 function applyMemoDesign(d){activeDesign=d?.id||'royal-gold';selectedTheme=activeDesign;try{localStorage.setItem('alaminActiveMemoDesign',activeDesign)}catch(e){}renderDesigns()}
@@ -365,7 +410,25 @@ $('applySelectedTheme').onclick=()=>{const d=themeCatalog.find(x=>x.id===selecte
 $('resetDesign').onclick=()=>{selectedTheme='royal-gold';applyMemoDesign(themeCatalog[0])};renderDesigns();
 
 function getTermsHtml(){const lines=Array.isArray(shop.terms)?shop.terms:(typeof shop.terms==='string'?shop.terms.split(/\r?\n/):[]);return lines.filter(Boolean).map(x=>'• '+esc(x)).join('<br>')}
-function memoMarkup(m,mode){let it=m.items||getItems(),t=m.total!==undefined?m:({...formMemo(),...m}),isSmall=mode==='small';let customer=esc(t.customer_name??$('customer').value??''),phone=esc(t.customer_phone??$('phone').value??'');let rawDate=t.memo_date||$('memoDate').value||now(),dateObj=new Date(rawDate),datePart=esc(dateObj.toLocaleDateString('bn-BD')),timePart=esc(dateObj.toLocaleTimeString('bn-BD',{hour:'2-digit',minute:'2-digit'}));let mobile=(shop.phone||'01768421801').split(/\r?\n/).map(x=>x.trim()).filter(Boolean),wa=(shop.whatsapp||'01834313778').split(/\r?\n/).map(x=>x.trim()).filter(Boolean);let contacts=[...mobile.map(x=>`<span class="contact-line">Mobile: ${esc(x)}</span>`),...wa.map(x=>`<span class="contact-line">WhatsApp: ${esc(x)}</span>`) ].join('');let theme=themeCatalog.find(d=>d.id===activeDesign)||themeCatalog[0],designClass=' '+theme.css;let memoNo=t.memo_number&&t.memo_number!=='সংরক্ষণের সময় তৈরি হবে'?t.memo_number:'খসড়া';return `<div class="preview ${isSmall?'small':''}" data-memo-id="${esc(t.id||'')}"><div class="memo-paper${it.length>6?' many-items':''}${designClass}"><div class="memo-head"><div class="memo-bismillah">বিসমিল্লাহির রাহমানির রাহিম</div><div class="memo-shopline"><img class="memo-side-photo ${shop.photoLeft?'':'empty'}" src="${shop.photoLeft||''}" alt="প্রোফাইল ছবি"><div class="memo-shopname">${esc(shop.name)}</div><img class="memo-side-photo ${shop.photoRight?'':'empty'}" src="${shop.photoRight||''}" alt="কম্পিউটার লোগো"></div><p class="memo-tagline">${esc(shop.address||'এখানে ল্যাপটপ, কম্পিউটার সার্ভিসিংসহ বিভিন্ন ইলেকট্রিক ও ইলেকট্রনিক্সের কাজ যত্নসহকারে করা হয়।')}</p><div class="memo-contact"><div class="memo-owner">${esc(shop.owner||'প্রোঃ মোঃ আল আমিন')}</div><div class="memo-contact-list">${contacts}</div></div></div><div class="memo-title">${esc(shop.memoTitle||'ক্যাশ মেমো / CASH MEMO')}</div>${shop.bodyBg?`<div class="memo-body-watermark"><img src="${esc(shop.bodyBg)}" alt=""></div>`:''}<div class="memo-meta"><div class="memo-number-cell">মেমো নং: <b>${esc(memoNo)}</b></div><div class="memo-date-cell"><span class="memo-date-label">তারিখ ও সময়</span><div class="memo-date-values"><b class="memo-date-date">${datePart}</b><b class="memo-date-time">${timePart}</b></div></div><div class="memo-customer-row"><strong class="memo-field-label">গ্রাহকের নাম:</strong> <span>${customer||'........................................................'}</span></div><div class="memo-address-row"><span><strong class="memo-field-label">গ্রাহকের ঠিকানা:</strong> ${esc(t.customer_address||'........................................................')}</span><span><strong class="memo-field-label">ফোন নম্বর:</strong> ${phone||'........................'}</span></div></div><table><thead><tr><th style="width:7%">ক্র. নং<br>Sl No</th><th>বিবরণ / Description</th><th style="width:14%">ওয়ারেন্টি</th><th style="width:12%">পরিমাণ<br>Quantity</th><th style="width:14%">দর / Rate</th><th style="width:17%">টাকা / Amount</th></tr></thead><tbody>${it.map((i,n)=>`<tr><td style="text-align:center">${n+1}.</td><td><span class="product-name">${esc(i.name)}</span>${i.category?`<small class="item-code">${esc(i.category)}</small>`:''}</td><td>${esc(i.warranty||'—')}</td><td style="text-align:center">${i.qty}</td><td>${money(i.price)}</td><td>${money(i.qty*i.price)}</td></tr>`).join('')}</tbody><tfoot><tr><td colspan="4" rowspan="5" style="vertical-align:top;text-align:left;font-size:11px;line-height:1.55"><b style="color:#1756a9">শর্তাবলী:</b><br>${getTermsHtml()}</td><td>মোট</td><td>${money(t.subtotal)}</td></tr><tr><td>ছাড়</td><td>${money(t.discount)}</td></tr><tr class="memo-total"><td>সর্বমোট</td><td>${money(t.total)}</td></tr><tr><td>নগদ / পরিশোধ</td><td>${money(t.paid)}</td></tr><tr><td>বাকি</td><td>${money(t.due)}</td></tr></tfoot></table><div class="memo-signs"><div class="customer-sign">গ্রাহকের স্বাক্ষর</div><div class="authority-sign">কর্তৃপক্ষের স্বাক্ষর</div></div><div class="memo-footer">${esc(shop.footer||'ধন্যবাদ, আবার আসবেন।')}</div></div></div>`}
+function memoMarkup(m,mode){
+ let it=m.items||getItems(),t=m.total!==undefined?m:({...formMemo(),...m}),isSmall=mode==='small';
+ let customer=esc(t.customer_name??$('customer').value??''),phone=esc(t.customer_phone??$('phone').value??'');
+ let rawDate=t.memo_date||$('memoDate').value||now(),dateObj=new Date(rawDate),datePart=esc(dateObj.toLocaleDateString('bn-BD')),timePart=esc(dateObj.toLocaleTimeString('bn-BD',{hour:'2-digit',minute:'2-digit'}));
+ let mobile=(shop.phone||'01768421801').split(/\r?\n/).map(x=>x.trim()).filter(Boolean),wa=(shop.whatsapp||'01834313778').split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
+ let contacts=[...mobile.map(x=>`<span class="contact-line">Mobile: ${esc(x)}</span>`),...wa.map(x=>`<span class="contact-line">WhatsApp: ${esc(x)}</span>`) ].join('');
+ let theme=themeCatalog.find(d=>d.id===activeDesign)||themeCatalog[0],designClass=' '+theme.css;
+ let photoL=`<img class="memo-side-photo ${shop.photoLeft?'':'empty'}" src="${esc(shop.photoLeft||'')}" alt="প্রোফাইল ছবি">`,photoR=`<img class="memo-side-photo ${shop.photoRight?'':'empty'}" src="${esc(shop.photoRight||'')}" alt="কম্পিউটার লোগো">`;
+ let shopName=`<div class="memo-shopname">${esc(shop.name)}</div>`;
+ let tagline=`<p class="memo-tagline">${esc(shop.address||'এখানে ল্যাপটপ, কম্পিউটার সার্ভিসিংসহ বিভিন্ন ইলেকট্রিক ও ইলেকট্রনিক্সের কাজ যত্নসহকারে করা হয়।')}</p>`;
+ let shopContact=`<div class="memo-contact"><div class="memo-owner">${esc(shop.owner||'প্রোঃ মোঃ আল আমিন')}</div><div class="memo-contact-list">${contacts}</div></div>`;
+ let shopLine;
+ if(theme.id==='full-banner') shopLine=`<div class="memo-shopline">${photoL}${shopName}${photoR}</div>`;
+ else if(theme.id==='dual-photo-header') shopLine=`<div class="memo-shopline">${photoL}${photoR}${shopName}</div>`;
+ else shopLine=`<div class="memo-shopline">${photoL}${shopName}${photoR}</div>`;
+ let headerMarkup=`<div class="memo-head layout-${theme.id}"><div class="memo-bismillah">বিসমিল্লাহির রাহমানির রাহিম</div>${shopLine}${tagline}${shopContact}</div>`;
+ let memoNo=t.memo_number&&t.memo_number!=='সংরক্ষণের সময় তৈরি হবে'?t.memo_number:'খসড়া';
+ return `<div class="preview ${isSmall?'small':''}" data-memo-id="${esc(t.id||'')}"><div class="memo-paper${it.length>6?' many-items':''}${designClass}">${headerMarkup}<div class="memo-title">${esc(shop.memoTitle||'ক্যাশ মেমো / CASH MEMO')}</div>${shop.bodyBg?`<div class="memo-body-watermark"><img src="${esc(shop.bodyBg)}" alt=""></div>`:''}<div class="memo-meta"><div class="memo-number-cell">মেমো নং: <b>${esc(memoNo)}</b></div><div class="memo-date-cell"><span class="memo-date-label">তারিখ ও সময়</span><div class="memo-date-values"><b class="memo-date-date">${datePart}</b><b class="memo-date-time">${timePart}</b></div></div><div class="memo-customer-row"><strong class="memo-field-label">গ্রাহকের নাম:</strong> <span>${customer||'........................................................'}</span></div><div class="memo-address-row"><span><strong class="memo-field-label">গ্রাহকের ঠিকানা:</strong> ${esc(t.customer_address||'........................................................')}</span><span><strong class="memo-field-label">ফোন নম্বর:</strong> ${phone||'........................'}</span></div></div><table><thead><tr><th style="width:7%">ক্র. নং<br>Sl No</th><th>বিবরণ / Description</th><th style="width:14%">ওয়ারেন্টি</th><th style="width:12%">পরিমাণ<br>Quantity</th><th style="width:14%">দর / Rate</th><th style="width:17%">টাকা / Amount</th></tr></thead><tbody>${it.map((i,n)=>`<tr><td style="text-align:center">${n+1}.</td><td><span class="product-name">${esc(i.name)}</span>${i.category?`<small class="item-code">${esc(i.category)}</small>`:''}</td><td>${esc(i.warranty||'—')}</td><td style="text-align:center">${i.qty}</td><td>${money(i.price)}</td><td>${money(i.qty*i.price)}</td></tr>`).join('')}</tbody><tfoot><tr><td colspan="4" rowspan="5" style="vertical-align:top;text-align:left;font-size:11px;line-height:1.55"><b style="color:#1756a9">শর্তাবলী:</b><br>${getTermsHtml()}</td><td>মোট</td><td>${money(t.subtotal)}</td></tr><tr><td>ছাড়</td><td>${money(t.discount)}</td></tr><tr class="memo-total"><td>সর্বমোট</td><td>${money(t.total)}</td></tr><tr><td>নগদ / পরিশোধ</td><td>${money(t.paid)}</td></tr><tr><td>বাকি</td><td>${money(t.due)}</td></tr></tfoot></table><div class="memo-signs"><div class="customer-sign">গ্রাহকের স্বাক্ষর</div><div class="authority-sign">কর্তৃপক্ষের স্বাক্ষর</div></div><div class="memo-footer">${esc(shop.footer||'ধন্যবাদ, আবার আসবেন।')}</div></div></div>`;
+}
 
 function printMemo(m,mode){
  if(!m||!m.id||!m.memo_number){msg('memoMsg','আগে মেমোটি সংরক্ষণ করুন।',true);return}
