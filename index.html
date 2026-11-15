@@ -286,6 +286,40 @@
 .memo-meta .memo-address-row{align-items:flex-start!important;line-height:1.55!important;}
 .memo-meta .memo-address-row>span{min-width:0!important;overflow-wrap:anywhere!important;}
 
+/* Image cropper: keep the crop canvas centered and bounded on every screen */
+.crop-modal{
+  position:fixed!important;inset:0!important;z-index:100000!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  padding:14px!important;box-sizing:border-box!important;
+  background:rgba(8,18,32,.78)!important;overflow-y:auto!important;
+}
+.crop-modal .crop-box{
+  width:min(100%,440px)!important;max-height:calc(100dvh - 28px)!important;
+  margin:auto!important;padding:16px!important;box-sizing:border-box!important;
+  border-radius:16px!important;background:#fff!important;color:#172334!important;
+  box-shadow:0 18px 60px rgba(0,0,0,.35)!important;overflow-y:auto!important;
+}
+.crop-modal .crop-frame{
+  position:relative!important;display:block!important;width:min(100%,340px)!important;
+  height:clamp(210px,38vh,320px)!important;margin:12px auto!important;
+  overflow:hidden!important;background:#e8edf3!important;border:2px dashed #8da2b8!important;
+  border-radius:12px!important;touch-action:none!important;user-select:none!important;
+}
+.crop-modal .crop-frame.logo-crop{border-radius:12px!important;}
+.crop-modal .crop-frame #cropImage{
+  position:absolute!important;display:block!important;max-width:none!important;max-height:none!important;
+  width:auto;height:auto;margin:0!important;padding:0!important;object-fit:fill!important;
+  pointer-events:none!important;user-select:none!important;-webkit-user-drag:none!important;
+}
+.crop-modal .crop-controls{width:min(100%,340px)!important;margin:0 auto!important;}
+.crop-modal .crop-controls input[type=range]{display:block!important;width:100%!important;margin:10px 0 16px!important;}
+.crop-modal .actions{display:flex!important;justify-content:center!important;gap:10px!important;flex-wrap:wrap!important;}
+@media(max-width:480px){
+  .crop-modal{padding:10px!important;}
+  .crop-modal .crop-box{padding:13px!important;max-height:calc(100dvh - 20px)!important;}
+  .crop-modal .crop-frame{height:clamp(190px,34vh,270px)!important;width:min(100%,310px)!important;}
+}
+
 /* A4 print: constrain the memo to exactly one printable page */
 @media print{
   @page{size:A4 portrait;margin:5mm}
