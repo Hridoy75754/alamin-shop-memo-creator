@@ -175,6 +175,25 @@
 .memo-paper.theme-swiss-grid{border:4px solid #111827!important;background:#ffffff!important}
 .memo-paper.theme-swiss-grid .memo-head{background:#fef08a!important;border:3px solid #111827!important}
 .memo-paper.theme-swiss-grid .memo-shopname{color:#111827!important}
+
+/* A4 preview/print correction: keep a true A4 canvas instead of content-sized receipt */
+.preview{width:794px!important;max-width:none!important;min-width:794px!important;padding:0!important;margin:0 auto!important;box-sizing:border-box!important}
+.memo-paper{width:100%!important;max-width:none!important;min-height:1123px;box-sizing:border-box!important;overflow:visible!important}
+.memo-paper .memo-shopline{grid-template-columns:92px minmax(0,1fr) 92px!important;gap:12px!important;width:100%!important}
+.memo-paper .memo-shopname{min-width:0!important;white-space:normal!important;word-break:normal!important;overflow-wrap:normal!important;line-break:strict!important;hyphens:none!important;font-size:27px!important;font-weight:900!important;line-height:1.25!important;padding:0 4px!important}
+.memo-paper .memo-title{white-space:nowrap!important;word-break:keep-all!important;overflow-wrap:normal!important;min-width:260px!important;max-width:90%!important;font-size:19px!important;line-height:1.3!important;padding:7px 18px!important}
+.memo-paper .memo-side-photo{width:92px!important;height:92px!important;max-width:100%!important}
+@media print{
+  @page{size:A4 portrait;margin:5mm}
+  html,body{width:100%!important;margin:0!important;padding:0!important;background:#fff!important}
+  #printArea{display:block!important;width:200mm!important;margin:0!important;padding:0!important}
+  #printArea .preview{width:200mm!important;min-width:200mm!important;max-width:200mm!important;padding:0!important;margin:0!important}
+  #printArea .memo-paper{width:200mm!important;min-height:287mm!important;height:auto!important;max-height:none!important;overflow:visible!important;padding:13px 15px 10px!important;break-inside:avoid!important;page-break-inside:avoid!important}
+  #printArea .memo-shopline{grid-template-columns:25mm minmax(0,1fr) 25mm!important;gap:3mm!important}
+  #printArea .memo-side-photo{width:25mm!important;height:25mm!important}
+  #printArea .memo-shopname{font-size:24px!important;line-height:1.2!important;word-break:normal!important;overflow-wrap:normal!important}
+  #printArea .memo-title{font-size:17px!important;white-space:nowrap!important}
+}
 </style>
 </head><body>
 <header class="top"><div class="topin"><div class="brand"><div class="top-avatar" id="topAvatar"><span class="top-avatar-placeholder">🖥️</span></div><div><h1>আলামিন কম্পিউটার এন্ড সার্ভিসিং সেন্টার</h1><p>Premium Memo · Sales · Due Ledger</p></div></div><div id="topUser" class="actions hidden"><span id="userEmail"></span><button id="logout" class="secondary">লগআউট</button></div></div></header>
@@ -302,13 +321,13 @@ async function downloadMemoPdf(m){
  const host=document.createElement('div');host.style.cssText='position:fixed;left:-10000px;top:0;width:794px;background:#fff;z-index:-1;';
  host.innerHTML=memoMarkup(m,'color');document.body.appendChild(host);
  const paper=host.querySelector('.preview');if(!paper){host.remove();return}
- paper.style.width='794px';paper.style.maxWidth='none';paper.style.margin='0';paper.style.transform='none';
+ paper.style.width='794px';paper.style.minWidth='794px';paper.style.maxWidth='none';paper.style.padding='0';paper.style.margin='0';paper.style.transform='none';const memoPaper=paper.querySelector('.memo-paper');if(memoPaper){memoPaper.style.width='794px';memoPaper.style.minHeight='1123px';memoPaper.style.maxWidth='none';}
  if(document.fonts&&document.fonts.ready){try{await document.fonts.ready}catch(_){}}
  const safeNo=String(m.memo_number||$('memoNo').value||'memo').replace(/[^A-Za-z0-9_-]/g,'-');
  const options={margin:0,filename:`Memo-${safeNo}.pdf`,image:{type:'jpeg',quality:0.98},html2canvas:{scale:2,useCORS:true,backgroundColor:'#ffffff',scrollX:0,scrollY:0},jsPDF:{unit:'mm',format:'a4',orientation:'portrait'},pagebreak:{mode:['avoid-all','css','legacy']}};
  try{await html2pdf().set(options).from(paper).save()}catch(e){alert('PDF ত্রুটি: '+(e.message||e))}finally{host.remove()}
 }
-function showA4Preview(modal,markup,printAction){modal.classList.add('memo-preview-modal');modal.innerHTML=`<div class="preview-toolbar"><button type="button" class="secondary" id="fitView">Fit</button><button type="button" class="secondary" id="zoomOut">−</button><strong id="zoomLabel">Fit</strong><button type="button" class="secondary" id="zoomIn">+</button><button type="button" class="green" id="previewDownload">⬇️ PDF ডাউনলোড</button><button type="button" id="previewPrint">প্রিন্ট</button><button type="button" class="danger" id="closePreview">বন্ধ</button></div><div class="preview-stage" id="a4Stage">${markup}</div>`;document.body.append(modal);const stage=modal.querySelector('#a4Stage'),paper=stage.querySelector('.preview');let scale=1;const fit=()=>{scale=Math.min(1,(stage.clientWidth-16)/794);apply('Fit')};const apply=label=>{paper.style.transform=`scale(${scale})`;paper.style.transformOrigin='top left';paper.style.marginLeft='0';paper.style.marginBottom=`${Math.max(0,(scale-1)*paper.offsetHeight)}px`;stage.style.minHeight='0';modal.querySelector('#zoomLabel').textContent=label||Math.round(scale*100)+'%';stage.scrollLeft=0};modal.querySelector('#fitView').onclick=fit;modal.querySelector('#zoomIn').onclick=()=>{scale=Math.min(2.5,scale+.15);apply()};modal.querySelector('#zoomOut').onclick=()=>{scale=Math.max(.35,scale-.15);apply()};modal.querySelector('#closePreview').onclick=()=>modal.remove();modal.querySelector('#previewDownload').onclick=()=>{const m=modal.querySelector('.preview')?.dataset?.memoId;modal.remove();if(m){const found=memos.find(x=>String(x.id)===String(m));downloadMemoPdf(found)}else downloadMemoPdf(formMemo())};modal.querySelector('#previewPrint').onclick=()=>{modal.remove();printAction()};const ro=new ResizeObserver(()=>fit());ro.observe(stage);fit()}
+function showA4Preview(modal,markup,printAction){modal.classList.add('memo-preview-modal');modal.innerHTML=`<div class="preview-toolbar"><button type="button" class="secondary" id="fitView">Fit</button><button type="button" class="secondary" id="zoomOut">−</button><strong id="zoomLabel">Fit</strong><button type="button" class="secondary" id="zoomIn">+</button><button type="button" class="green" id="previewDownload">⬇️ PDF ডাউনলোড</button><button type="button" id="previewPrint">প্রিন্ট</button><button type="button" class="danger" id="closePreview">বন্ধ</button></div><div class="preview-stage" id="a4Stage">${markup}</div>`;document.body.append(modal);const stage=modal.querySelector('#a4Stage'),paper=stage.querySelector('.preview');let scale=1;const fit=()=>{scale=Math.min(1,(stage.clientWidth-16)/794);apply('Fit')};const apply=label=>{paper.style.transform=`scale(${scale})`;paper.style.transformOrigin='top left';paper.style.marginLeft='0';paper.style.marginBottom=`-${Math.max(0,paper.offsetHeight*(1-scale))}px`;stage.style.minHeight='0';modal.querySelector('#zoomLabel').textContent=label||Math.round(scale*100)+'%';stage.scrollLeft=0};modal.querySelector('#fitView').onclick=fit;modal.querySelector('#zoomIn').onclick=()=>{scale=Math.min(2.5,scale+.15);apply()};modal.querySelector('#zoomOut').onclick=()=>{scale=Math.max(.35,scale-.15);apply()};modal.querySelector('#closePreview').onclick=()=>modal.remove();modal.querySelector('#previewDownload').onclick=()=>{const m=modal.querySelector('.preview')?.dataset?.memoId;modal.remove();if(m){const found=memos.find(x=>String(x.id)===String(m));downloadMemoPdf(found)}else downloadMemoPdf(formMemo())};modal.querySelector('#previewPrint').onclick=()=>{modal.remove();printAction()};const ro=new ResizeObserver(()=>fit());ro.observe(stage);fit()}
 function openSavedMemoPreview(m){if(!m)return;const modal=document.createElement('div');showA4Preview(modal,memoMarkup(m,'color'),()=>printMemo(m,'color'))}
 function openMemoPreview(){const modal=document.createElement('div');showA4Preview(modal,memoMarkup(formMemo(),'color'),()=>printMemo(formMemo(),'color'))}
 
