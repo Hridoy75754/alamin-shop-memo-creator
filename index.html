@@ -7,12 +7,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <style>
 :root{--navy:#102b46;--blue:#1769aa;--bg:#f3f6fa;--ink:#172536;--muted:#64748b;--line:#dce4ed;--green:#16845b;--red:#b42318}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans Bengali","Noto Sans",Arial,sans-serif}button,input,select{font:inherit}button{border:0;border-radius:9px;padding:10px 13px;background:var(--blue);color:#fff;font-weight:700;cursor:pointer}.secondary{background:#eaf1f8;color:var(--navy);border:1px solid var(--line)}.green{background:var(--green)}.danger{background:#fff0ef;color:var(--red);border:1px solid #f2c8c5}.small{padding:6px 8px;font-size:12px}.top{background:linear-gradient(120deg,#102b46,#1769aa);color:#fff;padding:18px}.topin{max-width:1150px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.brand{display:flex;gap:12px;align-items:center}.logo{font-size:28px;background:#ffffff20;border-radius:14px;padding:10px}.top-avatar{width:82px;height:82px;flex:0 0 82px;border-radius:50%;overflow:hidden;background:#ffffff20;border:2px solid #ffffffa8;display:flex;align-items:center;justify-content:center}.top-avatar img{width:100%;height:100%;object-fit:cover;display:block}.top-avatar .top-avatar-placeholder{font-size:38px;line-height:1}.top h1{font-size:clamp(20px,3vw,28px);margin:0}.top p{margin:4px 0;color:#e2efff}.wrap{max-width:1150px;margin:18px auto;padding:0 12px 36px}.card{background:white;border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px;box-shadow:0 3px 12px #102b4608}.card h2{font-size:19px;margin:0 0 14px}.login{max-width:440px;margin:30px auto}.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:12px}.field{grid-column:span 4;min-width:0}.w6{grid-column:span 6}.w12{grid-column:span 12}.w8{grid-column:span 8}label{display:block;font-size:13px;font-weight:700;color:#41536a;margin-bottom:5px}input,select{width:100%;padding:10px;border:1px solid #cbd6e2;border-radius:9px;background:white;color:var(--ink);min-width:0}.tabs{display:flex;gap:8px;overflow:auto;margin-bottom:14px}.tab{white-space:nowrap;background:white;color:var(--navy);border:1px solid var(--line)}.tab.active{background:var(--navy);color:white}.panel{display:none}.panel.active{display:block}.actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:10px}table{border-collapse:collapse;width:100%;min-width:600px}th,td{padding:9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}th{background:#eef3f8;font-size:13px}td input{padding:7px;min-width:65px}.num{text-align:right}.summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0}.stat{border:1px solid var(--line);border-radius:12px;padding:12px;background:#fbfdff}.stat span{display:block;font-size:12px;color:var(--muted)}.stat strong{display:block;font-size:20px;margin-top:5px;overflow-wrap:anywhere}.note{font-size:13px;color:var(--muted);line-height:1.5}.hidden{display:none!important}.error{color:#a51e16;background:#fff0ef;padding:9px;border-radius:8px}.mini{font-size:12px;color:var(--muted)}#printArea{background:#fff}.preview{max-width:780px;margin:auto;padding:20px;color:#111;background:#fff}.preview h2{text-align:center;margin:0}.preview-toolbar{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;padding:10px;background:#eef3f8;border:1px solid var(--line);border-radius:10px;margin:0 auto 12px;max-width:820px}.preview-stage{overflow:auto;max-height:75vh;background:#e8edf3;padding:14px;border-radius:10px}.preview-stage .preview{transform-origin:top center;transition:transform .15s}.memo-preview-modal{position:fixed;inset:0;background:#101820dd;z-index:9999;overflow:auto;padding:14px}.memo-preview-modal .preview{max-width:820px}.memo-preview-modal .preview-stage{max-height:calc(100vh - 110px)}.warranty-input{width:100%;min-width:90px!important;padding:6px!important;font-size:12px}.memo-contact{display:flex;flex-direction:column;align-items:flex-start;gap:3px}.memo-contact .contact-line{display:block;overflow-wrap:anywhere;max-width:100%}.memo-tagline{overflow-wrap:anywhere;word-break:normal;padding:0 4px;font-weight:800;color:#263746}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans Bengali","Noto Sans",Arial,sans-serif}button,input,select{font:inherit}button{border:0;border-radius:9px;padding:10px 13px;background:var(--blue);color:#fff;font-weight:700;cursor:pointer}.secondary{background:#eaf1f8;color:var(--navy);border:1px solid var(--line)}.green{background:var(--green)}.danger{background:#fff0ef;color:var(--red);border:1px solid #f2c8c5}.small{padding:6px 8px;font-size:12px}.top{background:linear-gradient(120deg,#102b46,#1769aa);color:#fff;padding:18px}.topin{max-width:1150px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.brand{display:flex;gap:12px;align-items:center}.logo{font-size:28px;background:#ffffff20;border-radius:14px;padding:10px}.top-avatar{width:82px;height:82px;flex:0 0 82px;border-radius:50%;overflow:hidden;background:#ffffff20;border:2px solid #ffffffa8;display:flex;align-items:center;justify-content:center}.top-avatar img{width:100%;height:100%;object-fit:cover;display:block}.top-avatar .top-avatar-placeholder{font-size:38px;line-height:1}.top h1{font-size:clamp(20px,3vw,28px);margin:0}.top p{margin:4px 0;color:#e2efff}.wrap{max-width:1150px;margin:18px auto;padding:0 12px 36px}.card{background:white;border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px;box-shadow:0 3px 12px #102b4608}.card h2{font-size:19px;margin:0 0 14px}.login{max-width:440px;margin:30px auto}.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:12px}.field{grid-column:span 4;min-width:0}.w6{grid-column:span 6}.w12{grid-column:span 12}.w8{grid-column:span 8}label{display:block;font-size:13px;font-weight:700;color:#41536a;margin-bottom:5px}input,select{width:100%;padding:10px;border:1px solid #cbd6e2;border-radius:9px;background:white;color:var(--ink);min-width:0}.tabs{display:flex;gap:8px;overflow:auto;margin-bottom:14px}.tab{white-space:nowrap;background:white;color:var(--navy);border:1px solid var(--line)}.tab.active{background:var(--navy);color:white}.panel{display:none}.panel.active{display:block}.actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:10px}table{border-collapse:collapse;width:100%;min-width:600px}th,td{padding:9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}th{background:#eef3f8;font-size:13px}td input{padding:7px;min-width:65px}.num{text-align:right}.summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0}.stat{border:1px solid var(--line);border-radius:12px;padding:12px;background:#fbfdff}.stat span{display:block;font-size:12px;color:var(--muted)}.stat strong{display:block;font-size:20px;margin-top:5px;overflow-wrap:anywhere}.note{font-size:13px;color:var(--muted);line-height:1.5}.hidden{display:none!important}.error{color:#a51e16;background:#fff0ef;padding:9px;border-radius:8px}.mini{font-size:12px;color:var(--muted)}#printArea{background:#fff}.preview{max-width:780px;margin:auto;padding:20px;color:#111;background:#fff}.preview h2{text-align:center;margin:0}.preview-toolbar{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;padding:10px;background:#eef3f8;border:1px solid var(--line);border-radius:10px;margin:0 auto 12px;max-width:820px}.preview-stage{overflow:auto;max-height:75vh;background:#e8edf3;padding:14px;border-radius:10px}.preview-stage .preview{transform-origin:top center;transition:transform .15s}.memo-preview-modal{position:fixed;inset:0;background:#101820dd;z-index:9999;overflow:auto;padding:14px}.memo-preview-modal .preview{max-width:820px}.memo-preview-modal .preview-stage{max-height:calc(100vh - 110px)}.warranty-input{width:100%;min-width:90px!important;padding:6px!important;font-size:12px}
 
 .memo-paper{font-family:"Hind Siliguri","Noto Sans Bengali",Arial,sans-serif;color:#171717;background:#fff;border:5px double #e7a9c0;outline:2px solid #f4d5e0;outline-offset:-11px;padding:18px 18px 14px;max-width:820px;margin:0 auto;position:relative;overflow:hidden}
 .memo-paper:before{content:"";position:absolute;inset:7px;border:1px solid #f0c6d5;pointer-events:none;z-index:0}.memo-paper>*{position:relative;z-index:1}
 
-/* দোকান নাম ও ক্যাশ মেমো ফিক্সড স্টাইল */
+/* হেডার ও দোকানের নাম নিখুঁত লেআউট */
 .memo-paper .memo-shopline{display:grid;grid-template-columns:92px minmax(0,1fr) 92px;align-items:center;gap:10px}
 .memo-paper .memo-shopname{
   display:block!important;
@@ -21,7 +21,7 @@
   font-family:"Hind Siliguri","Noto Sans Bengali",sans-serif!important;
   font-size:26px!important;
   font-weight:800!important;
-  line-height:1.5!important;
+  line-height:1.4!important;
   color:#a51f27!important;
   text-align:center!important;
   white-space:normal!important;
@@ -29,6 +29,37 @@
   word-break:normal!important;
   text-shadow:none!important;
 }
+.memo-paper .memo-tagline{font-size:14px;line-height:1.5;margin:0 auto 7px;max-width:700px;font-weight:800;color:#263746;text-align:center}
+
+/* প্রোপ্রাইটর ও কন্টাক্ট নম্বর লেআউট (বামে ও ডানে ফিক্সড) */
+.memo-paper .memo-contact{
+  display:flex!important;
+  flex-direction:row!important;
+  justify-content:space-between!important;
+  align-items:flex-start!important;
+  width:100%!important;
+  font-size:13px!important;
+  font-weight:700!important;
+  margin-top:4px!important;
+}
+.memo-paper .memo-owner{
+  text-align:left!important;
+  flex:0 0 auto!important;
+}
+.memo-paper .memo-contact-list{
+  text-align:right!important;
+  flex:0 0 auto!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-end!important;
+  gap:2px!important;
+}
+.memo-paper .memo-contact .contact-line{
+  text-align:right!important;
+  display:block!important;
+}
+
+/* ক্যাশ মেমো শিরোনাম */
 .memo-paper .memo-title{
   display:block!important;
   width:fit-content!important;
@@ -47,6 +78,27 @@
   white-space:nowrap!important;
 }
 
+/* মেমো মেটা (নম্বর, তারিখ, নাম ও ঠিকানা) গ্রিড লেআউট */
+.memo-meta{
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:6px 12px!important;
+  font-size:13px!important;
+  margin:8px 0 12px!important;
+  align-items:start!important;
+}
+.memo-meta .memo-number-cell{text-align:left!important;}
+.memo-meta .memo-date-cell{text-align:right!important;}
+.memo-meta .memo-customer-row{grid-column:1/-1!important;text-align:left!important;}
+.memo-meta .memo-address-row{
+  grid-column:1/-1!important;
+  display:flex!important;
+  justify-content:space-between!important;
+  align-items:center!important;
+  gap:12px!important;
+  flex-wrap:wrap!important;
+}
+
 .memo-side-photo{width:88px;height:88px;object-fit:cover;border-radius:50%;border:1px solid #e7a9c0;display:block;margin:auto}
 .memo-side-photo.empty{visibility:hidden}
 .memo-body-watermark{position:absolute;left:18px;right:18px;top:230px;bottom:190px;z-index:0!important;pointer-events:none;overflow:hidden}
@@ -60,9 +112,6 @@
 .memo-paper tbody td:first-child{text-align:center}
 .memo-head{text-align:center;border-bottom:2px solid #24346d;padding:8px 8px 12px;margin-bottom:10px}
 .memo-bismillah{font-size:15px;margin-bottom:4px}
-.memo-tagline{font-size:14px;line-height:1.5;margin:0 auto 7px;max-width:700px;font-weight:800;color:#263746}
-.memo-contact{display:flex;justify-content:space-between;align-items:center;gap:10px;text-align:left;font-size:13px;font-weight:700;flex-wrap:wrap}
-.memo-meta{display:grid;grid-template-columns:1fr 1fr;gap:7px 16px;font-size:13px;margin:8px -7px 12px}
 .memo-paper table{width:100%;min-width:0;border-collapse:collapse;font-size:13px}
 .memo-paper th,.memo-paper td{border:1px solid #222;padding:7px 6px}
 .memo-paper tbody td,.memo-paper tfoot td{background:transparent}
@@ -86,7 +135,7 @@
   #printArea{display:block!important}
   .preview{border:0;padding:0;margin:0 auto;max-width:none;width:100%;background:#fff}
   .memo-paper{box-sizing:border-box;max-width:none;width:100%;height:auto;max-height:none;overflow:hidden;border:5px double #e7a9c0;outline:2px solid #f4d5e0;outline-offset:-11px;padding:13px 15px 10px;break-inside:avoid;page-break-inside:avoid;font-size:12px}
-  .memo-shopname{font-size:26px!important;line-height:1.5!important}
+  .memo-shopname{font-size:26px!important;line-height:1.4!important}
   .memo-title{font-size:18px!important;line-height:1.4!important}
 }
 
@@ -236,7 +285,7 @@ $('applySelectedTheme').onclick=()=>{const d=themeCatalog.find(x=>x.id===selecte
 $('resetDesign').onclick=()=>{selectedTheme='royal-gold';applyMemoDesign(themeCatalog[0])};renderDesigns();
 
 function getTermsHtml(){const lines=Array.isArray(shop.terms)?shop.terms:(typeof shop.terms==='string'?shop.terms.split(/\r?\n/):[]);return lines.filter(Boolean).map(x=>'• '+esc(x)).join('<br>')}
-function memoMarkup(m,mode){let it=m.items||getItems(),t=m.total!==undefined?m:({...formMemo(),...m}),isSmall=mode==='small';let customer=esc(t.customer_name??$('customer').value??''),phone=esc(t.customer_phone??$('phone').value??'');let rawDate=t.memo_date||$('memoDate').value||now(),dateObj=new Date(rawDate),datePart=esc(dateObj.toLocaleDateString('bn-BD')),timePart=esc(dateObj.toLocaleTimeString('bn-BD',{hour:'2-digit',minute:'2-digit'}));let mobile=(shop.phone||'01768421801').split(/\r?\n/).map(x=>x.trim()).filter(Boolean),wa=(shop.whatsapp||'01834313778').split(/\r?\n/).map(x=>x.trim()).filter(Boolean);let contacts=[...mobile.map(x=>`<span class="contact-line">Mobile: ${esc(x)}</span>`),...wa.map(x=>`<span class="contact-line">WhatsApp: ${esc(x)}</span>`) ].join('');let theme=themeCatalog.find(d=>d.id===activeDesign)||themeCatalog[0],designClass=' '+theme.css;let memoNo=t.memo_number&&t.memo_number!=='সংরক্ষণের সময় তৈরি হবে'?t.memo_number:'খসড়া';return `<div class="preview ${isSmall?'small':''}" data-memo-id="${esc(t.id||'')}"><div class="memo-paper${it.length>6?' many-items':''}${designClass}"><div class="memo-head"><div class="memo-bismillah">বিসমিল্লাহির রাহমানির রাহিম</div><div class="memo-shopline"><img class="memo-side-photo ${shop.photoLeft?'':'empty'}" src="${shop.photoLeft||''}" alt="প্রোফাইল ছবি"><div class="memo-shopname">${esc(shop.name)}</div><img class="memo-side-photo ${shop.photoRight?'':'empty'}" src="${shop.photoRight||''}" alt="কম্পিউটার লোগো"></div><p class="memo-tagline">${esc(shop.address||'এখানে ল্যাপটপ, কম্পিউটার সার্ভিসিংসহ বিভিন্ন ইলেকট্রিক ও ইলেকট্রনিক্সের কাজ যত্নসহকারে করা হয়।')}</p><div class="memo-contact"><div class="memo-owner">${esc(shop.owner||'প্রোঃ মোঃ আল আমিন')}</div><div class="memo-contact-list">${contacts}</div></div></div><div class="memo-title">${esc(shop.memoTitle||'ক্যাশ মেমো / CASH MEMO')}</div>${shop.bodyBg?`<div class="memo-body-watermark"><img src="${esc(shop.bodyBg)}" alt=""></div>`:''}<div class="memo-meta"><div class="memo-number-cell">মেমো নং: <b>${esc(memoNo)}</b></div><div class="memo-date-cell"><span class="memo-date-label">তারিখ ও সময়</span><b class="memo-date-time">${datePart}<br>${timePart}</b></div><div class="memo-customer-row">গ্রাহকের নাম: ${customer||'........................................................'}</div><div class="memo-address-row"><span>গ্রাহকের ঠিকানা: ${esc(t.customer_address||'........................................................')}</span><span>মোবাইল: ${phone||'........................'}</span></div></div><table><thead><tr><th style="width:7%">ক্র. নং<br>Sl No</th><th>বিবরণ / Description</th><th style="width:14%">ওয়ারেন্টি</th><th style="width:12%">পরিমাণ<br>Quantity</th><th style="width:14%">দর / Rate</th><th style="width:17%">টাকা / Amount</th></tr></thead><tbody>${it.map((i,n)=>`<tr><td style="text-align:center">${n+1}.</td><td><span class="product-name">${esc(i.name)}</span>${i.category?`<small class="item-code">${esc(i.category)}</small>`:''}</td><td>${esc(i.warranty||'—')}</td><td style="text-align:center">${i.qty}</td><td>${money(i.price)}</td><td>${money(i.qty*i.price)}</td></tr>`).join('')}</tbody><tfoot><tr><td colspan="4" rowspan="5" style="vertical-align:top;text-align:left;font-size:11px;line-height:1.55"><b style="color:#1756a9">শর্তাবলী:</b><br>${getTermsHtml()}</td><td>মোট</td><td>${money(t.subtotal)}</td></tr><tr><td>ছাড়</td><td>${money(t.discount)}</td></tr><tr class="memo-total"><td>সর্বমোট</td><td>${money(t.total)}</td></tr><tr><td>নগদ / পরিশোধ</td><td>${money(t.paid)}</td></tr><tr><td>বাকি</td><td>${money(t.due)}</td></tr></tfoot></table><div class="memo-signs"><div class="customer-sign">গ্রাহকের স্বাক্ষর</div><div class="authority-sign">কর্তৃপক্ষের স্বাক্ষর</div></div><div class="memo-footer">${esc(shop.footer||'ধন্যবাদ, আবার আসবেন।')}</div></div></div>`}
+function memoMarkup(m,mode){let it=m.items||getItems(),t=m.total!==undefined?m:({...formMemo(),...m}),isSmall=mode==='small';let customer=esc(t.customer_name??$('customer').value??''),phone=esc(t.customer_phone??$('phone').value??'');let rawDate=t.memo_date||$('memoDate').value||now(),dateObj=new Date(rawDate),datePart=esc(dateObj.toLocaleDateString('bn-BD')),timePart=esc(dateObj.toLocaleTimeString('bn-BD',{hour:'2-digit',minute:'2-digit'}));let mobile=(shop.phone||'01768421801').split(/\r?\n/).map(x=>x.trim()).filter(Boolean),wa=(shop.whatsapp||'01834313778').split(/\r?\n/).map(x=>x.trim()).filter(Boolean);let contacts=[...mobile.map(x=>`<span class="contact-line">Mobile: ${esc(x)}</span>`),...wa.map(x=>`<span class="contact-line">WhatsApp: ${esc(x)}</span>`) ].join('');let theme=themeCatalog.find(d=>d.id===activeDesign)||themeCatalog[0],designClass=' '+theme.css;let memoNo=t.memo_number&&t.memo_number!=='সংরক্ষণের সময় তৈরি হবে'?t.memo_number:'খসড়া';return `<div class="preview ${isSmall?'small':''}" data-memo-id="${esc(t.id||'')}"><div class="memo-paper${it.length>6?' many-items':''}${designClass}"><div class="memo-head"><div class="memo-bismillah">বিসমিল্লাহির রাহমানির রাহিম</div><div class="memo-shopline"><img class="memo-side-photo ${shop.photoLeft?'':'empty'}" src="${shop.photoLeft||''}" alt="প্রোফাইল ছবি"><div class="memo-shopname">${esc(shop.name)}</div><img class="memo-side-photo ${shop.photoRight?'':'empty'}" src="${shop.photoRight||''}" alt="কম্পিউটার লোগো"></div><p class="memo-tagline">${esc(shop.address||'এখানে ল্যাপটপ, কম্পিউটার সার্ভিসিংসহ বিভিন্ন ইলেকট্রিক ও ইলেকট্রনিক্সের কাজ যত্নসহকারে করা হয়।')}</p><div class="memo-contact"><div class="memo-owner">${esc(shop.owner||'প্রোঃ মোঃ আল আমিন')}</div><div class="memo-contact-list">${contacts}</div></div></div><div class="memo-title">${esc(shop.memoTitle||'ক্যাশ মেমো / CASH MEMO')}</div>${shop.bodyBg?`<div class="memo-body-watermark"><img src="${esc(shop.bodyBg)}" alt=""></div>`:''}<div class="memo-meta"><div class="memo-number-cell">মেমো নং: <b>${esc(memoNo)}</b></div><div class="memo-date-cell"><span class="memo-date-label">তারিখ ও সময়</span><b class="memo-date-time">${datePart} ${timePart}</b></div><div class="memo-customer-row">গ্রাহকের নাম: ${customer||'........................................................'}</div><div class="memo-address-row"><span>গ্রাহকের ঠিকানা: ${esc(t.customer_address||'........................................................')}</span><span>মোবাইল: ${phone||'........................'}</span></div></div><table><thead><tr><th style="width:7%">ক্র. নং<br>Sl No</th><th>বিবরণ / Description</th><th style="width:14%">ওয়ারেন্টি</th><th style="width:12%">পরিমাণ<br>Quantity</th><th style="width:14%">দর / Rate</th><th style="width:17%">টাকা / Amount</th></tr></thead><tbody>${it.map((i,n)=>`<tr><td style="text-align:center">${n+1}.</td><td><span class="product-name">${esc(i.name)}</span>${i.category?`<small class="item-code">${esc(i.category)}</small>`:''}</td><td>${esc(i.warranty||'—')}</td><td style="text-align:center">${i.qty}</td><td>${money(i.price)}</td><td>${money(i.qty*i.price)}</td></tr>`).join('')}</tbody><tfoot><tr><td colspan="4" rowspan="5" style="vertical-align:top;text-align:left;font-size:11px;line-height:1.55"><b style="color:#1756a9">শর্তাবলী:</b><br>${getTermsHtml()}</td><td>মোট</td><td>${money(t.subtotal)}</td></tr><tr><td>ছাড়</td><td>${money(t.discount)}</td></tr><tr class="memo-total"><td>সর্বমোট</td><td>${money(t.total)}</td></tr><tr><td>নগদ / পরিশোধ</td><td>${money(t.paid)}</td></tr><tr><td>বাকি</td><td>${money(t.due)}</td></tr></tfoot></table><div class="memo-signs"><div class="customer-sign">গ্রাহকের স্বাক্ষর</div><div class="authority-sign">কর্তৃপক্ষের স্বাক্ষর</div></div><div class="memo-footer">${esc(shop.footer||'ধন্যবাদ, আবার আসবেন।')}</div></div></div>`}
 
 function printMemo(m,mode){
  if(!m||!m.id||!m.memo_number){msg('memoMsg','আগে মেমোটি সংরক্ষণ করুন।',true);return}
@@ -263,7 +312,7 @@ function showA4Preview(modal,markup,printAction){modal.classList.add('memo-previ
 function openSavedMemoPreview(m){if(!m)return;const modal=document.createElement('div');showA4Preview(modal,memoMarkup(m,'color'),()=>printMemo(m,'color'))}
 function openMemoPreview(){const modal=document.createElement('div');showA4Preview(modal,memoMarkup(formMemo(),'color'),()=>printMemo(formMemo(),'color'))}
 
-function formMemo(){let t=calc();return{id:editing?.id||null,memo_number:editing?.memo_number||$('memoNo'.value),memo_date:$('memoDate').value,customer_name:$('customer').value,customer_phone:$('phone').value,customer_address:$('customerAddress').value,items:getItems(),subtotal:t.subtotal,discount:t.discount,total:t.total,paid:t.paid,due:t.due,paymentMethod:$('method').value}}
+function formMemo(){let t=calc();return{id:editing?.id||null,memo_number:editing?.memo_number||$('memoNo').value,memo_date:$('memoDate').value,customer_name:$('customer').value,customer_phone:$('phone').value,customer_address:$('customerAddress').value,items:getItems(),subtotal:t.subtotal,discount:t.discount,total:t.total,paid:t.paid,due:t.due,paymentMethod:$('method').value}}
 function csv(){let d=$('reportDate').value||today(),list=memos.filter(m=>String(m.memo_date).slice(0,10)===d),rows=[['Memo','Date','Customer','Phone','Total','Paid','Due'],...list.map(m=>[m.memo_number,m.memo_date,m.customer_name,m.customer_phone,m.total,m.paid,m.due])],text='\ufeff'+rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\r\n'),a=document.createElement('a'),u=URL.createObjectURL(new Blob([text],{type:'text/csv;charset=utf-8'}));a.href=u;a.download='memo-sales-'+d+'.csv';a.click();URL.revokeObjectURL(u)}
 $('login').onclick=login;$('password').onkeydown=e=>{if(e.key==='Enter')login()};$('logout').onclick=logout;$('addItem').onclick=()=>addItem();$('discount').oninput=calc;$('paid').oninput=calc;$('saveMemo').onclick=saveMemo;$('previewMemo').onclick=openMemoPreview;$('downloadMemo').onclick=()=>downloadMemoPdf(formMemo());$('reset').onclick=reset;$('search').oninput=renderHistory;$('histDate').onchange=renderHistory;$('saveProduct').onclick=saveProduct;$('clearProduct').onclick=clearProduct;$('reportDate').value=today();$('refreshReport').onclick=renderReport;$('csv').onclick=csv;$('printColor').onclick=()=>printMemo(formMemo(),'color');$('printBW').onclick=()=>printMemo(formMemo(),'bw');$('printSmall').onclick=()=>printMemo(formMemo(),'small');$('shopName').value=shop.name||'';$('shopOwner').value=shop.owner||'প্রোঃ মোঃ আল আমিন';$('shopMemoTitle').value=shop.memoTitle||'ক্যাশ মেমো / CASH MEMO';$('shopPhone').value=shop.phone||'';$('shopWhatsapp').value=shop.whatsapp||'';$('shopAddress').value=shop.address||'';$('shopFooter').value=shop.footer||'';$('shopTerms').value=(Array.isArray(shop.terms)?shop.terms:[]).join('\n');
 
