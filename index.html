@@ -78,7 +78,6 @@
   white-space:nowrap!important;
 }
 
-
 /* তারিখ ও সময়: শিরোনাম উপরে, তারিখ ও সময় আলাদা লাইনে */
 .memo-meta .memo-date-cell{
   display:flex!important;
@@ -158,16 +157,6 @@
 
 @media(max-width:700px){.field{grid-column:span 6}.w6,.w8{grid-column:span 12}.summary{grid-template-columns:repeat(2,minmax(0,1fr))}.card{padding:12px}}
 @media(max-width:430px){.field{grid-column:span 12}}
-@media print{
-  @page{size:A4 portrait;margin:5mm}
-  body{background:#fff;margin:0}
-  .top,.tabs,.no-print,#appShell,footer{display:none!important}
-  #printArea{display:block!important}
-  .preview{border:0;padding:0;margin:0 auto;max-width:none;width:100%;background:#fff}
-  .memo-paper{box-sizing:border-box;max-width:none;width:100%;height:auto;max-height:none;overflow:hidden;border:5px double #e7a9c0;outline:2px solid #f4d5e0;outline-offset:-11px;padding:13px 15px 10px;break-inside:avoid;page-break-inside:avoid;font-size:12px}
-  .memo-shopname{font-size:32px!important;font-weight:900!important;line-height:1.22!important}
-  .memo-title{font-size:18px!important;line-height:1.4!important}
-}
 
 /* Restored styling for the 12 original themes: each theme has a working, isolated visual identity */
 .memo-paper.theme-royal-gold{border:6px double #b58a32!important;background:#fffdf6!important;outline:2px solid #ead9a8!important}
@@ -218,7 +207,6 @@
 .theme-preview{overflow:auto;background:#e8edf3;padding:12px;border-radius:10px;max-height:78vh}
 .theme-preview .preview{max-width:820px}
 
-
 .theme-card .theme-swatch.gold{background:linear-gradient(135deg,#5d431b,#d8b45d);color:#fff8df}.theme-card .theme-swatch.blue{background:linear-gradient(135deg,#173b5c,#5c9bc9);color:#fff}.theme-card .theme-swatch.brown{background:linear-gradient(135deg,#513421,#b78a62);color:#fff7eb}.theme-card .theme-swatch.black{background:linear-gradient(135deg,#111,#555);color:#fff}.theme-card .theme-swatch.green{background:linear-gradient(135deg,#075b3c,#53b58a);color:#fff}.theme-card .theme-swatch.burgundy{background:linear-gradient(135deg,#5c1026,#b54c65);color:#fff}.theme-card .theme-swatch.purple{background:linear-gradient(135deg,#38205f,#8864ba);color:#fff}.theme-card .theme-swatch.teal{background:linear-gradient(135deg,#07595d,#40aaa9);color:#fff}
 
 /* Original five themed variations retained */
@@ -256,17 +244,6 @@
 .memo-paper .memo-shopname{min-width:0!important;white-space:normal!important;word-break:normal!important;overflow-wrap:normal!important;line-break:strict!important;hyphens:none!important;font-size:32px!important;font-weight:900!important;line-height:1.2!important;padding:0 4px!important}
 .memo-paper .memo-title{white-space:nowrap!important;word-break:keep-all!important;overflow-wrap:normal!important;min-width:260px!important;max-width:90%!important;font-size:19px!important;line-height:1.3!important;padding:7px 18px!important}
 .memo-paper .memo-side-photo{width:92px!important;height:92px!important;max-width:100%!important}
-@media print{
-  @page{size:A4 portrait;margin:5mm}
-  html,body{width:100%!important;margin:0!important;padding:0!important;background:#fff!important}
-  #printArea{display:block!important;width:200mm!important;margin:0!important;padding:0!important}
-  #printArea .preview{width:200mm!important;min-width:200mm!important;max-width:200mm!important;padding:0!important;margin:0!important}
-  #printArea .memo-paper{width:200mm!important;min-height:287mm!important;height:auto!important;max-height:none!important;overflow:visible!important;padding:13px 15px 10px!important;break-inside:avoid!important;page-break-inside:avoid!important}
-  #printArea .memo-shopline{grid-template-columns:25mm minmax(0,1fr) 25mm!important;gap:3mm!important}
-  #printArea .memo-side-photo{width:25mm!important;height:25mm!important}
-  #printArea .memo-shopname{font-size:24px!important;line-height:1.2!important;word-break:normal!important;overflow-wrap:normal!important}
-  #printArea .memo-title{font-size:17px!important;white-space:nowrap!important}
-}
 
 /* Customer details: bold labels and safe inset from the memo border */
 .memo-meta{
@@ -320,18 +297,129 @@
   .crop-modal .crop-frame{height:clamp(190px,34vh,270px)!important;width:min(100%,310px)!important;}
 }
 
-/* A4 print: constrain the memo to exactly one printable page */
+/* ============================================================
+   ৫টি প্রিমিয়াম টেমপ্লেট — প্রতিটির নিজস্ব লেআউট ও স্টাইল
+   ============================================================ */
+
+/* ---------- টেমপ্লেট ১: Imperial Gold (রাজকীয় সোনালি, ক্লাসিক সেন্টার্ড) ---------- */
+.tpl-imperial{background:#fffdf7;border:10px solid transparent;border-image:linear-gradient(135deg,#b8860b,#f5d76e,#b8860b,#8a6508) 1;padding:26px 30px!important;}
+.tpl-imperial .imp-top{text-align:center;padding-bottom:14px;border-bottom:1px solid #c9a24a;margin-bottom:14px;}
+.tpl-imperial .imp-row{display:flex;align-items:center;justify-content:space-between;gap:14px;}
+.tpl-imperial .imp-row img{width:86px;height:86px;border-radius:50%;object-fit:cover;border:3px double #b8860b;}
+.tpl-imperial .imp-name{font-size:38px;font-weight:900;color:#6b4e0c;line-height:1.2;}
+.tpl-imperial .imp-tag{font-size:13px;color:#7a5c17;margin-top:6px;}
+.tpl-imperial .imp-title{display:inline-block;margin:10px auto;padding:7px 36px;background:linear-gradient(90deg,#8a6508,#d4a53a,#8a6508);color:#fff;font-weight:700;letter-spacing:1px;border-radius:2px;}
+.tpl-imperial table th{background:#f6ecd0;color:#5c4308;}
+.tpl-imperial table td,.tpl-imperial table th{border-color:#c9a24a;}
+.tpl-imperial .memo-total td{background:#fbf3dc;}
+
+/* ---------- টেমপ্লেট ২: Midnight Corporate (ডার্ক নেভি, আধুনিক কর্পোরেট) ---------- */
+.tpl-midnight{background:#fff;border:0!important;padding:0!important;}
+.tpl-midnight .mid-band{background:linear-gradient(120deg,#0b1f3a,#1e3a66);color:#fff;padding:22px 26px;display:flex;align-items:center;gap:16px;}
+.tpl-midnight .mid-band img{width:80px;height:80px;border-radius:12px;object-fit:cover;background:#fff;}
+.tpl-midnight .mid-name{font-size:36px;font-weight:900;line-height:1.2;color:#fff;}
+.tpl-midnight .mid-tag{font-size:13px;color:#c9d8ee;margin-top:4px;}
+.tpl-midnight .mid-body{padding:20px 26px;}
+.tpl-midnight .mid-title{display:inline-block;background:#1e3a66;color:#fff;padding:6px 18px;border-radius:0 0 14px 0;font-weight:700;margin-bottom:12px;}
+.tpl-midnight table th{background:#0b1f3a;color:#fff;}
+.tpl-midnight table td,.tpl-midnight table th{border:1px solid #d5dde8;}
+.tpl-midnight tbody tr:nth-child(even) td{background:#f5f8fc;}
+.tpl-midnight .memo-total td{background:#e6eef9;}
+
+/* ---------- টেমপ্লেট ৩: Emerald Heritage (সবুজ, ওয়েভ হেডার, আর্চ ফ্রেম) ---------- */
+.tpl-emerald{background:linear-gradient(180deg,#f3fbf6,#ffffff 40%);border:3px solid #1f7a4d!important;border-radius:22px;padding:0!important;overflow:hidden;}
+.tpl-emerald .em-head{background:linear-gradient(135deg,#0f5132,#1f7a4d);color:#fff;text-align:center;padding:22px 20px 34px;position:relative;}
+.tpl-emerald .em-head::after{content:"";position:absolute;left:0;right:0;bottom:-14px;height:30px;background:#fff;border-radius:50% 50% 0 0/100% 100% 0 0;}
+.tpl-emerald .em-logos{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.tpl-emerald .em-logos img{width:78px;height:78px;border-radius:50%;object-fit:cover;background:#fff;border:3px solid #a8e6c3;}
+.tpl-emerald .em-name{font-size:38px;font-weight:900;line-height:1.2;color:#fff;}
+.tpl-emerald .em-tag{font-size:13px;color:#d6f5e3;margin-top:6px;}
+.tpl-emerald .em-body{padding:24px 26px 18px;}
+.tpl-emerald .em-title{text-align:center;color:#0f5132;font-weight:700;font-size:19px;margin-bottom:12px;letter-spacing:.5px;}
+.tpl-emerald table th{background:#1f7a4d;color:#fff;border-color:#1f7a4d;}
+.tpl-emerald table td{border-color:#bfe6d0;}
+.tpl-emerald .memo-total td{background:#e4f5ea;color:#0f5132;}
+
+/* ---------- টেমপ্লেট ৪: Burgundy Luxe (মেরুন, ডান পাশে সাইড বার, ইনভয়েস স্টাইল) ---------- */
+.tpl-burgundy{background:#fffcfc;border:0!important;padding:0!important;display:grid;grid-template-columns:1fr 210px;}
+.tpl-burgundy .bu-main{padding:22px 24px;}
+.tpl-burgundy .bu-side{background:linear-gradient(180deg,#6d0f22,#9b1b35);color:#fff;padding:22px 16px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;}
+.tpl-burgundy .bu-side img{width:100px;height:100px;border-radius:50%;object-fit:cover;border:3px solid #f7d9df;background:#fff;}
+.tpl-burgundy .bu-side .bu-owner{font-weight:700;font-size:14px;}
+.tpl-burgundy .bu-side .bu-contact{font-size:12px;line-height:1.7;color:#f7e3e8;}
+.tpl-burgundy .bu-name{font-size:34px;font-weight:900;color:#6d0f22;line-height:1.2;border-bottom:3px solid #9b1b35;padding-bottom:8px;margin-bottom:8px;}
+.tpl-burgundy .bu-tag{font-size:13px;color:#5a2a33;margin-bottom:12px;}
+.tpl-burgundy .bu-title{display:inline-block;background:#6d0f22;color:#fff;padding:5px 16px;font-weight:700;margin-bottom:10px;}
+.tpl-burgundy table th{background:#6d0f22;color:#fff;}
+.tpl-burgundy table td,.tpl-burgundy table th{border-color:#e3c2c9;}
+.tpl-burgundy .memo-total td{background:#f7e9ec;}
+
+/* ---------- টেমপ্লেট ৫: Royal Obsidian (কালো-সোনা, প্রিমিয়াম ডার্ক লাক্সারি) ---------- */
+.tpl-obsidian{background:#14161a;color:#f1e7c8;border:2px solid #c9a24a!important;padding:0!important;}
+.tpl-obsidian .ob-head{text-align:center;padding:26px 20px 18px;border-bottom:1px solid #c9a24a;}
+.tpl-obsidian .ob-logos{display:flex;justify-content:center;align-items:center;gap:22px;margin-bottom:10px;}
+.tpl-obsidian .ob-logos img{width:84px;height:84px;border-radius:50%;object-fit:cover;border:2px solid #c9a24a;background:#000;}
+.tpl-obsidian .ob-name{font-size:40px;font-weight:900;color:#e8c36a;line-height:1.2;}
+.tpl-obsidian .ob-tag{font-size:13px;color:#bfae80;margin-top:6px;}
+.tpl-obsidian .ob-body{padding:20px 24px;}
+.tpl-obsidian .ob-title{text-align:center;color:#e8c36a;font-weight:700;letter-spacing:2px;margin-bottom:12px;}
+.tpl-obsidian table th{background:#c9a24a;color:#14161a;}
+.tpl-obsidian table td,.tpl-obsidian table th{border-color:#4a4330;}
+.tpl-obsidian table td{background:#1b1e24;color:#f1e7c8;}
+.tpl-obsidian .memo-total td{background:#2a2517;color:#e8c36a;}
+.tpl-obsidian .memo-signs div{border-color:#c9a24a;color:#e8c36a;}
+.tpl-obsidian .memo-footer{color:#e8c36a;}
+
+/* ==== ফন্ট পরিবর্তন: স্বাভাবিক বাংলা ফন্ট ==== */
+.memo-paper,
+.memo-paper * {
+  font-family: 'Noto Sans Bengali', Arial, sans-serif !important;
+  font-weight: 400 !important;
+}
+/* যেখানে <b>, <strong>, <th> ইত্যাদি আছে শুধু সেখানে বোল্ড থাকবে */
+.memo-paper b,
+.memo-paper strong,
+.memo-paper th,
+.memo-paper .memo-field-label,
+.memo-paper .memo-date-label,
+.memo-paper .memo-date-date,
+.memo-paper .memo-date-time,
+.memo-paper .memo-title,
+.memo-paper tfoot .memo-total td,
+.memo-paper .memo-owner {
+  font-weight: 700 !important;
+}
+.memo-paper .memo-shopname {
+  font-weight: 900 !important;
+}
+
+/* ==== দোকানের নাম: বড় ও মোটা ==== */
+.memo-paper .memo-shopname {
+  font-size: 40px !important;
+  font-weight: 900 !important;
+  line-height: 1.25 !important;
+  letter-spacing: 0 !important;
+}
+
+/* প্রিন্টে টেমপ্লেট ও A4 লেআউট ঠিক থাকবে */
 @media print{
   @page{size:A4 portrait;margin:5mm}
   html,body{width:210mm!important;height:297mm!important;margin:0!important;padding:0!important;overflow:hidden!important;background:#fff!important}
+  .top,.tabs,.no-print,#appShell,footer{display:none!important}
   #printArea{display:block!important;width:200mm!important;height:287mm!important;max-height:287mm!important;margin:0!important;padding:0!important;overflow:hidden!important;break-after:avoid-page!important;page-break-after:avoid!important}
   #printArea .preview{display:block!important;width:200mm!important;min-width:200mm!important;max-width:200mm!important;height:287mm!important;max-height:287mm!important;margin:0!important;padding:0!important;overflow:hidden!important;break-after:avoid-page!important;page-break-after:avoid!important}
   #printArea .memo-paper{box-sizing:border-box!important;width:200mm!important;height:287mm!important;min-height:0!important;max-height:287mm!important;margin:0!important;padding:10px 13px 8px!important;overflow:hidden!important;break-inside:avoid!important;page-break-inside:avoid!important;break-after:avoid-page!important;page-break-after:avoid!important}
+  #printArea .memo-shopline{grid-template-columns:25mm minmax(0,1fr) 25mm!important;gap:3mm!important}
+  #printArea .memo-side-photo{width:25mm!important;height:25mm!important}
+  #printArea .memo-shopname{font-size:30px!important;line-height:1.2!important;word-break:normal!important;overflow-wrap:normal!important}
+  #printArea .memo-title{font-size:17px!important;white-space:nowrap!important}
   #printArea .memo-meta{padding-left:5mm!important;padding-right:5mm!important;margin-top:7px!important;margin-bottom:9px!important}
   #printArea .memo-customer-row,#printArea .memo-address-row{padding-left:2mm!important;padding-right:2mm!important}
   #printArea .memo-signs{margin-top:18px!important}
+  .tpl-emerald,.tpl-obsidian,.tpl-imperial,.tpl-midnight,.tpl-burgundy{
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+  }
 }
-
 </style>
 </head><body>
 <header class="top"><div class="topin"><div class="brand"><div class="top-avatar" id="topAvatar"><span class="top-avatar-placeholder">🖥️</span></div><div><h1>আলামিন কম্পিউটার এন্ড সার্ভিসিং সেন্টার</h1><p>Premium Memo · Sales · Due Ledger</p></div></div><div id="topUser" class="actions hidden"><span id="userEmail"></span><button id="logout" class="secondary">লগআউট</button></div></div></header>
@@ -406,7 +494,7 @@ async function saveMemo(){
  }catch(e){msg('memoMsg','সংরক্ষণে সমস্যা: '+(e.message||e),true)}
 }
 async function refresh(){let [pr,mr]=await Promise.all([sb.from('products').select('*').order('created_at',{ascending:false}),sb.from('memos').select('*,memo_items(*),payments(*)').order('memo_date',{ascending:false})]);if(pr.error||mr.error){alert('ডেটা লোড হয়নি: '+(pr.error?.message||mr.error?.message));return}products=pr.data||[];memos=(mr.data||[]).map(m=>({...m,items:(m.memo_items||[]).map(i=>({name:i.item_name,warranty:i.warranty||'',category:(['Computer','Laptop','Monitor','Keyboard & Mouse','Storage','RAM','Printer','Accessories','Servicing','Other'].includes(i.category)?'':i.category),qty:Number(i.quantity),price:Number(i.unit_price),product_id:i.product_id})),paid:(m.payments||[]).reduce((s,p)=>s+Number(p.amount),0),due:Math.max(0,Number(m.total)-(m.payments||[]).reduce((s,p)=>s+Number(p.amount),0)),paymentMethod:m.payments?.[0]?.payment_method||'Cash / নগদ'}));renderHistory();renderProducts();renderReport();if(!editing&&$('memoNo'))$('memoNo').value=nextMemoNumber()}
-function renderHistory(){let q=($('search').value||'').toLowerCase(),d=$('histDate').value,list=memos.filter(m=>(!q||[m.memo_number,m.customer_name,m.customer_phone,m.customer_address].join(' ').toLowerCase().includes(q))&&(!d||String(m.memo_date).slice(0,10)===d));$('history').innerHTML=list.length?`<div class="tablewrap"><table><thead><tr><th>মেমো</th><th>তারিখ</th><th>কাস্টমার</th><th>মোট</th><th>বাকি</th><th>কাজ</th></tr></thead><tbody>${list.map(m=>`<tr><td>${esc(m.memo_number)}</td><td>${esc(new Date(m.memo_date).toLocaleString('bn-BD'))}</td><td>${esc(m.customer_name||'Walk-in')}<br><span class="mini">${esc(m.customer_phone||'')}</span></td><td>${money(m.total)}</td><td>${money(m.due)}</td><td><div class="actions"><button class="small secondary" data-preview="${m.id}">Preview</button><button class="small green" data-download="${m.id}">⬇️ PDF ডাউনলোড</button><button class="small secondary" data-edit="${m.id}">এডিট</button>${m.due>0?`<button class="small green" data-pay="${m.id}">বাকি আদায়</button>`:''}<button class="small danger" data-delete="${m.id}">ডিলিট</button></div></td></tr>`).join('')}</tbody></table></div>`:'<p class="note">কোনো মেমো নেই।';$('history').querySelectorAll('[data-preview]').forEach(b=>b.onclick=()=>openSavedMemoPreview(memos.find(m=>m.id===b.dataset.preview)));$('history').querySelectorAll('[data-download]').forEach(b=>b.onclick=()=>downloadMemoPdf(memos.find(m=>m.id===b.dataset.download))); $('history').querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>edit(memos.find(m=>m.id===b.dataset.edit)));$('history').querySelectorAll('[data-pay]').forEach(b=>b.onclick=()=>payDue(memos.find(m=>m.id===b.dataset.pay)));$('history').querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>deleteMemo(b.dataset.delete))}
+function renderHistory(){let q=($('search').value||'').toLowerCase(),d=$('histDate').value,list=memos.filter(m=>(!q||[m.memo_number,m.customer_name,m.customer_phone,m.customer_address].join(' ').toLowerCase().includes(q))&&(!d||String(m.memo_date).slice(0,10)===d));$('history').innerHTML=list.length?`<div class="tablewrap"><table><thead><tr><th>মেমো</th><th>তারিখ</th><th>কাস্টমার</th><th>মোট</th><th>বাকি</th><th>কাজ</th></tr></thead><tbody>${list.map(m=>`<tr><td>${esc(m.memo_number)}</td><td>${esc(new Date(m.memo_date).toLocaleString('bn-BD'))}</td><td>${esc(m.customer_name||'Walk-in')}<br><span class="mini">${esc(m.customer_phone||'')}</span></td><td>${money(m.total)}</td><td>${money(m.due)}</td><td><div class="actions"><button class="small secondary" data-preview="${m.id}">Preview</button><button class="small green" data-download="${m.id}">⬇️ PDF ডাউনলোড</button><button class="small secondary" data-edit="${m.id}">এডিট</button>${m.due>0?`<button class="small green" data-pay="${m.id}">বাকি আদায়</button>`:''}<button class="small danger" data-delete="${m.id}">ডিলিট</button></div></td></tr>`).join('')}</tbody></table></div>`:'<p class="note">কোনো মেমো নেই।';$('history').querySelectorAll('[data-preview]').forEach(b=>b.onclick=()=>openSavedMemoPreview(memos.find(m=>m.id===b.dataset.preview)));$('history').querySelectorAll('[data-download]').forEach(b=>b.onclick=()=>downloadMemoPdf(memos.find(m=>m.id===b.dataset.download)));$('history').querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>edit(memos.find(m=>m.id===b.dataset.edit)));$('history').querySelectorAll('[data-pay]').forEach(b=>b.onclick=()=>payDue(memos.find(m=>m.id===b.dataset.pay)));$('history').querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>deleteMemo(b.dataset.delete))}
 async function deleteMemo(id){const m=memos.find(x=>x.id===id);if(!m)return;if(!confirm(`মেমো ${m.memo_number} ডিলিট করবেন?`))return;try{let a=await sb.from('payments').delete().eq('memo_id',id);if(a.error)throw a.error;let b=await sb.from('memo_items').delete().eq('memo_id',id);if(b.error)throw b.error;let c=await sb.from('memos').delete().eq('id',id).select('id');if(c.error)throw c.error;await refresh();alert('ডিলিট হয়েছে।')}catch(e){alert('ত্রুটি: '+(e.message||e))}}
 function edit(m){editing=m;$('memoNo').value=m.memo_number||'';$('memoDate').value=new Date(m.memo_date).toISOString().slice(0,16);$('customer').value=m.customer_name||'';$('phone').value=m.customer_phone||'';$('customerAddress').value=m.customer_address||'';$('discount').value=m.discount||0;$('paid').value=m.paid||0;$('items').innerHTML='';m.items.forEach(addItem);$('saveMemo').textContent='পরিবর্তন সংরক্ষণ';tab('memo');calc()}
 async function payDue(m){let val=prompt(`মেমো ${m.memo_number}\nবাকি ${money(m.due)}\nকত টাকা আদায়?`);if(val===null)return;let amount=Number(val);if(amount<=0||amount>m.due){alert('সঠিক পরিমাণ দিন।');return}let method=prompt('পেমেন্ট মাধ্যম','Cash / নগদ')||'Cash / নগদ';let r=await sb.from('payments').insert({memo_id:m.id,amount,payment_method:method,created_by:user.id});if(r.error)alert(r.error.message);else{await refresh();alert('সংরক্ষিত হয়েছে।')}}
@@ -429,10 +517,15 @@ const themeCatalog=[
 {id:'carbon-3d',name:'Carbon 3D Luxury',css:'theme-carbon-3d',swatch:'black',desc:'Charcoal metallic frame with subtle raised title'},
 {id:'crystal-ice',name:'Crystal Ice 3D',css:'theme-crystal-ice',swatch:'blue',desc:'Pearl white and ice-blue crystalline finish'},
 {id:'cyber-tech',name:'Cyber Tech Neon (নতুন)',css:'theme-cyber-tech',swatch:'cyber',desc:'Dark tech header banner, neon cyan glow logos & futuristic grid'},
-{id:'mughal-shahi',name:'Mughal Shahi Red (নতুন)',css:'theme-mughal-shahi',swatch:'shahi',desc:'Royalcrimson-gold ornate frame, golden ring logos & traditional look'},
+{id:'mughal-shahi',name:'Mughal Shahi Red (নতুন)',css:'theme-mughal-shahi',swatch:'shahi',desc:'Royal crimson-gold ornate frame, golden ring logos & traditional look'},
 {id:'modern-split',name:'Modern Split Invoice (নতুন)',css:'theme-modern-split',swatch:'split',desc:'Indigo-violet corporate layout, rounded square HD logos & angled badge'},
 {id:'rose-gold',name:'Luxury Rose Gold (নতুন)',css:'theme-rose-gold',swatch:'rosegold',desc:'Soft rose-gold metallic frame, pill title & studio portrait logo ring'},
 {id:'swiss-grid',name:'Minimal Swiss Grid (নতুন)',css:'theme-swiss-grid',swatch:'swiss',desc:'Ultra-clean architectural black-yellow grid, boxed logos & sharp borders'},
+{id:'imperial-gold',name:'Imperial Gold 👑',css:'tpl-imperial',swatch:'gold',desc:'রাজকীয় সোনালি ফ্রেম, ক্লাসিক সেন্টার লেআউট',layout:'imperial'},
+{id:'midnight-corp',name:'Midnight Corporate 🌃',css:'tpl-midnight',swatch:'blue',desc:'ডার্ক নেভি ব্যান্ড হেডার, আধুনিক কর্পোরেট টেবিল',layout:'midnight'},
+{id:'emerald-heritage',name:'Emerald Heritage 🌿',css:'tpl-emerald',swatch:'green',desc:'ওয়েভ হেডার, সবুজ গ্রেডিয়েন্ট, গোলাকার লোগো',layout:'emerald'},
+{id:'burgundy-luxe',name:'Burgundy Luxe 🍷',css:'tpl-burgundy',swatch:'burgundy',desc:'ডান পাশে সাইডবার ইনভয়েস লেআউট',layout:'burgundy'},
+{id:'royal-obsidian',name:'Royal Obsidian 🖤',css:'tpl-obsidian',swatch:'black',desc:'কালো ও সোনালি প্রিমিয়াম ডার্ক লাক্সারি',layout:'obsidian'}
 ];
 
 let activeDesign='royal-gold',selectedTheme='royal-gold';try{activeDesign=localStorage.getItem('alaminActiveMemoDesign')||'royal-gold';if(!themeCatalog.some(d=>d.id===activeDesign))activeDesign='royal-gold';selectedTheme=activeDesign}catch(e){activeDesign='royal-gold';selectedTheme='royal-gold'}
@@ -443,24 +536,72 @@ $('applySelectedTheme').onclick=()=>{const d=themeCatalog.find(x=>x.id===selecte
 $('resetDesign').onclick=()=>{selectedTheme='royal-gold';applyMemoDesign(themeCatalog[0])};renderDesigns();
 
 function getTermsHtml(){const lines=Array.isArray(shop.terms)?shop.terms:(typeof shop.terms==='string'?shop.terms.split(/\r?\n/):[]);return lines.filter(Boolean).map(x=>'• '+esc(x)).join('<br>')}
-function memoMarkup(m,mode){
- let it=m.items||getItems(),t=m.total!==undefined?m:({...formMemo(),...m}),isSmall=mode==='small';
- let customer=esc(t.customer_name??$('customer').value??''),phone=esc(t.customer_phone??$('phone').value??'');
- let rawDate=t.memo_date||$('memoDate').value||now(),dateObj=new Date(rawDate),datePart=esc(dateObj.toLocaleDateString('bn-BD')),timePart=esc(dateObj.toLocaleTimeString('bn-BD',{hour:'2-digit',minute:'2-digit'}));
- let mobile=(shop.phone||'01768421801').split(/\r?\n/).map(x=>x.trim()).filter(Boolean),wa=(shop.whatsapp||'01834313778').split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
- let contacts=[...mobile.map(x=>`<span class="contact-line">Mobile: ${esc(x)}</span>`),...wa.map(x=>`<span class="contact-line">WhatsApp: ${esc(x)}</span>`) ].join('');
- let theme=themeCatalog.find(d=>d.id===activeDesign)||themeCatalog[0],designClass=' '+theme.css;
- let photoL=`<img class="memo-side-photo ${shop.photoLeft?'':'empty'}" src="${esc(shop.photoLeft||'')}" alt="প্রোফাইল ছবি">`,photoR=`<img class="memo-side-photo ${shop.photoRight?'':'empty'}" src="${esc(shop.photoRight||'')}" alt="কম্পিউটার লোগো">`;
- let shopName=`<div class="memo-shopname">${esc(shop.name)}</div>`;
- let tagline=`<p class="memo-tagline">${esc(shop.address||'এখানে ল্যাপটপ, কম্পিউটার সার্ভিসিংসহ বিভিন্ন ইলেকট্রিক ও ইলেকট্রনিক্সের কাজ যত্নসহকারে করা হয়।')}</p>`;
- let shopContact=`<div class="memo-contact"><div class="memo-owner">${esc(shop.owner||'প্রোঃ মোঃ আল আমিন')}</div><div class="memo-contact-list">${contacts}</div></div>`;
- let shopLine;
- if(theme.id==='full-banner') shopLine=`<div class="memo-shopline">${photoL}${shopName}${photoR}</div>`;
 
- else shopLine=`<div class="memo-shopline">${photoL}${shopName}${photoR}</div>`;
- let headerMarkup=`<div class="memo-head layout-${theme.id}"><div class="memo-bismillah">বিসমিল্লাহির রাহমানির রাহিম</div>${shopLine}${tagline}${shopContact}</div>`;
- let memoNo=t.memo_number&&t.memo_number!=='সংরক্ষণের সময় তৈরি হবে'?t.memo_number:'খসড়া';
- return `<div class="preview ${isSmall?'small':''}" data-memo-id="${esc(t.id||'')}"><div class="memo-paper${it.length>6?' many-items':''}${designClass}">${headerMarkup}<div class="memo-title">${esc(shop.memoTitle||'ক্যাশ মেমো / CASH MEMO')}</div>${shop.bodyBg?`<div class="memo-body-watermark"><img src="${esc(shop.bodyBg)}" alt=""></div>`:''}<div class="memo-meta"><div class="memo-number-cell">মেমো নং: <b>${esc(memoNo)}</b></div><div class="memo-date-cell"><span class="memo-date-label">তারিখ ও সময়</span><div class="memo-date-values"><b class="memo-date-date">${datePart}</b><b class="memo-date-time">${timePart}</b></div></div><div class="memo-customer-row"><strong class="memo-field-label">গ্রাহকের নাম:</strong> <span>${customer||'........................................................'}</span></div><div class="memo-address-row"><span><strong class="memo-field-label">গ্রাহকের ঠিকানা:</strong> ${esc(t.customer_address||'........................................................')}</span><span><strong class="memo-field-label">ফোন নম্বর:</strong> ${phone||'........................'}</span></div></div><table><thead><tr><th style="width:7%">ক্র. নং<br>Sl No</th><th>বিবরণ / Description</th><th style="width:14%">ওয়ারেন্টি</th><th style="width:12%">পরিমাণ<br>Quantity</th><th style="width:14%">দর / Rate</th><th style="width:17%">টাকা / Amount</th></tr></thead><tbody>${it.map((i,n)=>`<tr><td style="text-align:center">${n+1}.</td><td><span class="product-name">${esc(i.name)}</span>${i.category?`<small class="item-code">${esc(i.category)}</small>`:''}</td><td>${esc(i.warranty||'—')}</td><td style="text-align:center">${i.qty}</td><td>${money(i.price)}</td><td>${money(i.qty*i.price)}</td></tr>`).join('')}</tbody><tfoot><tr><td colspan="4" rowspan="5" style="vertical-align:top;text-align:left;font-size:11px;line-height:1.55"><b style="color:#1756a9">শর্তাবলী:</b><br>${getTermsHtml()}</td><td>মোট</td><td>${money(t.subtotal)}</td></tr><tr><td>ছাড়</td><td>${money(t.discount)}</td></tr><tr class="memo-total"><td>সর্বমোট</td><td>${money(t.total)}</td></tr><tr><td>নগদ / পরিশোধ</td><td>${money(t.paid)}</td></tr><tr><td>বাকি</td><td>${money(t.due)}</td></tr></tfoot></table><div class="memo-signs"><div class="customer-sign">গ্রাহকের স্বাক্ষর</div><div class="authority-sign">কর্তৃপক্ষের স্বাক্ষর</div></div><div class="memo-footer">${esc(shop.footer||'ধন্যবাদ, আবার আসবেন।')}</div></div></div>`;
+// ===== প্রিমিয়াম টেমপ্লেট রেন্ডারার =====
+function premiumTemplateMarkup(m){
+  const theme=themeCatalog.find(d=>d.id===activeDesign);
+  if(!theme||!theme.layout)return null;
+  const it=m.items||getItems(),t=m.total!==undefined?m:({...formMemo(),...m});
+  const mobile=(shop.phone||'').split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
+  const wa=(shop.whatsapp||'').split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
+  const dateObj=new Date(t.memo_date||$('memoDate').value||now());
+  const datePart=dateObj.toLocaleDateString('bn-BD'),timePart=dateObj.toLocaleTimeString('bn-BD',{hour:'2-digit',minute:'2-digit'});
+  const memoNo=t.memo_number&&t.memo_number!=='সংরক্ষণের সময় তৈরি হবে'?t.memo_number:'খসড়া';
+  const cust=esc(t.customer_name||$('customer').value||'........................');
+  const phone=esc(t.customer_phone||$('phone').value||'........................');
+  const addr=esc(t.customer_address||'........................');
+  const title=esc(shop.memoTitle||'ক্যাশ মেমো / CASH MEMO');
+  const name=esc(shop.name);
+  const tag=esc(shop.address||'');
+  const pL=shop.photoLeft?`<img src="${esc(shop.photoLeft)}" alt="">`:'';
+  const pR=shop.photoRight?`<img src="${esc(shop.photoRight)}" alt="">`:'';
+  const contacts=[...mobile.map(x=>'Mobile: '+esc(x)),...wa.map(x=>'WhatsApp: '+esc(x))].join('<br>');
+  const rows=it.map((i,n)=>`<tr><td style="text-align:center">${n+1}</td><td>${esc(i.name)}${i.category?` <small>(${esc(i.category)})</small>`:''}</td><td>${esc(i.warranty||'—')}</td><td style="text-align:center">${i.qty}</td><td>${money(i.price)}</td><td>${money(i.qty*i.price)}</td></tr>`).join('');
+  const table=`<table><thead><tr><th>ক্র.</th><th>বিবরণ</th><th>ওয়ারেন্টি</th><th>পরিমাণ</th><th>দর</th><th>টাকা</th></tr></thead><tbody>${rows}</tbody><tfoot><tr><td colspan="3" rowspan="5" style="vertical-align:top;font-size:11px;text-align:left">শর্তাবলী:<br>${getTermsHtml()}</td><td colspan="2">মোট</td><td>${money(t.subtotal)}</td></tr><tr><td colspan="2">ছাড়</td><td>${money(t.discount)}</td></tr><tr class="memo-total"><td colspan="2">সর্বমোট</td><td>${money(t.total)}</td></tr><tr><td colspan="2">পরিশোধ</td><td>${money(t.paid)}</td></tr><tr><td colspan="2">বাকি</td><td>${money(t.due)}</td></tr></tfoot></table>`;
+  const sign=`<div class="memo-signs"><div class="customer-sign">গ্রাহকের স্বাক্ষর</div><div class="authority-sign">কর্তৃপক্ষের স্বাক্ষর</div></div><div class="memo-footer">${esc(shop.footer||'ধন্যবাদ, আবার আসবেন।')}</div>`;
+  const meta=`<div class="memo-meta"><div>মেমো নং: <b>${esc(memoNo)}</b></div><div style="text-align:right">তারিখ: <b>${datePart}</b> ${timePart}</div><div style="grid-column:1/-1">গ্রাহক: <b>${cust}</b> &nbsp; ফোন: <b>${phone}</b></div><div style="grid-column:1/-1">ঠিকানা: ${addr}</div></div>`;
+
+  let inner='';
+  if(theme.layout==='imperial'){
+    inner=`<div class="imp-top"><div class="imp-row">${pL}<div><div class="imp-name">${name}</div><div class="imp-tag">${tag}</div></div>${pR}</div></div><div style="text-align:center"><span class="imp-title">${title}</span></div>${meta}${table}${sign}`;
+    return `<div class="preview"><div class="memo-paper tpl-imperial">${inner}</div></div>`;
+  }
+  if(theme.layout==='midnight'){
+    inner=`<div class="mid-band">${pL}<div style="flex:1;text-align:center"><div class="mid-name">${name}</div><div class="mid-tag">${tag}</div></div>${pR}</div><div class="mid-body"><span class="mid-title">${title}</span>${meta}${table}${sign}</div>`;
+    return `<div class="preview"><div class="memo-paper tpl-midnight">${inner}</div></div>`;
+  }
+  if(theme.layout==='emerald'){
+    inner=`<div class="em-head"><div class="em-logos">${pL}${pR}</div><div class="em-name">${name}</div><div class="em-tag">${tag}</div></div><div class="em-body"><div class="em-title">${title}</div>${meta}${table}${sign}</div>`;
+    return `<div class="preview"><div class="memo-paper tpl-emerald">${inner}</div></div>`;
+  }
+  if(theme.layout==='burgundy'){
+    inner=`<div class="bu-main"><div class="bu-name">${name}</div><div class="bu-tag">${tag}</div><span class="bu-title">${title}</span>${meta}${table}${sign}</div><div class="bu-side">${pL}<div class="bu-owner">${esc(shop.owner||'')}</div><div class="bu-contact">${contacts}</div>${pR}</div>`;
+    return `<div class="preview"><div class="memo-paper tpl-burgundy">${inner}</div></div>`;
+  }
+  if(theme.layout==='obsidian'){
+    inner=`<div class="ob-head"><div class="ob-logos">${pL}${pR}</div><div class="ob-name">${name}</div><div class="ob-tag">${tag}</div></div><div class="ob-body"><div class="ob-title">${title}</div>${meta}${table}${sign}</div>`;
+    return `<div class="preview"><div class="memo-paper tpl-obsidian">${inner}</div></div>`;
+  }
+  return null;
+}
+
+function memoMarkup(m,mode){
+  const premium=premiumTemplateMarkup(m);
+  if(premium)return premium;
+  let it=m.items||getItems(),t=m.total!==undefined?m:({...formMemo(),...m}),isSmall=mode==='small';
+  let customer=esc(t.customer_name??$('customer').value??''),phone=esc(t.customer_phone??$('phone').value??'');
+  let rawDate=t.memo_date||$('memoDate').value||now(),dateObj=new Date(rawDate),datePart=esc(dateObj.toLocaleDateString('bn-BD')),timePart=esc(dateObj.toLocaleTimeString('bn-BD',{hour:'2-digit',minute:'2-digit'}));
+  let mobile=(shop.phone||'01768421801').split(/\r?\n/).map(x=>x.trim()).filter(Boolean),wa=(shop.whatsapp||'01834313778').split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
+  let contacts=[...mobile.map(x=>`<span class="contact-line">Mobile: ${esc(x)}</span>`),...wa.map(x=>`<span class="contact-line">WhatsApp: ${esc(x)}</span>`)].join('');
+  let theme=themeCatalog.find(d=>d.id===activeDesign)||themeCatalog[0],designClass=' '+theme.css;
+  let photoL=`<img class="memo-side-photo ${shop.photoLeft?'':'empty'}" src="${esc(shop.photoLeft||'')}" alt="প্রোফাইল ছবি">`,photoR=`<img class="memo-side-photo ${shop.photoRight?'':'empty'}" src="${esc(shop.photoRight||'')}" alt="কম্পিউটার লোগো">`;
+  let shopName=`<div class="memo-shopname">${esc(shop.name)}</div>`;
+  let tagline=`<p class="memo-tagline">${esc(shop.address||'এখানে ল্যাপটপ, কম্পিউটার সার্ভিসিংসহ বিভিন্ন ইলেকট্রিক ও ইলেকট্রনিক্সের কাজ যত্নসহকারে করা হয়।')}</p>`;
+  let shopContact=`<div class="memo-contact"><div class="memo-owner">${esc(shop.owner||'প্রোঃ মোঃ আল আমিন')}</div><div class="memo-contact-list">${contacts}</div></div>`;
+  let shopLine=`<div class="memo-shopline">${photoL}${shopName}${photoR}</div>`;
+  let headerMarkup=`<div class="memo-head layout-${theme.id}"><div class="memo-bismillah">বিসমিল্লাহির রাহমানির রাহিম</div>${shopLine}${tagline}${shopContact}</div>`;
+  let memoNo=t.memo_number&&t.memo_number!=='সংরক্ষণের সময় তৈরি হবে'?t.memo_number:'খসড়া';
+  return `<div class="preview ${isSmall?'small':''}" data-memo-id="${esc(t.id||'')}"><div class="memo-paper${it.length>6?' many-items':''}${designClass}">${headerMarkup}<div class="memo-title">${esc(shop.memoTitle||'ক্যাশ মেমো / CASH MEMO')}</div>${shop.bodyBg?`<div class="memo-body-watermark"><img src="${esc(shop.bodyBg)}" alt=""></div>`:''}<div class="memo-meta"><div class="memo-number-cell">মেমো নং: <b>${esc(memoNo)}</b></div><div class="memo-date-cell"><span class="memo-date-label">তারিখ ও সময়</span><div class="memo-date-values"><b class="memo-date-date">${datePart}</b><b class="memo-date-time">${timePart}</b></div></div><div class="memo-customer-row"><strong class="memo-field-label">গ্রাহকের নাম:</strong> <span>${customer||'........................................................'}</span></div><div class="memo-address-row"><span><strong class="memo-field-label">গ্রাহকের ঠিকানা:</strong> ${esc(t.customer_address||'........................................................')}</span><span><strong class="memo-field-label">ফোন নম্বর:</strong> ${phone||'........................'}</span></div></div><table><thead><tr><th style="width:7%">ক্র. নং<br>Sl No</th><th>বিবরণ / Description</th><th style="width:14%">ওয়ারেন্টি</th><th style="width:12%">পরিমাণ<br>Quantity</th><th style="width:14%">দর / Rate</th><th style="width:17%">টাকা / Amount</th></tr></thead><tbody>${it.map((i,n)=>`<tr><td style="text-align:center">${n+1}.</td><td><span class="product-name">${esc(i.name)}</span>${i.category?`<small class="item-code">${esc(i.category)}</small>`:''}</td><td>${esc(i.warranty||'—')}</td><td style="text-align:center">${i.qty}</td><td>${money(i.price)}</td><td>${money(i.qty*i.price)}</td></tr>`).join('')}</tbody><tfoot><tr><td colspan="4" rowspan="5" style="vertical-align:top;text-align:left;font-size:11px;line-height:1.55"><b style="color:#1756a9">শর্তাবলী:</b><br>${getTermsHtml()}</td><td>মোট</td><td>${money(t.subtotal)}</td></tr><tr><td>ছাড়</td><td>${money(t.discount)}</td></tr><tr class="memo-total"><td>সর্বমোট</td><td>${money(t.total)}</td></tr><tr><td>নগদ / পরিশোধ</td><td>${money(t.paid)}</td></tr><tr><td>বাকি</td><td>${money(t.due)}</td></tr></tfoot></table><div class="memo-signs"><div class="customer-sign">গ্রাহকের স্বাক্ষর</div><div class="authority-sign">কর্তৃপক্ষের স্বাক্ষর</div></div><div class="memo-footer">${esc(shop.footer||'ধন্যবাদ, আবার আসবেন।')}</div></div></div>`;
 }
 
 function printMemo(m,mode){
@@ -484,7 +625,7 @@ async function downloadMemoPdf(m){
  const options={margin:0,filename:`Memo-${safeNo}.pdf`,image:{type:'jpeg',quality:0.98},html2canvas:{scale:2,useCORS:true,backgroundColor:'#ffffff',scrollX:0,scrollY:0},jsPDF:{unit:'mm',format:'a4',orientation:'portrait'},pagebreak:{mode:['avoid-all','css','legacy']}};
  try{await html2pdf().set(options).from(paper).save()}catch(e){alert('PDF ত্রুটি: '+(e.message||e))}finally{host.remove()}
 }
-function showA4Preview(modal,markup,printAction){modal.classList.add('memo-preview-modal');modal.innerHTML=`<div class="preview-toolbar"><button type="button" class="secondary" id="fitView">Fit</button><button type="button" class="secondary" id="zoomOut">−</button><strong id="zoomLabel">Fit</strong><button type="button" class="secondary" id="zoomIn">+</button><button type="button" class="green" id="previewDownload">⬇️ PDF ডাউনলোড</button><button type="button" id="previewPrint">প্রিন্ট</button><button type="button" class="danger" id="closePreview">বন্ধ</button></div><div class="preview-stage" id="a4Stage">${markup}</div>`;document.body.append(modal);const stage=modal.querySelector('#a4Stage'),paper=stage.querySelector('.preview');let scale=1;const fit=()=>{scale=Math.min(1,(stage.clientWidth-16)/794);apply('Fit')};const apply=label=>{paper.style.transform=`scale(${scale})`;paper.style.transformOrigin='top left';paper.style.marginLeft='0';paper.style.marginBottom=`-${Math.max(0,paper.offsetHeight*(1-scale))}px`;stage.style.minHeight='0';modal.querySelector('#zoomLabel').textContent=label||Math.round(scale*100)+'%';stage.scrollLeft=0};modal.querySelector('#fitView').onclick=fit;modal.querySelector('#zoomIn').onclick=()=>{scale=Math.min(2.5,scale+.15);apply()};modal.querySelector('#zoomOut').onclick=()=>{scale=Math.max(.35,scale-.15);apply()};modal.querySelector('#closePreview').onclick=()=>modal.remove();modal.querySelector('#previewDownload').onclick=()=>{const m=modal.querySelector('.preview')?.dataset?.memoId;modal.remove();if(m){const found=memos.find(x=>String(x.id)===String(m));downloadMemoPdf(found)}else downloadMemoPdf(formMemo())};modal.querySelector('#previewPrint').onclick=()=>{modal.remove();printAction()};const ro=new ResizeObserver(()=>fit());ro.observe(stage);fit()}
+function showA4Preview(modal,markup,printAction){modal.classList.add('memo-preview-modal');modal.innerHTML=`<div class="preview-toolbar"><button type="button" class="secondary" id="fitView">Fit</button><button type="button" class="secondary" id="zoomOut">−</button><strong id="zoomLabel">Fit</strong><button type="button" class="secondary" id="zoomIn">+</button><button type="button" class="green" id="previewDownload">⬇️ PDF ডাউনলোড</button><button type="button" class="button" id="previewPrint">প্রিন্ট</button><button type="button" class="danger" id="closePreview">বন্ধ</button></div><div class="preview-stage" id="a4Stage">${markup}</div>`;document.body.append(modal);const stage=modal.querySelector('#a4Stage'),paper=stage.querySelector('.preview');let scale=1;const fit=()=>{scale=Math.min(1,(stage.clientWidth-16)/794);apply('Fit')};const apply=label=>{paper.style.transform=`scale(${scale})`;paper.style.transformOrigin='top left';paper.style.marginLeft='0';paper.style.marginBottom=`-${Math.max(0,paper.offsetHeight*(1-scale))}px`;stage.style.minHeight='0';modal.querySelector('#zoomLabel').textContent=label||Math.round(scale*100)+'%';stage.scrollLeft=0};modal.querySelector('#fitView').onclick=fit;modal.querySelector('#zoomIn').onclick=()=>{scale=Math.min(2.5,scale+.15);apply()};modal.querySelector('#zoomOut').onclick=()=>{scale=Math.max(.35,scale-.15);apply()};modal.querySelector('#closePreview').onclick=()=>modal.remove();modal.querySelector('#previewDownload').onclick=()=>{const m=modal.querySelector('.preview')?.dataset?.memoId;modal.remove();if(m){const found=memos.find(x=>String(x.id)===String(m));downloadMemoPdf(found)}else downloadMemoPdf(formMemo())};modal.querySelector('#previewPrint').onclick=()=>{modal.remove();printAction()};const ro=new ResizeObserver(()=>fit());ro.observe(stage);fit()}
 function openSavedMemoPreview(m){if(!m)return;const modal=document.createElement('div');showA4Preview(modal,memoMarkup(m,'color'),()=>printMemo(m,'color'))}
 function openMemoPreview(){const modal=document.createElement('div');showA4Preview(modal,memoMarkup(formMemo(),'color'),()=>printMemo(formMemo(),'color'))}
 
